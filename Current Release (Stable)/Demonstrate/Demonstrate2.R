@@ -61,11 +61,11 @@ Demonstrate2<-function(dir, make.pos.plot=TRUE, pos.plot.title="True Positives b
     plot(myfiles[[1]]$mae, myfiles[[1]]$auc, main=error.plot.title, xlab="Mean Absolute Error (MAE)", ylab="Area under R-O Curve (AUC)", 
          pch=21, bg="black", xlim=c(MAE.axis.min, MAE.axis.max), ylim=c(AUC.axis.min,AUC.axis.max))
     plotcol<-c("black")
-    if (length(myfiles) >= 2){
+    if (length(myfiles) > 1){
       #Create overlapping data plots to compare potentially by GWAS tool
       #assuming that the length of the Winnow files is at least 2
       for (i in 2:length(myfiles)){
-        points(myfiles[[i]]$mae, myfiles[[i]]$auc, main=error.plot.title, xlab="Area under R-O Curve (AUC)", ylab="Mean Absolute Error (MAE)",
+        points(myfiles[[i]]$mae, myfiles[[i]]$auc, main=error.plot.title, xlab="Mean Absolute Error (MAE)", ylab="Area under R-O Curve (AUC)",
                pch=21, bg=rainbow(i+1)[i], xlim=c(MAE.axis.min, MAE.axis.max), ylim=c(AUC.axis.min,AUC.axis.max))
         plotcol[i]<-rainbow(i+1)[i]
       }
