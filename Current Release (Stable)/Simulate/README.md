@@ -34,6 +34,7 @@ The full list of command-line options for Simulate is as follows:
   * **-p2** or **--parameter2**: A single floating point number. Denotes the *scale parameter* of your population's underlying gamma distribution (only required if gamma distribution was chosen as an input above).
 
 * **-f** or **--filename**: A character string. Indicates the name to be attached to all Simulate outputs. For example, if filename was *MyResults*, then the genomic information file would be *MyResults_genomes.csv*
+
 These command-line arguments need not be in any particular order; however, we do at least recommend that any flags with no arguments (e.g. the verbose flag) be placed before those flags which require arguments.
 
 The final output for Simulate will be four files:
