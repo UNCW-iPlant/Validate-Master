@@ -60,7 +60,7 @@ Because you may only use one option for this argument, all of your GWAS outputs 
 Normally, this column will have a name like *P-value* or *P*. 
 Quite simply, this column shows the p-values indicating significant SNPs.
 
-**-k** or **--kttype**: Two options, either "OTE" or "FGS". Indicates the type of known-truth file. 
+* **-k** or **--kttype**: Two options, either "OTE" or "FGS". Indicates the type of known-truth file. 
 The "OTE" option stands for "Only Truth and Effect," meaning that only those SNPs deemed significant, along with their effect sizes, are listed.
 The "FGS" option stands for "Full Genome Set," meaning that all SNPs along with their effect sizes are listed, regardless of significance.
 
