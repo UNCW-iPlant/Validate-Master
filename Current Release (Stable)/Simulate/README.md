@@ -15,7 +15,7 @@ The full list of command-line options for Simulate is as follows:
 
 * **-n** or **--number**: An integer, indicates the number of genetic markers per individual. This number will be one of the key determinants of the size of the final output, and will influence how frequently the effects of the loci will change per generation. If multiple subpopulations are specified, the individuals of all subpopulations will have the number of markers denoted by *n*
 
-* **-l** or **--loci**: A list of integers, starting with 0 (e.g. 0,1,2) to denote which number of loci will have the effects. For example, if `-e 0,1,2` is chosen, then individuals having 0 loci, 1 locus, or 2 loci will have some kind of effect, the exact effect being represented with the next command line argument...
+* **-l** or **--loci**: A list of integers, starting with 0 (e.g. 0,1,2) to denote which number of loci will have the effects. For example, if `-l 0,1,2` is chosen, then individuals having 0 loci, 1 locus, or 2 loci will have some kind of effect, the exact effect being represented with the next command line argument...
 
 * **-e** or **--effect**: A list of floating point numbers equal in length to the list given by `-l`; indicates the actual effect on the phenotype having said number of loci will have. Using the above example with 0,1, and 2 loci having effects, if one listed `-e 0.2,0.2,0.2`, then in this case each additional loci would contribute 0.2 units to the phenotype of an individual.
 
