@@ -102,10 +102,10 @@ def checkArgs():
 			beta = str(o[1])
 			if verbose:
 				print "Estimated SNP Weight column name (e.g., regression betas) in results files is specified as", beta
-##		if o[0] in ("--filename", "-f"):
-##			filename = str(o[1])
-##			if verbose:
-##				print "Filename specified as", filename
+		if o[0] in ("--filename", "-f"):
+			filename = str(o[1])
+			if verbose:
+				print "Filename specified as", filename
 		if o[0] in ("--threshold", "-t"):
 			threshold = float(o[1])
 			if verbose:
