@@ -37,40 +37,107 @@ Demonstrate2<-function(dir, make.pos.plot=TRUE, pos.plot.title="True Positives b
   #Create the plots for true and false positives
   if (make.pos.plot){
     print("Creating positive count plots...")
-    tpsizeChecker<-function(list){
-      tps<-list()
-      for (i in 1:length(list)){
-        tps[[i]]<-list[[i]]$TruePositives
-      }
-      y<-unlist(lapply(tps, max))
-      z<-unlist(lapply(tps, min))
-      return(c(min(z), max(y)))
-    }
-    fpsizeChecker<-function(list){
-      fps<-list()
-      for (i in 1:length(list)){
-        fps[[i]]<-list[[i]]$FalsePositives
-      }
-      y<-unlist(lapply(fps, max))
-      z<-unlist(lapply(fps, min))
-      return(c(min(z), max(y)))
+    for (i in 1:length(myfiles)){
+      attach(myfiles[[i]])
+      myfiles[[i]]$file <- sQuote(i)
+      detach(myfiles[[i]])
     }
     
-    pdfname<-paste(pos.plot.title,"pdf",sep=".")
-    pdf(file=pdfname)
-    plot(myfiles[[1]]$TruePositives, myfiles[[1]]$FalsePositives, main=pos.plot.title, xlab="True Positives", ylab="False Positives",
-         pch=21, bg="black", xlim=c(tpsizeChecker(myfiles)), ylim=c(fpsizeChecker(myfiles)))
-    plotcol<-c("black")
-    if (length(myfiles) >= 2){
-      for (i in 2:length(myfiles)){
-        points(myfiles[[i]]$TruePositives, myfiles[[i]]$FalsePositives, main=pos.plot.title, xlab="True Positives", ylab="False Positives",
-               pch=21, bg=rainbow(i+1)[i])
-        plotcol[i]<-rainbow(i+1)[i]
-      }
-      
-      legend("topright", legend=filenames, text.font=2, cex=0.63, pt.cex=0.95, pt.bg = plotcol, pch=21)
+  #Determines maximum value of all true positives
+  tpmax<-function(list){
+    tps<-list()
+    for (i in 1:length(list)){
+      tps[[i]]<-list[[i]]$tp
     }
-    dev.off()
+    y<-unlist(lapply(tps, max))
+    return(max(y))
+  }
+  ta<-tpmax(myfiles)
+  #Determines minimum value of all true positives
+  tpmin<-function(list){
+    tps<-list()
+    for (i in 1:length(list)){
+      tps[[i]]<-list[[i]]$tp
+    }
+    y<-unlist(lapply(tps, min))
+    return(min(y))
+  }
+  tb<-tpmin(myfiles)
+  #Determines median value of all true positives
+  tpmed<-function(list){
+    tps<-list()
+    for (i in 1:length(list)){
+      tps[[i]]<-list[[i]]$tp
+    }
+    y<-unlist(lapply(tps, median))
+    return(median(y))
+  }
+  tc<-tpmed(myfiles)
+  #Determines maximum value of all false positives
+  fpmax<-function(list){
+    fps<-list()
+    for (i in 1:length(list)){
+      fps[[i]]<-list[[i]]$fp
+    }
+    y<-unlist(lapply(fps, max))
+    return(max(y))
+  }
+  fa<-fpmax(myfiles)
+  #Determines minimum value of all false positives
+  fpmin<-function(list){
+    fps<-list()
+    for (i in 1:length(list)){
+      fps[[i]]<-list[[i]]$fp
+    }
+    y<-unlist(lapply(fps, min))
+    return(min(y))
+  }
+  fb<-fpmin(myfiles)
+  #Determines median value of all false positives
+  fpmed<-function(list){
+    fps<-list()
+    for (i in 1:length(list)){
+      fps[[i]]<-list[[i]]$fp
+    }
+    y<-unlist(lapply(fps, median))
+    return(median(y))
+  }
+  fc<-fpmed(myfiles)
+  
+  all.data<-do.call("rbind", myfiles)
+  
+  TPFP <- ddply(all.data, .(tp, fp, file), summarize, count=length(file))
+  
+  #Creates pdf output
+  pdf(file="True Positives vs. False Positives.pdf")
+  
+  #Creates plot of each file with rectangles from minimums to medians and medians 
+  #to maximums of all true and false positives. Points in the green area represent 
+  #the "best" outputs, those in the red area represent the "worst", and those in
+  #blue areas are "okay". 
+  p <- ggplot(TPFP, aes(x=fp, y=tp), environment=environment())
+    
+  p2 <- p + 
+    geom_rect(data=all.data[1,], aes(xmin=fc, xmax=fa, ymin=tc, ymax=ta), 
+                alpha=0.2, fill="blue", linetype=0) +
+    geom_rect(data=all.data[1,], aes(xmin=fb, xmax=fc, ymin=tc, ymax=ta), 
+                alpha=0.2,fill="green", linetype=0) +
+    geom_rect(data=all.data[1,], aes(xmin=fb, xmax=fc, ymin=tb, ymax=tc), 
+                alpha=0.2, fill="blue", linetype=0) +
+    geom_rect(data=all.data[1,], aes(xmin=fc, xmax=fa, ymin=tb, ymax=tc), 
+                alpha=0.2, fill="gray", linetype=0) +
+    theme(panel.background=element_rect(fill='white', colour='black')) +
+    theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank()) +
+    geom_point(aes(colour=file, size=count)) +
+    scale_size_continuous(range=c(2,8)) +
+    xlab("False Positives") +
+    ylab("True Positives") +
+    ggtitle("False Positives by True Positves") +
+    xlim(0, fa) + ylim(0, ta)
+  
+    print(p2)
+  
+  dev.off()
     
   }
   
