@@ -47,7 +47,7 @@ Demonstrate2<-function(dir, make.pos.plot=TRUE, pos.plot.title="True Positives b
   tpmax<-function(list){
     tps<-list()
     for (i in 1:length(list)){
-      tps[[i]]<-list[[i]]$tp
+      tps[[i]]<-list[[i]]$TruePositives
     }
     y<-unlist(lapply(tps, max))
     return(max(y))
@@ -57,7 +57,7 @@ Demonstrate2<-function(dir, make.pos.plot=TRUE, pos.plot.title="True Positives b
   tpmin<-function(list){
     tps<-list()
     for (i in 1:length(list)){
-      tps[[i]]<-list[[i]]$tp
+      tps[[i]]<-list[[i]]$TruePositives
     }
     y<-unlist(lapply(tps, min))
     return(min(y))
@@ -67,7 +67,7 @@ Demonstrate2<-function(dir, make.pos.plot=TRUE, pos.plot.title="True Positives b
   tpmed<-function(list){
     tps<-list()
     for (i in 1:length(list)){
-      tps[[i]]<-list[[i]]$tp
+      tps[[i]]<-list[[i]]$TruePositives
     }
     y<-unlist(lapply(tps, median))
     return(median(y))
@@ -77,7 +77,7 @@ Demonstrate2<-function(dir, make.pos.plot=TRUE, pos.plot.title="True Positives b
   fpmax<-function(list){
     fps<-list()
     for (i in 1:length(list)){
-      fps[[i]]<-list[[i]]$fp
+      fps[[i]]<-list[[i]]$FalsePositives
     }
     y<-unlist(lapply(fps, max))
     return(max(y))
@@ -87,7 +87,7 @@ Demonstrate2<-function(dir, make.pos.plot=TRUE, pos.plot.title="True Positives b
   fpmin<-function(list){
     fps<-list()
     for (i in 1:length(list)){
-      fps[[i]]<-list[[i]]$fp
+      fps[[i]]<-list[[i]]$FalsePositives
     }
     y<-unlist(lapply(fps, min))
     return(min(y))
@@ -97,7 +97,7 @@ Demonstrate2<-function(dir, make.pos.plot=TRUE, pos.plot.title="True Positives b
   fpmed<-function(list){
     fps<-list()
     for (i in 1:length(list)){
-      fps[[i]]<-list[[i]]$fp
+      fps[[i]]<-list[[i]]$FalsePositives
     }
     y<-unlist(lapply(fps, median))
     return(median(y))
@@ -106,7 +106,7 @@ Demonstrate2<-function(dir, make.pos.plot=TRUE, pos.plot.title="True Positives b
   
   all.data<-do.call("rbind", myfiles)
   
-  TPFP <- ddply(all.data, .(tp, fp, file), summarize, count=length(file))
+  TPFP <- ddply(all.data, .(TruePositives, FalsePositives, file), summarize, count=length(file))
   
   #Creates pdf output
   pdf(file="True Positives vs. False Positives.pdf")
@@ -115,7 +115,7 @@ Demonstrate2<-function(dir, make.pos.plot=TRUE, pos.plot.title="True Positives b
   #to maximums of all true and false positives. Points in the green area represent 
   #the "best" outputs, those in the red area represent the "worst", and those in
   #blue areas are "okay". 
-  p <- ggplot(TPFP, aes(x=fp, y=tp), environment=environment())
+  p <- ggplot(TPFP, aes(x=FalsePositives, y=TruePositives), environment=environment())
     
   p2 <- p + 
     geom_rect(data=all.data[1,], aes(xmin=fc, xmax=fa, ymin=tc, ymax=ta), 
