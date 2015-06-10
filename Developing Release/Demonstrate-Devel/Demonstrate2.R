@@ -2,6 +2,9 @@ Demonstrate2<-function(dir, make.pos.plot=TRUE, pos.plot.title="True Positives b
                        make.error.plot=TRUE, error.plot.title="Plot of AUC by MAE", extra.plots=TRUE, 
                        AUC.axis.min=0, AUC.axis.max=1.0, MAE.axis.min=0, MAE.axis.max=2.0){
   
+  require(ggplot2)
+  require(plyr)
+  
   readFiles <- function(dir) {
     setwd(dir)
     files <- Sys.glob("*.txt")
