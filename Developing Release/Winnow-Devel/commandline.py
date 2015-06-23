@@ -41,7 +41,7 @@ def usage():
 # Checks for arguments at beginning of the execution of the main function
 def checkArgs():
 	try:
-		opts, args = getopt.getopt(sys.argv[1:], shortopts="vha:F:C:S:P:b:y:f:t:s:k:r", longopts=["verbose", "help", 
+		opts, args = getopt.getopt(sys.argv[1:], shortopts="vhpa:F:C:S:P:b:y:f:t:s:k:r:", longopts=["verbose", "help", 
 			"analysis=", "Folder=", "Class=", "Snp=", "Score=", "beta=", "filename=", "threshold=", "seper=", "kttype=",
 			"kttypeseper=", "severity="])
 
@@ -67,6 +67,7 @@ def checkArgs():
 	Both file formats can be arranged with either two rows or two columns."""  
 	kttypeseper = "whitespace"
         """Similar to input data separation, the known-truth file has two options: whitespace or comma"""
+        padj=False
         
 	# Looping through command-line arguments to replace and/or create initialized values
 	for o in opts:
