@@ -67,7 +67,6 @@ def checkArgs():
 	Both file formats can be arranged with either two rows or two columns."""  
 	kttypeseper = "whitespace"
         """Similar to input data separation, the known-truth file has two options: whitespace or comma"""
-        padj=False
         
 	# Looping through command-line arguments to replace and/or create initialized values
 	for o in opts:

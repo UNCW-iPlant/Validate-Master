@@ -53,7 +53,7 @@ def main():
 				count += 1
 
 		if severity is None:
-			severity = float(len(ktSnps))/float(len(snpTrueFalse) - len(ktSnps))
+			del severity
 
 	firstForHeader = True
 	for each in appOutputList:
