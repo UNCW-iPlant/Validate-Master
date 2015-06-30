@@ -12,15 +12,15 @@ import numpy as np
 import doctest
 
 
-"""Main function and execution"""
+# Main function and execution
 def main():
-        """    See docstrings in commandline.py and performetrics.py for additional information"""
+        # See docstrings and comments in commandline.py and performetrics.py for additional information
 	initializeGraphics()
 	folder, analysis, truth, snp, score, beta, filename, threshold, seper, kttype, kttypeseper, severity = checkArgs()
 	appOutputList = checkList(getList(folder))
 	ktFile = loadKT(truth, kttypeseper)
 	""">>>usage()"""
-	"""   Runs the following code if the known-truth file is in OTE format: only truth and effect"""
+	# Runs the following code if the known-truth file is in OTE format: only truth and effect"""
 	if kttype == "OTE":
 		acquiredData = loadFile(folder, appOutputList[0], seper)
 		snpColumnNo = acquiredData.header.index(snp)
@@ -75,9 +75,8 @@ def main():
 				betaColumn.append(float(each[1][betaColumnNo]))
 
 		if analysis == "GWAS" and firstForHeader:
-			"""Currently, only GWAS analysis is supported. 
-			Prediction algorithms for SNPs will be included in 
-			later versions of the software"""
+			# Currently, only GWAS analysis is supported. Prediction algorithms for SNPs will be included in
+			# later versions of the software"""
 			if beta is not None:
 				keepToWrite = gwasWithBeta(betaColumn, betaTrueFalse, snpTrueFalse, scoreColumn, threshold)
 				writeCSV(filename, keepToWrite, "wb", "\t")
@@ -85,8 +84,8 @@ def main():
 				keepToWrite = gwasWithoutBeta(snpTrueFalse, scoreColumn, threshold)
 				writeCSV(filename, keepToWrite, "wb", "\t")
 		else:
-		    """Fit statistics calculated from Winnow vary depending on whether or not
-		    a beta/effect size column was named in the input data"""
+		    # Fit statistics calculated from Winnow vary depending on whether or nota beta/effect size column was
+		    # named in the input data"""
 		    if beta is not None:
 		        keepToWrite = gwasWithBeta(betaColumn, betaTrueFalse, snpTrueFalse, scoreColumn, threshold)
 		        writeCSV(filename, keepToWrite, "a", "\t")
