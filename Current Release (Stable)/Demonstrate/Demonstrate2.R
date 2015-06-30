@@ -8,8 +8,9 @@ Demonstrate2<-function(dir, make.pos.plot=TRUE, pos.plot.title="True Positives b
     listOfFiles <- lapply(files, function(x) read.table(x, header=TRUE))
     return(listOfFiles)
   }
-  filenames <- tools::file_path_sans_ext(Sys.glob("*.txt"))
+  filenames <- unlist(tools::file_path_sans_ext(Sys.glob("*.txt")))
   myfiles<-readFiles(dir)
+  print(filenames)
   
   #Create some extra plots for univariate visualization
   if (extra.plots){
@@ -36,21 +37,41 @@ Demonstrate2<-function(dir, make.pos.plot=TRUE, pos.plot.title="True Positives b
   #Create the plots for true and false positives
   if (make.pos.plot){
     print("Creating positive count plots...")
+    tpsizeChecker<-function(list){
+      tps<-list()
+      for (i in 1:length(list)){
+        tps[[i]]<-list[[i]]$tp
+      }
+      y<-unlist(lapply(tps, max))
+      z<-unlist(lapply(tps, min))
+      return(c(min(z), max(y)))
+    }
+    fpsizeChecker<-function(list){
+      fps<-list()
+      for (i in 1:length(list)){
+        fps[[i]]<-list[[i]]$fp
+      }
+      y<-unlist(lapply(fps, max))
+      z<-unlist(lapply(fps, min))
+      return(c(min(z), max(y)))
+    }
+    
     pdfname<-paste(pos.plot.title,"pdf",sep=".")
     pdf(file=pdfname)
     plot(myfiles[[1]]$tp, myfiles[[1]]$fp, main=pos.plot.title, xlab="True Positives", ylab="False Positives",
-         pch=21, bg="black")
+         pch=21, bg="black", xlim=c(tpsizeChecker(myfiles)), ylim=c(fpsizeChecker(myfiles)))
     plotcol<-c("black")
     if (length(myfiles) >= 2){
-      #Create overlapping data plots to compare true/false positives by GWAS tool
-      #assuming that the length of the Winnow files is at least 2
       for (i in 2:length(myfiles)){
         points(myfiles[[i]]$tp, myfiles[[i]]$fp, main=pos.plot.title, xlab="True Positives", ylab="False Positives",
                pch=21, bg=rainbow(i+1)[i])
+        plotcol[i]<-rainbow(i+1)[i]
       }
+      
       legend("topright", legend=filenames, text.font=2, cex=0.63, pt.cex=0.95, pt.bg = plotcol, pch=21)
     }
     dev.off()
+    
   }
   
   #Create the plots for AUC and MAE
