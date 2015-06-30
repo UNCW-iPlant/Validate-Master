@@ -28,7 +28,7 @@ def rmse(betaColumn, betaTrueFalse):
 
 def mae(betaColumn, betaTrueFalse):
 	"""
-	Returns the mean absolute error of the dataset
+	Returns the mean absolute error of the data set
 
 		Example:
 
@@ -67,7 +67,7 @@ def r(betaColumn, betaTrueFalse):
 
 def r2(betaColumn, betaTrueFalse):
 	"""
-	Produces the coefficient of determination (AKA the corrlation coefficient squared); gives the percentage of
+	Produces the coefficient of determination (AKA the correlation coefficient squared); gives the percentage of
 	variation accounted for by the relationship between the given variables
 
 		Example:
@@ -87,7 +87,7 @@ def r2(betaColumn, betaTrueFalse):
 
 def auc(snpTrueFalse, scoreColumn):
 	"""
-	Returns the area under the reciever-operator curve for binary classification (i.e. true/false on whether a SNP
+	Returns the area under the receiver-operator curve for binary classification (i.e. true/false on whether a SNP
 	was part of the known-truth list or not)
 
 		Example:
@@ -310,7 +310,7 @@ def error(snpTrueFalse, threshold, scoreColumn):
 def sens(snpTrueFalse, threshold, scoreColumn):
 	"""
 	Returns the sensitivity value of the analysis; defined as the number of correctly identified positives
-	divided by the total number of known-truth positivies
+	divided by the total number of known-truth positives
 
 		Example:
 
@@ -388,7 +388,7 @@ def youden(snpTrueFalse, threshold, scoreColumn):
 	:param snpTrueFalse: true/false data set
 	:param threshold: significant threshold
 	:param scoreColumn: score data set
-	:return: the float representation of the youden statistic
+	:return: the float representation of the Youden statistic
 	"""
 	sensitivity = float(sens(snpTrueFalse, threshold, scoreColumn))
 	specificity = float(spec(snpTrueFalse, threshold, scoreColumn))
