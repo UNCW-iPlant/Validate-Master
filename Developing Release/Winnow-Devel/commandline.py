@@ -4,12 +4,14 @@ Functions for indentifying and using the command-line to execute Winnow for Pyth
 """
 
 
-"""Dependencies"""
-import getopt, sys
+# Dependencies
+import getopt
+import sys
 
-"""Functions to be used later in the software"""
-# Prints introduction graphics for every time the software is run
+# Functions to be used later in the software
 def initializeGraphics():
+	"""Prints introduction graphics for every time the software is run"""
+
 	print "###################################################################"
 	print "###                                                            ####"
 	print "###      Winnow for Python!                                    ####"
@@ -19,8 +21,9 @@ def initializeGraphics():
 	print "###################################################################"
 
 
-# Prints all possible command-line arguments to the screen; also ends the execution of the software
 def usage():
+	"""Prints all possible command-line arguments to the screen; also ends the execution of the software"""
+
 	print "\n\n\n"
 	print "Command-line usage help menu.\n"
 	print "--verbose or -v for verbose mode"
@@ -38,8 +41,9 @@ def usage():
 	print "--help or -h to see help menu\n\n"
 
 
-# Checks for arguments at beginning of the execution of the main function
 def checkArgs():
+	"""Checks for arguments at beginning of the execution of the main function"""
+
 	try:
 		opts, args = getopt.getopt(sys.argv[1:], shortopts="vhpa:F:C:S:P:b:y:f:t:s:k:r:", longopts=["verbose", "help", 
 			"analysis=", "Folder=", "Class=", "Snp=", "Score=", "beta=", "filename=", "threshold=", "seper=", "kttype=",
@@ -50,25 +54,26 @@ def checkArgs():
 		usage()
 		sys.exit()
 
-	# Specifiying initial values of needed variables; unneeded specification when desiring defaults
+	"""Specifying initial values of needed variables; unneeded specification when desiring defaults"""
 	verbose = False 
-	"""Tells the program whether or not to enter verbose mode, which displays the inputs and parameters as they are specified"""
+	# Tells the program whether or not to enter verbose mode, which displays the inputs and parameters as they are
+	# specified
 	analysis = "GWAS"
-	"""GWAS is the only analysis option available currently; prediction mode forthcoming in later versions"""
+	# GWAS is the only analysis option available currently; prediction mode forthcoming in later versions
 	filename = "Results"
 	threshold = 0.05
-	"""Threshold for determining Pvalue of correctly identified SNPs. Set at the standard significance level of 0.05; however,
-	please note this default threshold does not take multiple test corrections into account!"""
+	# Threshold for determining Pvalue of correctly identified SNPs. Set at the standard significance level of 0.05;
+	# however,please note this default threshold does not take multiple test corrections into account!
 	seper = "whitespace"
-	"""Two options for delimiting input data: whitespace or comma"""
+	# Two options for delimiting input data: whitespace or comma
 	kttype = "OTE"
-	"""For the format of the known-truth file, OTE stands for “Only Truth and Effect.” As the name implies, such a file only contains 
-	the SNPs with effects and the values of those effects. FGS stands for “Full Genome Set,” and this file type lists every SNP with their effects. 
-	Both file formats can be arranged with either two rows or two columns."""  
+	# For the format of the known-truth file, OTE stands for “Only Truth and Effect.” As the name implies, such a file
+	# only contains the SNPs with effects and the values of those effects. FGS stands for “Full Genome Set,” and this
+	# file type lists every SNP with their effects. Both file formats can be arranged with either two rows or two columns.
 	kttypeseper = "whitespace"
-        """Similar to input data separation, the known-truth file has two options: whitespace or comma"""
+	# Similar to input data separation, the known-truth file has two options: whitespace or comma
         
-	# Looping through command-line arguments to replace and/or create initialized values
+	"""Looping through command-line arguments to replace and/or create initialized values"""
 	for o in opts:
 		if o[0] in ("--help", "-h"):
 			usage()
@@ -127,7 +132,7 @@ def checkArgs():
 			if verbose:
 				print "Severity ratio is specified at", severity
 
-	# Check to see if needed variables are defined
+	"""Check to see if needed variables are defined"""
 	try:
 		folder
 	except NameError:
@@ -153,16 +158,16 @@ def checkArgs():
 		usage()
 		sys.exit()
 
-	"""Setting beta equal to null if not used; this will placehold the need to not run beta analyses
-	NOTE: The beta corresponds to the effect size columns for SNPs found in the initial GWAS analysis"""
+	# Setting beta equal to null if not used; this will placehold the need to not run beta analyses
+	# NOTE: The beta corresponds to the effect size columns for SNPs found in the initial GWAS analysis
 	try:
 		beta
 	except NameError:
 		beta = None
 
-	"""Severity ratio was originally included in the options for the proposed but unused H-measure fit statistic. Currently, the H-measure is not
-	in the list of fit statistics, but once a formula can be implemented in Python, it will be shown in the command line options. 
-	For now, we will leave this as the default None.""" 
+	# Severity ratio was originally included in the options for the proposed but unused H-measure fit statistic.
+	# Currently, the H-measure is not in the list of fit statistics, but once a formula can be implemented in Python,
+	# it will be shown in the command line options. For now, we will leave this as the default None.
 	try:
 		severity
 	except NameError:
