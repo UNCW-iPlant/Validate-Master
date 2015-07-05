@@ -22,9 +22,9 @@ Please note that to use any of these functions, you must first download and inst
 
 Assuming all options are used, Demonstrate will give two outputs: a lineplot of heritability by AUC, separating datasets by whether or not they have population structure and a lineplot of heritability by MAE, similarly separated by population structure. Both of these plots will be in PDF format. Examples shown below:`
 
-![AUC Plot for original Demonstrate](https://pods.iplantcollaborative.org/wiki/download/attachments/18188259/AUC-pop-structure.JPG?version=1&modificationDate=1434060411000&api=v2)
+[AUC Plot for original Demonstrate](https://pods.iplantcollaborative.org/wiki/download/attachments/18188259/AUC-pop-structure.JPG?version=1&modificationDate=1434060411000&api=v2)
 
-![MAE Plot for original Demonstrate](https://pods.iplantcollaborative.org/wiki/download/attachments/18188259/MAE-pop-structure.JPG?version=1&modificationDate=1434060431000&api=v2)
+[MAE Plot for original Demonstrate](https://pods.iplantcollaborative.org/wiki/download/attachments/18188259/MAE-pop-structure.JPG?version=1&modificationDate=1434060431000&api=v2)
 
 ###Demonstrate2 usage
 
