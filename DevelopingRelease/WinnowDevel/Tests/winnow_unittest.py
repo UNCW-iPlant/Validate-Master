@@ -69,5 +69,12 @@ class WinnowTest(unittest.TestCase):
                           'ufg31', 'ufg33', 'ufg32', 'ufg34', 'IDP4043', 'gpm495', 'bnlg1014', 'umc1363a'])
 
 
+def get_test_suite():
+    """
+    Returns a test suite with all tests
+
+    """
+    return unittest.TestLoader().loadTestsFromTestCase(WinnowTest)
+
 if __name__ == "__main__":
     unittest.main()

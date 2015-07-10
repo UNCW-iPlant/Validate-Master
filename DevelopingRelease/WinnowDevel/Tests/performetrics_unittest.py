@@ -98,5 +98,12 @@ class PerformetricsTest(unittest.TestCase):
         self.assertEqual(performetrics.youden(snp_tf, threshold, score), 0.16666666666666652)
 
 
+def get_test_suite():
+    """
+    Returns a test suite with all tests
+
+    """
+    return unittest.TestLoader().loadTestsFromTestCase(PerformetricsTest)
+
 if __name__ == "__main__":
     unittest.main()
