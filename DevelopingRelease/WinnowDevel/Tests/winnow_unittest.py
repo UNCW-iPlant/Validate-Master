@@ -1,5 +1,7 @@
 import unittest
 import os
+import sys
+sys.path.append(os.getcwd()[:os.getcwd().index('DevelopingRelease')])
 from DevelopingRelease.WinnowDevel import winnow
 from DevelopingRelease.WinnowDevel.fileimport import loadKT
 
