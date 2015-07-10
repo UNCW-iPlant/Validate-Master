@@ -3,7 +3,6 @@ Performance measures for testing applications in Winnow
 """
 
 import numpy as np
-import pandas as pd
 from scipy import stats
 
 
