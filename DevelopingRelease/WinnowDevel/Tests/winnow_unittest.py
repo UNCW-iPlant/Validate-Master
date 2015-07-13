@@ -28,7 +28,7 @@ class WinnowTest(unittest.TestCase):
                                         self.win.beta_true_false[16], self.win.beta_true_false[2745],
                                         self.win.beta_true_false[832], self.win.beta_true_false[15],
                                         self.win.beta_true_false[29], self.win.beta_true_false[2028],
-                                        self.win.beta_true_false[715], self.win.beta_true_false[276],)))
+                                        self.win.beta_true_false[715], self.win.beta_true_false[276])))
 
     def test_load_data(self):
         self.win = winnow.Winnow(self.args)
