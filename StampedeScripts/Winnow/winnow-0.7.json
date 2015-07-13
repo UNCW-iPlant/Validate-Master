@@ -1,0 +1,254 @@
+{
+  "name": "Winnow",
+  "version": "0.7",
+  "helpURI": "https://pods.iplantcollaborative.org/wiki/display/atmman/Winnow.Py+Tutorial",
+  "label": "winnow",
+  "defaultQueue": "normal",
+  "defaultNodeCount": 1,
+  "defaultMemoryPerNode": 8,
+  "defaultProcessorsPerNode": 1,
+  "defaultRequestedTime": "24:00:00",
+  "shortDescription": "A Python-compatible known truth testing tool for genome wide association studies.",
+  "longDescription": "Winnow is a tool that evaluates other tools. Winnow requires output from a GWAS tool after analyzing a data set. Given the \"known truth\" of the original data set, Winnow outputs a series of fit statistics to determine the validity of the GWAS tool and whether or not it was truly useful in analyzing the data.",
+  "executionSystem": "stampede.tacc.utexas.edu",
+  "executionType": "HPC",
+  "parallelism": "SERIAL",
+  "deploymentPath": "iplant/home/spt6655/winnow-0.7",
+  "deploymentSystem": "data.iplantcollaborative.org",
+  "templatePath": "wrapper.sh",
+  "testPath": "test/test.sh",
+  "checkpointable": true,
+  "tags": [
+    "python",
+    "gwas",
+    "winnow"
+  ],
+  "modules": [
+    "load python"
+  ],
+  "inputs": [
+    {
+      "id": "Class",
+      "details": {
+        "label": "Known-truth file name",
+        "description": "Specifies the \"known-truth\" file for the data group you are analyzing",
+        "attribute": "--Class",
+        "showAttribute": true
+      },
+      "semantics": {
+        "minCardinality": 1,
+        "fileTypes": [
+          "Text-0"
+        ]
+      },
+      "value": {
+	"default": "agave://data.iplantcollaborative.org/spt6655/applications/winnow-0.5/test/kt.ote",
+        "required": true,
+        "visible": true,
+        "order": 0
+      }
+    },
+    {
+      "id": "Folder",
+      "details": {
+        "label": "Folder for collected results",
+        "description": "The folder containing the aggregated GWAS results you wish to analyze",
+        "attribute": "--Folder",
+        "showAttribute": true
+      },
+      "semantics": {
+        "minCardinality": 1,
+	"maxCardinality": -1
+      },
+      "value": {
+	"default": "agave://data.iplantcollaborative.org/spt6655/applications/winnow-0.5/test/OutputPLINK",
+        "required": true,
+        "visible": true,
+        "order": 0
+      }
+    }
+  ],
+  "parameters": [
+    {
+      "id": "SNP",
+      "details": {
+        "label": "Name for the SNP column in input file",
+        "description": "A name for the SNP column in the input file",
+        "attribute": "--SNP",
+        "showAttribute": true
+      },
+      "semantics": {
+        "ontology": [
+          "xs:string"
+        ]
+      },
+      "value": {
+        "default": "SNP",
+        "type": "string",
+        "required": true,
+        "visible": true,
+        "order": 0
+      }
+    },
+    {
+      "id": "Score",
+      "details": {
+        "label": "Name for p-value column",
+        "description": "Name for the p-value column in the input file (e.g. p-value)",
+        "attribute": "--Score",
+        "showAttribute": true
+      },
+      "semantics": {
+        "ontology": [
+          "xs: string"
+        ]
+      },
+      "value": {
+        "default": "P",
+        "type": "string",
+        "required": true,
+        "visible": true,
+        "order": 0
+      }
+    },
+    {
+      "id": "Filename",
+      "details": {
+        "label": "Name output file",
+        "description": "Specifies the name for the Winnow output file (without file extension)",
+        "attribute": "--filename",
+        "showAttribute": true
+      },
+      "semantics": {
+        "ontology": [
+          "xs: string"
+        ]
+      },
+      "value": {
+        "default": "MyResults",
+        "type": "string",
+        "required": true,
+        "visible": true,
+        "order": 0
+      }
+    },
+    {
+      "id": "kttype",
+      "details": {
+        "label": "Specify the known-truth type",
+        "description": "Allows one to specify the type of known truth file denoted in --class (either OTE or FGS)",
+        "attribute": "--kttype",
+        "showAttribute": true
+      },
+      "semantics": {
+        "ontology": [
+          "xs: string"
+        ]
+      },
+      "value": {
+        "type": "string",
+        "required": true,
+        "visible": true,
+        "order": 0
+      }
+    },
+    {
+      "id": "threshold",
+      "details": {
+        "label": "Specifies the significance threshold",
+        "description": "A value used for determining the threshold on certain classification metrics",
+        "attribute": "--threshold",
+        "showAttribute": true
+      },
+      "semantics": {
+        "ontology": [
+          "xs: string"
+        ]
+      },
+      "value": {
+	"default": "0.05",
+        "type": "string",
+	"validator": "^(?:(1\\.00|(?:0\\.[0-9]{2})))$",
+        "required": false,
+	"visible": true
+      }
+    },
+    {
+      "id": "verbose",
+      "details": {
+        "label": "Triggers verbose mode",
+        "description": "Triggers verbose mode for the program's execution",
+        "attribute": "--verbose",
+        "showAttribute": true
+      },
+      "value": {
+        "type": "flag",
+        "order": 0,
+        "required": false,
+        "visible": false
+      }
+    },
+    {
+      "id": "seper",
+      "details": {
+        "label": "Separation of values",
+        "description": "Denotes the way values are separated in the input file",
+        "attribute": "--seper",
+        "showAttribute": true
+      },
+      "semantics": {
+        "ontology": [
+          "xs:string"
+        ]
+      },
+      "value": {
+        "default": "whitespace",
+        "type": "string",
+        "visible": true,
+        "order": 0,
+        "required": false
+      }
+    },
+    {
+      "id": "kttypeseper",
+      "details": {
+        "label": "Separator in known-truth file",
+        "description": "Describes the delimitation in the known-truth file (either comma or whitespace)",
+        "attribute": "--kttypeseper",
+        "showAttribute": true
+      },
+      "semantics": {
+        "ontology": [
+          "xs:string"
+        ]
+      },
+      "value": {
+        "default": "whitespace",
+        "type": "string",
+        "visible": true,
+        "order": 0,
+        "required": false
+      }
+    },
+    {
+      "id": "BETA",
+      "details": {
+        "label": "Name effect size column",
+        "description": "Specifies a string for the name of the estimated SNP effect size column in input files (if needed)",
+        "attribute": "--beta",
+        "showAttribute": true
+      },
+      "semantics": {
+        "ontology": [
+          "xs:string"
+        ]
+      },
+      "value": {
+        "type": "string",
+        "visible": true,
+        "order": 0,
+        "required": false
+      }
+    }
+  ]
+}
