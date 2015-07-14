@@ -54,7 +54,7 @@
       },
       "value": {
         "default": 0,
-		"validator": (^[0,1]),
+		"validator": [0,1],
         "type": "number",
         "visible": true,
         "order": 0,
@@ -87,7 +87,7 @@
       },
       "value": {
         "default": 3000,
-		"validator": ^([1-9]|[1-9][0-9]|[1-9][0-9][0-9]|[1-9][0-9][0-9][0-9]|[1-9][0-9][0-9][0-9][0-9])$
+		"validator": "^([1-9]|[1-9][0-9]|[1-9][0-9][0-9]|[1-9][0-9][0-9][0-9]|[1-9][0-9][0-9][0-9][0-9])$",
         "type": "number",
         "required": true,
         "visible": true,
@@ -104,7 +104,6 @@
       },
       "value": {
         "default": 3,
-		"validator": ([0-9]+\.?+\d*),
         "type": "number",
         "visible": true,
         "order": 0,
@@ -121,7 +120,6 @@
       },
       "value": {
         "default": 1.5,
-		"validator": ([0-9]+\.?+\d*),
         "type": "number",
         "visible": true,
         "order": 0,
@@ -170,7 +168,6 @@
       },
       "value": {
         "default": 2.7,
-		"validator": ([0-9]+\.?+\d*),
         "type": "number",
         "visible": true,
         "order": 0,
@@ -187,7 +184,7 @@
       },
       "value": {
         "default": 100,
-		"validator": ^([1-9]|[1-9][0-9]|[1-9][0-9][0-9]|[1-9][0-9][0-9][0-9])$,
+		"validator": "^([1-9]|[1-9][0-9]|[1-9][0-9][0-9]|[1-9][0-9][0-9][0-9])$",
         "type": "number",
         "visible": true,
         "order": 0,
@@ -204,7 +201,6 @@
       },
       "value": {
         "default": 0.25,
-		"validator": ([0-1]\.\d*),
         "type": "number",
         "visible": true,
         "order": 0,
@@ -221,7 +217,6 @@
       },
       "value": {
         "default": 0.0,
-		"validator": ([0-1]\.\d*),
         "type": "number",
         "visible": true,
         "order": 0,
