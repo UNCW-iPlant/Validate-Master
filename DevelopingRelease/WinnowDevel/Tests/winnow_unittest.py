@@ -1,6 +1,7 @@
 import unittest
 import os
 import sys
+
 sys.path.append(os.getcwd()[:os.getcwd().index('DevelopingRelease')])
 from DevelopingRelease.WinnowDevel import winnow
 from DevelopingRelease.WinnowDevel.fileimport import loadKT
@@ -45,10 +46,9 @@ class WinnowTest(unittest.TestCase):
         self.win.load_kt()
         gen = self.win.do_analysis()
         a = gen.next()[1]
-        print a
-        self.assertEqual(a, (
-            [0.058961209687231286, 0.18211782935394086, 0.026434018860365737, 0.00069875735311017147,
-             0.43427678571428574, 0, 384, 2816, 35, 0.0, 0.12, 0.1295208655332303, 0.0, 0.88, 0.0, -0.12]))
+        self.assertEqual(a,
+                         [0.058961209687231286, 0.18211782935394086, 0.026434018860365737, 0.00069875735311017147,
+                          0.43427678571428574, 0, 384, 2816, 35, 0.0, 0.12, 0.1295208655332303, 0.0, 0.88, 0.0, -0.12])
         gen.close()
 
     def test_do_gwas(self):
@@ -77,6 +77,7 @@ def get_test_suite():
 
     """
     return unittest.TestLoader().loadTestsFromTestCase(WinnowTest)
+
 
 if __name__ == "__main__":
     unittest.main()
