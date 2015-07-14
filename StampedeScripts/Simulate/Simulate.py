@@ -1,4 +1,5 @@
 ## Original Author: Dustin Landers
+#Keep in mind configuration file as an option...
 import getopt
 import random
 import sys
@@ -6,7 +7,7 @@ import math
 from scipy.stats.stats import pearsonr
 import numpy
 import simuPOP as sim
-from simuPOP.utils import saveCSV, export
+from simuPOP.utils import export
 
 """Functions use somewhere in the software"""
 
@@ -67,9 +68,11 @@ def main():
 		print(err)
 		usage()
 		sys.exit()
-
+	
 	verbose = False
 	filename = "my"
+	parameter1 = 3
+	parameter2 = 1.5
 	size = 1000
 	number = 100
 	heritability = 0.2
@@ -77,39 +80,11 @@ def main():
 	gen = 5
 	rrate = 0.0
 	print "\n"
-
+        
 	for o in opts:
 		if o[0] in ("-v", "--verbose"):
 			verbose = True
 			print ("Verbose mode")
-	for o in opts:
-		if o[0] in ("-d", "--distribution"):
-			distribution = float(o[1])
-			if distribution == 0:	
-				parameter1 = None
-				parameter2 = None
-				if verbose:
-					print "Simulation will occur with Normal Distribution"
-			elif distribution == 1:
-				if verbose:
-					print "Simulation will occur with Gamma Distribution"
-				for o in opts:
-					if o[0] in ("-p1", "--parameter1"):
-						parameter1 = float(o[1])
-						if verbose:
-							print "Gamma distribution will occur with alpha:", parameter1 
-				for o in opts:
-					if o[0] in ("-p2", "--parameter2"):
-						parameter2 = float(o[1])
-						if verbose:
-							print "Gamma distribution will occur with beta:", parameter2			
-			elif distribution != 0 or distribution != 1:
-				sys.exit("Error message: Distribution option must be either 0 or 1")
-	for o in opts:
-		if o[0] in ("-p2", "--parameter2"):
-			bbeta = float(o[1])
-			if verbose:
-				print "Gamma distribution will occur with beta:", bbeta			
 	for o in opts:
 		if o[0] in ("-s", "--size"):
 			individuals = o[1].split(",")
@@ -120,6 +95,30 @@ def main():
 		if o[0] in ("-h", "--help"):
 			usage()
 			sys.exit()
+		elif o[0] in ("-d", "--distribution"):
+			distribution = float(o[1])
+			if distribution == 0:	
+			    #Would del work better here?
+				parameter1 = None
+				parameter2 = None
+				if verbose:
+					print "Simulation will occur with Normal Distribution"
+			elif distribution == 1:
+			    #Make normal distribution default value? One less test.
+			    #Moved gamma distribution options from original "if" block to this "elif" condition
+			    #Question on defaults: declare default values before or after grabbing command args?
+				for o in opts:
+					if o[0] in ("-p1", "--parameter1"):
+						parameter1 = float(o[1])
+				for o in opts:
+					if o[0] in ("-p2", "--parameter2"):
+						parameter2 = float(o[1])
+				if verbose:
+					print "Simulation will occur with Gamma Distribution"
+					print "Gamma distribution will occur with alpha:", parameter1
+					print "Gamma distribution will occur with beta:", parameter2 						
+			elif distribution != 0 or distribution != 1:
+				sys.exit("Error message: Distribution option must be either 0 or 1")
 		elif o[0] in ("-n", "--number"):
 			number = o[1]
 			if verbose:
@@ -254,6 +253,8 @@ def main():
 					count += 1
 			elif distribution == 1:
 				for each in phenotypes:
+				        #May tweak this eventually, but we need a way to keep parameters dependent on mean somewhat;
+					#Plus, the math for these holds
 					current_mean = mean[pop.subPopIndPair(count)[0]]
 					new_phenotypes.append(random.gammavariate((current_mean + each)/parameter2, ((estimated_variance/parameter1)**0.5)))
 					count += 1
