@@ -3,8 +3,6 @@ python:
     - "2.6"
     - "2.7"
 script:
+    - cd /DevelopingRelease/WinnowDevel/Tests
     - ls
-    - cd
-    - ls
-    - cd Vailidate-Master/DevelopingRelease/WinnowDevel/Tests
     - python winnowdevel_test_suite.py
