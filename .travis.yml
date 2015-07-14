@@ -3,6 +3,6 @@ python:
     - "2.6"
     - "2.7"
 script:
-    - cd /DevelopingRelease/WinnowDevel/Tests
+    - cd DevelopingRelease/WinnowDevel/Tests
     - ls
     - python winnowdevel_test_suite.py
