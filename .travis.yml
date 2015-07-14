@@ -3,4 +3,4 @@ python:
     - "2.6"
     - "2.7"
 script:
-    - python WinnowDevel/Tests/winnowdevel_test_suite.py
+    - python /WinnowDevel/Tests/winnowdevel_test_suite.py
