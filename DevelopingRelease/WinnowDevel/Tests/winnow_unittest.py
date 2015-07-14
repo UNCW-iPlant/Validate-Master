@@ -44,7 +44,9 @@ class WinnowTest(unittest.TestCase):
         self.win = winnow.Winnow(self.args)
         self.win.load_kt()
         gen = self.win.do_analysis()
-        self.assertEqual(gen.next()[1], (
+        a = gen.next()[1]
+        print a
+        self.assertEqual(a, (
             [0.058961209687231286, 0.18211782935394086, 0.026434018860365737, 0.00069875735311017147,
              0.43427678571428574, 0, 384, 2816, 35, 0.0, 0.12, 0.1295208655332303, 0.0, 0.88, 0.0, -0.12]))
         gen.close()
