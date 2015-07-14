@@ -26,6 +26,9 @@ T=${T}
 output=${output}
 
 #Variable Validation:
+nameP="${inputPED%.*}"
+nameB="${inputBED%.*}"
+nameT="${inputTPED%.*}"
 
 if [ "$verboseOutput" = true ]; then
 	verbose="-verboseOutput"
@@ -35,7 +38,6 @@ fi
 
 re='^[0-9]+$'
 if [[ -s "$inputPED" ]] && [[ -s "$inputMAP" ]]; then
-	nameP="${inputPED%.*}"
 	if [ "$SimFileset" != "PEDMAP" ]; then
 		PEDMAP="-file $nameP"
 	fi
@@ -43,35 +45,21 @@ else
 	PEDMAP=
 fi
 
-
 if [ "$B" = true ]; then
 	if [[ -s "$inputBED" ]] && [[ -s "$inputBIM" ]]; then
-		nameB="${inputBED%.*}"
 			if [ "$SimFileset" != "BEDBIMFAM" ]; then
 				BEDBIMFAM="-bfile $nameB"
 			fi
 	fi
-else
-	BEDBIMFAM=
 fi
 
 if [ "$T" = true ]; then
 	if [[ -s "$inputTPED" ]] && [[ -s "$inputTFAM" ]]; then
-		nameT="${inputTPED%.*}"
 		if [ "$SimFileset" != "TPEDTFAM" ]; then
 			TPEDTFAM="-tfile $nameT"
 		fi
-	else
-		TPEDTFAM=
 	fi
 fi
-
-if [[ -z "$inputPHENO" ]]; then
-	echo "ERROR: Phenotype file is required for analysis" >&2; exit 1
-else
-	pheno="-pheno $inputPHENO"
-fi
-
 
 if [ "$C" = true ]; then
 	if [[ -s "$inputCOVAR" ]]; then
@@ -93,17 +81,8 @@ if  [[ -n "$SimFileset" ]]; then
 	fi
 fi
 
-if  [[ ! -e "$Sim" ]] && [ -z "$SimFileset" ]; then
-	echo "ERROR: Unable to compute genetic similarity matrix. A PLINK fileset for computation or the actual genetic similarity matrix file is required" >&2; exit 1
-fi
-
-if  [ -z "$output" ]; then
-	echo "ERROR: String for output is required" >&2; exit 1
-else
-	out="-out $output"
-fi
-
-#Run the main program
+#Can remove this part later. For now, this checks to make sure all inputs are properly read before the program is executed
+#Also, this will help in isolating errors when debugging
 echo "$inputPED"
 echo "verbose: $verbose"
 echo "PEDMAP: $PEDMAP"
@@ -114,4 +93,5 @@ echo "COVAR: $COVAR"
 echo "Sim: $Sim"
 echo "fileSIM: $fileSIM"
 echo "output: $out"
+#Run the main program
 ./fastlmmc "$verbose" $PEDMAP $BEDBIMFAM $TPEDTFAM $pheno $COVAR $Sim $fileSIM $out
