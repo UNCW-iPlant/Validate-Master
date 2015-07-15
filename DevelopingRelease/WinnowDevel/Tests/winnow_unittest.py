@@ -46,9 +46,9 @@ class WinnowTest(unittest.TestCase):
         self.win.load_kt()
         gen = self.win.do_analysis()
         a = gen.next()[1]
-        self.assertEqual(a,
-                         [0.058961209687231286, 0.18211782935394086, 0.026434018860365737, 0.00069875735311017147,
-                          0.43427678571428574, 0, 384, 2816, 35, 0.0, 0.12, 0.1295208655332303, 0.0, 0.88, 0.0, -0.12])
+        self.assertEqual(format_float(a),
+                         [0.05896121, 0.18211783, 0.02643402, 0.00069876, 0.43427679, 0.00000, 384.00000, 2816.00000, 35.00000,
+                          0.00000, 0.12000, 0.12952087, 0.00000, 0.88000, 0.00000, -0.12000])
         gen.close()
 
     def test_do_gwas(self):
@@ -57,10 +57,11 @@ class WinnowTest(unittest.TestCase):
         score_column = (0.003, 0.65, 0.004, 0.006, 0.078, 0.003, 0.0001, 0.513, 0.421, 0.0081, 0.043, 0.98)
         self.win.beta_true_false = (1, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1)
         beta_column = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12)
-        self.assertEqual(self.win.do_gwas(score_column, beta_column)[1],
-                         [47.083333333333336, 5.916666666666667, 0.024482659157056445, 0.00059940059940059973,
-                          0.56944444444444442, 4, 3, 3, 2, 0.6666666666666666, 0.5, 0.4166666666666667,
-                          0.6666666666666666, 0.5, 0.5714285714285714, 0.16666666666666652])
+        a = format_float(self.win.do_gwas(score_column, beta_column)[1])
+        self.assertEqual(a,
+                         [47.08333333, 5.91666667, 0.02448266, 0.0005994,
+                          0.56944444, 4, 3, 3, 2, 0.66666667, 0.5, 0.41666667,
+                          0.66666667, 0.5, 0.57142857, 0.16666667])
 
     def test_data_to_list(self):
         kt_file = loadKT(self.args['truth'], self.args['kt_type_separ'])
@@ -70,6 +71,17 @@ class WinnowTest(unittest.TestCase):
                           'IDP755', 'mmp49', 'cdo1081a', 'gpm330', 'gpm83b', 'gpm767', 'asg31', 'npi415', 'AY108650',
                           'ufg31', 'ufg33', 'ufg32', 'ufg34', 'IDP4043', 'gpm495', 'bnlg1014', 'umc1363a'])
 
+def format_float(float_list):
+    '''
+    Truncuates floats to 5 decimal places
+
+    :param float_list:
+    :return: a list of float truncuated to 5 decimal places
+    '''
+    return_list = list()
+    for each in float_list:
+        return_list.append(float('%.8f' % each))
+    return return_list
 
 def get_test_suite():
     """

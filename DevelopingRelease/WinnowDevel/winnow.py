@@ -139,8 +139,7 @@ class Winnow:
             return gwasWithBeta(beta_column, self.beta_true_false, self.snp_true_false, score_column, threshold)
 
     def save_settings(self):
-        data_files = checkList(getList(self.args_dict['folder']))
-        writeSettings(data_files, self.args_dict)
+        writeSettings(self.args_dict)
 
 
 def initialize():

@@ -73,28 +73,22 @@ def writeCSV(filename, keepToWrite, method="wb", exportDelimiter=","):
         openFileWriter.writerow(currentRow)
 
 
-def writeSettings(datafiles, winnowargs):
+def writeSettings(winnowargs):
     """
     Saves a settings file with parameters used in Winnow
 
-    :param datafiles: list of files containing data for analysis
     :param winnowargs: dictionary of runtime arguments used in Winnow
     :return: saves a txt file with the given filename that is appended with _settings containing the list of data files,
     the truth and results file, the type of analysis, the type of known truth, and the threshold.
     """
     a = winnowargs['analysis']
     if winnowargs['beta'] is not None:
-        a += ' with beta'
+        a += 'WithBeta'
     else:
-        a += ' without beta'
-    with open(winnowargs['filename'] + "_settings.txt", 'wb') as openFile:
+        a += 'WithoutBeta'
+    with open(winnowargs['filename'] + "_parameters.txt", 'wb') as openFile:
         openFileWriter = csv.writer(openFile, delimiter='\t')
-        openFileWriter.writerow(('Data Files', 'Truth File', 'Results File', 'Analysis Type', 'KT Type', 'Threshold'))
-        first_pass = True
-        for each in datafiles:
-            if first_pass:
-                openFileWriter.writerow((each, winnowargs['truth'], winnowargs['filename'] + '.txt', a,
-                                         winnowargs['kt_type'], winnowargs['threshold']))
-                first_pass = False
-            else:
-                openFileWriter.writerow((each, '', '', '', ''))
+        openFileWriter.writerow(('Output File: ', winnowargs['filename']))
+        openFileWriter.writerow(('Analysis Type: ', a))
+        openFileWriter.writerow(('KT Type: ', winnowargs['kt_type']))
+        openFileWriter.writerow(('Threshold: ', winnowargs['threshold']))
