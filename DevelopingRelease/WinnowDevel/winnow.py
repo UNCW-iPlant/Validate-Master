@@ -40,7 +40,6 @@ class Winnow:
         given at runtime, separated by the given delimiter
         """
         app_output_list = checkList(getList(self.args_dict['folder']))
-        print app_output_list
         kt_file = loadKT(self.args_dict['truth'], self.args_dict['kt_type_separ'])
         acquired_data = loadFile(self.args_dict['folder'], app_output_list[0], self.args_dict['separ'])
         snp_column = data_to_list(acquired_data, 1, acquired_data.header.index(self.args_dict['snp']))
@@ -95,7 +94,9 @@ class Winnow:
         :return: loads all files from the folder given at runtime, parses data with the load_data function, returns the
         results of the analysis with this data
         """
-        app_output_list = checkList(getList(self.args_dict['folder']))
+        app_output_list = sorted(checkList(getList(self.args_dict['folder'])))
+        print '\n'
+        print app_output_list
         for each in app_output_list:
             if self.args_dict['beta'] is not None:
                 score_column, beta_column = self.load_data(each)
