@@ -40,6 +40,7 @@ class Winnow:
         given at runtime, separated by the given delimiter
         """
         app_output_list = checkList(getList(self.args_dict['folder']))
+        print app_output_list[0]
         kt_file = loadKT(self.args_dict['truth'], self.args_dict['kt_type_separ'])
         acquired_data = loadFile(self.args_dict['folder'], app_output_list[0], self.args_dict['separ'])
         snp_column = data_to_list(acquired_data, 1, acquired_data.header.index(self.args_dict['snp']))
