@@ -1,6 +1,7 @@
 import unittest
 import os
 import sys
+
 sys.path.append(os.getcwd()[:os.getcwd().index('DevelopingRelease')])
 from DevelopingRelease.WinnowDevel import winnow
 from DevelopingRelease.WinnowDevel.fileimport import loadKT
@@ -28,7 +29,7 @@ class WinnowTest(unittest.TestCase):
                                         self.win.beta_true_false[16], self.win.beta_true_false[2745],
                                         self.win.beta_true_false[832], self.win.beta_true_false[15],
                                         self.win.beta_true_false[29], self.win.beta_true_false[2028],
-                                        self.win.beta_true_false[715], self.win.beta_true_false[276],)))
+                                        self.win.beta_true_false[715], self.win.beta_true_false[276])))
 
     def test_load_data(self):
         self.win = winnow.Winnow(self.args)
@@ -44,9 +45,10 @@ class WinnowTest(unittest.TestCase):
         self.win = winnow.Winnow(self.args)
         self.win.load_kt()
         gen = self.win.do_analysis()
-        self.assertEqual(gen.next()[1], (
-            [0.058961209687231286, 0.18211782935394086, 0.026434018860365737, 0.00069875735311017147,
-             0.43427678571428574, 0, 384, 2816, 35, 0.0, 0.12, 0.1295208655332303, 0.0, 0.88, 0.0, -0.12]))
+        a = gen.next()[1]
+        self.assertEqual(a,
+                         [0.058961209687231286, 0.18211782935394086, 0.026434018860365737, 0.00069875735311017147,
+                          0.43427678571428574, 0, 384, 2816, 35, 0.0, 0.12, 0.1295208655332303, 0.0, 0.88, 0.0, -0.12])
         gen.close()
 
     def test_do_gwas(self):
@@ -75,6 +77,7 @@ def get_test_suite():
 
     """
     return unittest.TestLoader().loadTestsFromTestCase(WinnowTest)
+
 
 if __name__ == "__main__":
     unittest.main()
