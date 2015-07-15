@@ -95,8 +95,6 @@ class Winnow:
         results of the analysis with this data
         """
         app_output_list = sorted(checkList(getList(self.args_dict['folder'])))
-        print '\n'
-        print app_output_list
         for each in app_output_list:
             if self.args_dict['beta'] is not None:
                 score_column, beta_column = self.load_data(each)
