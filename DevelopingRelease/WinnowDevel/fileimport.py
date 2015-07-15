@@ -68,3 +68,22 @@ def writeCSV(filename, keepToWrite, method="wb", exportDelimiter=","):
 		for item in keepToWrite[1]:
 			currentRow.append(item)
 		openFileWriter.writerow(currentRow)
+
+def writeSettings(datafiles, winnowargs):
+	a = winnowargs['analysis']
+	if winnowargs['beta'] is not None:
+		a += ' with beta'
+	else:
+		a += ' without beta'
+	with open(winnowargs['filename'] +"_settings.txt", 'wb') as openFile:
+		openFileWriter = csv.writer(openFile, delimiter='\t')
+		openFileWriter.writerow(('Data Files', 'Truth File', 'Results File', 'Analysis Type', 'KT Type', 'Threshold'))
+		first_pass = True
+		for each in datafiles:
+			if first_pass:
+				openFileWriter.writerow((each, winnowargs['truth'], winnowargs['filename']+'.txt', a,
+										 winnowargs['kt_type'], winnowargs['threshold']))
+				first_pass = False
+			else:
+				openFileWriter.writerow((each, '', '', '', ''))
+

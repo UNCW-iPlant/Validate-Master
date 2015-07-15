@@ -5,7 +5,7 @@
 
 """ Dependencies """
 from commandline import initializeGraphics, checkArgs
-from fileimport import getList, loadKT, loadFile, trueFalse, writeCSV
+from fileimport import getList, loadKT, loadFile, trueFalse, writeCSV, writeSettings
 from checkhidden import checkList
 from gwas import gwasWithBeta, gwasWithoutBeta
 
@@ -138,6 +138,10 @@ class Winnow:
         else:
             return gwasWithBeta(beta_column, self.beta_true_false, self.snp_true_false, score_column, threshold)
 
+    def save_settings(self):
+        data_files = checkList(getList(self.args_dict['folder']))
+        writeSettings(data_files, self.args_dict)
+
 
 def initialize():
     """
@@ -146,8 +150,8 @@ def initialize():
     :return: a dictionary of the runtime parameters
     """
     initializeGraphics()
-    folder, analysis, truth, snp, score, beta, filename, threshold, separ, kt_type,\
-        kt_type_separ, severity = checkArgs()
+    folder, analysis, truth, snp, score, beta, filename, threshold, separ, kt_type, \
+    kt_type_separ, severity = checkArgs()
     args = {'folder': folder, 'analysis': analysis, 'truth': truth, 'snp': snp, 'score': score, 'beta': beta,
             'filename': filename, 'threshold': threshold, 'separ': separ, 'kt_type': kt_type,
             'kt_type_separ': kt_type_separ}
@@ -183,6 +187,7 @@ def main():
     w = Winnow(args)
     w.load_kt()
     w.write_to_file(w.do_analysis())
+    w.save_settings()
 
 
 if __name__ == "__main__":
