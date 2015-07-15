@@ -1,0 +1,346 @@
+{
+  "name": "GEMMA",
+  "version": "0.94.1",
+  "helpURI": "http://www.xzlab.org/software/GEMMAmanual.pdf",
+  "defaultQueue": "normal",
+  "defaultRequestedTime": "3:00:00",
+  "shortDescription": "Genome-wide Efficient Mixed Model Association",
+  "longDescription": "GEMMA is the software for implementing the Genome-wide Efficient Mixed Model Association algorithm for a standard mixed model and its close relatives for genome wide association studies.",
+  "executionSystem": "stampede-07282014-1215-spt6655",
+  "executionType": "HPC",
+  "parallelism": "SERIAL",
+  "deploymentPath": "spt6655/applications/gemma-0.94.1",
+  "deploymentSystem": "data.iplantcollaborative.org",
+  "templatePath": "gemma-wrap.sh",
+  "testPath": "gemma-test.sh",
+  "tags": [
+    "GWAS",
+    "GWA",
+    "GEMMA",
+    "Mixed Model",
+    "Association"
+  ],
+  "modules": [
+    "purge",
+    "load TACC",
+    "load irods"
+  ],
+  "inputs": [
+    {
+      "id": "inputBED",
+      "details": {
+        "label": "Input .bed file (binary PLINK format)",
+        "showAttribute": false
+      },
+      "semantics": {
+        "minCardinality": 1
+      },
+      "value": {
+	  "default": "agave://data.iplantcollaborative.org/spt6655/applications/gemma-0.94.1/test/mouse_hs1940.bed",
+        "visible": true,
+        "required": false
+      }
+    },
+    {
+      "id": "inputBIM",
+      "details": {
+        "label": "Input .bim file (binary PLINK format)",
+        "showAttribute": false
+      },
+      "semantics": {
+        "minCardinality": 1,
+        "ontology": [
+          "http://sswapmeet.sswap.info/soybase/"
+        ]
+      },
+      "value": {
+	  "default": "agave://data.iplantcollaborative.org/spt6655/applications/gemma-0.94.1/test/mouse_hs1940.bim",
+        "visible": true,
+        "required": false
+      }
+    },
+    {
+      "id": "inputFAM",
+      "details": {
+        "label": "Input .fam file (for PLINK format)",
+        "showAttribute": false
+      },
+      "semantics": {
+        "minCardinality": 1,
+        "ontology": [
+          "http://sswapmeet.sswap.info/soybase/"
+        ]
+      },
+      "value": {
+	  "default": "agave://data.iplantcollaborative.org/spt6655/applications/gemma-0.94.1/test/mouse_hs1940.fam",
+        "visible": true,
+        "required": false
+      }
+    },
+    {
+      "id": "Phenotype",
+      "details": {
+        "label": "The phenotype file (BIMBAM format)",
+        "showAttribute": false
+      },
+      "semantics": {
+        "minCardinality": 1,
+        "ontology": [
+          "http://sswapmeet.sswap.info/soybase/"
+        ]
+      },
+      "value": {
+	  "default": "agave://data.iplantcollaborative.org/spt6655/applications/gemma-0.94.1/test/mouse_hs1940.pheno.txt",
+        "visible": true,
+        "required": false
+      }
+    },
+    {
+      "id": "Annotation",
+      "details": {
+        "label": "Optional input SNP annotation file (BIMBAM format)",
+        "showAttribute": false
+      },
+      "semantics": {
+        "minCardinality": 1,
+        "ontology": [
+          "http://sswapmeet.sswap.info/soybase/"
+        ]
+      },
+      "value": {
+	  "default": "agave://data.iplantcollaborative.org/spt6655/applications/gemma-0.94.1/test/mouse_hs1940.anno.txt",
+        "visible": true,
+        "required": false
+      }
+    },
+    {
+      "id": "MeanGenotype",
+      "details": {
+        "label": "Contains genotype information",
+        "showAttribute": false
+      },
+      "semantics": {
+        "minCardinality": 1,
+        "ontology": [
+          "http://sswapmeet.sswap.info/soybase/"
+        ]
+      },
+      "value": {
+	  "default": "agave://data.iplantcollaborative.org/spt6655/applications/gemma-0.94.1/test/mouse_hs1940.geno.txt",
+        "visible": true,
+        "required": false
+      }
+    },
+    {
+      "id": "RelatednessMatrix",
+      "details": {
+        "label": "Relatedness matrix in original format",
+		"description": "The text file with the original relatedness matrix either in an id-id-value format or an n*n matrix corresponding to values between the ith and jth ",
+        "showAttribute": false
+      },
+      "semantics": {
+        "minCardinality": 1,
+        "ontology": [
+          "http://sswapmeet.sswap.info/soybase/"
+        ]
+      },
+      "value": {
+	  "default": "agave://data.iplantcollaborative.org/spt6655/applications/gemma-0.94.1/test/gemma-test.cXX.txt",
+        "visible": true,
+        "required": false
+      }
+    },
+    {
+      "id": "RelatednessEigenvalue",
+      "details": {
+        "label": "Eigenvalues for relatedness matrix",
+		"description": "The list of eigenvalues for the relatedness matrix. Requires RelatednessEigenvector as well. Not necessary if using original relatedness matrix",
+        "showAttribute": false
+      },
+      "semantics": {
+        "minCardinality": 1,
+        "ontology": [
+          "http://sswapmeet.sswap.info/soybase/"
+        ]
+      },
+      "value": {
+	  "default": "agave://data.iplantcollaborative.org/spt6655/applications/gemma-0.94.1/test/gemma-eigen.eigenD.txt",
+        "visible": true,
+        "required": false
+      }
+    },
+    {
+      "id": "RelatednessEigenvector",
+      "details": {
+        "label": "Eigenvectors for relatedness matrix",
+        "description": "The eigenvector file from the relatedness matrix; also requires eigenvalue file",
+        "showAttribute": false
+      },
+      "semantics": {
+        "minCardinality": 1,
+        "ontology": [
+          "http://sswapmeet.sswap.info/soybase/"
+        ]
+      },
+      "value": {
+	  "default": "agave://data.iplantcollaborative.org/spt6655/applications/gemma-0.94.1/test/gemma-eigen.eigenU.txt",
+        "visible": true,
+        "required": false
+      }
+    },
+    {
+      "id": "Covariate",
+      "details": {
+        "label": "Optional covariate file",
+		"description": "The covariate file that may be needed for fitting a linear mixed model",
+        "showAttribute": false
+      },
+      "semantics": {
+        "minCardinality": 0,
+        "ontology": [
+          "http://sswapmeet.sswap.info/soybase/"
+        ]
+      },
+      "value": {
+        "visible": true,
+        "required": false
+      }
+    }
+  ],
+  "parameters": [
+    {
+      "id": "PLINK",
+      "details": {
+        "label": "Plink format is being used",
+        "showAttribute": false
+      },
+      "value": {
+        "default": "0",
+        "type": "bool",
+        "visible": true,
+        "required": false
+      }
+    },
+    {
+      "id": "BIMBAM",
+      "details": {
+        "label": "BIMBAM format is being used",
+        "showAttribute": false
+      },
+      "value": {
+        "default": "0",
+        "type": "bool",
+        "visible": true,
+        "required": false
+      }
+    },
+    {
+      "id": "gk",
+      "details": {
+        "label": "Relatedness matrix type (either 1 or 2)",
+		"description": "The type of relatedness matrix to calculate. 1 represents the centered relatedness matrix; 2 represents the standardized relatedness matrix",
+		"showAttribute": false
+      },
+      "semantics": {
+        "ontology": [
+          "xs:integer"
+        ]
+      },
+      "value": {
+        "default": 1,
+        "type": "number",
+        "visible": true,
+        "required": false
+      }
+    },
+    {
+      "id": "lmm",
+      "details": {
+        "label": "Mixed model type to run",
+        "showAttribute": false
+      },
+      "semantics": {
+        "ontology": [
+          "xs: integer"
+        ]
+      },
+      "value": {
+		"default": 4,
+        "type": "number",
+        "visible": true,
+        "required": false
+      }
+    },
+    {
+      "id": "PhenotypeNumbers",
+      "details": {
+        "label": "The phenotypes to run in LMM",
+		"description": "The numbers indicating which phenotypes GEMMA should look at for association tests in the multivariate linear mixed model",
+		"showAttribute": false
+      },
+      "value": {
+        "default": 1,
+        "type": "number",
+        "visible": true,
+        "required": false
+      }
+    },
+	{
+      "id": "bslmm",
+      "details": {
+        "label": "Option in Bayesian mixed model",
+		"description": "Which type of Bayesian sparse mixed model to fit. 1 runs a standard linear BSLMM, 2 fits a ridge regression/GBLUP, and 3 fits a probit BSLMM",
+        "showAttribute": false
+      },
+	  "semantics": {
+        "ontology": [
+          "xs:integer"
+        ]
+      },
+      "value": {
+        "default": 1,
+        "type": "number",
+        "visible": true,
+        "required": false
+      }
+    },
+    {
+      "id": "Type",
+      "details": {
+        "label": "Type of analysis performed (1,2,3,4, or 5)",
+		"description": "Numerical; type of analysis you want to do. Option 1 computes a relatedness matrix, option 2 computes eigen decomposition of relatedness matrix, option 3 univariate mixed model, option 3 gives multivariate mixed model, and option 4 is Bayesian spare linear mixed model",
+        "showAttribute": false
+      },
+	  "semantics": {
+        "ontology": [
+          "xs:integer"
+        ]
+      },
+      "value": {
+        "default": 2,
+        "type": "number",
+        "visible": true,
+        "required": false
+      }
+    },
+	{
+      "id": "output",
+      "details": {
+        "label": "The name of the analysis output file",
+        "showAttribute": false
+      },
+      "semantics": {
+        "ontology": [
+          "http://sswapmeet.sswap.info/soybase/"
+        ]
+      },
+      "value": {
+        "default": "MyGEMMAResults",
+        "type": "string",
+        "visible": true,
+        "required": false
+      }
+    }
+  ],
+  "checkpointable": false
+}
