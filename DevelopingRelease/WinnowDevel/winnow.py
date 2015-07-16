@@ -8,6 +8,7 @@ from commandline import initializeGraphics, checkArgs
 from fileimport import getList, loadKT, loadFile, trueFalse, writeCSV, writeSettings
 from checkhidden import checkList
 from gwas import gwasWithBeta, gwasWithoutBeta
+from adjustments import fdr_bh
 
 
 class Winnow:
@@ -82,7 +83,7 @@ class Winnow:
         score_column = data_to_list(acquired_data, 1, acquired_data.header.index(self.args_dict['score']), True)
         if self.args_dict['beta'] is not None:
             beta_column = data_to_list(acquired_data, 1, acquired_data.header.index(self.args_dict['beta']), True)
-            return score_column, beta_column
+            return self.adjust_score(score_column), beta_column
         else:
             return score_column
 
@@ -138,7 +139,29 @@ class Winnow:
         else:
             return gwasWithBeta(beta_column, self.beta_true_false, self.snp_true_false, score_column, threshold)
 
+    def adjust_score(self, score):
+        """
+        Returns a list of adjusted p-values. Currently only the Benjamini-Hochberg method is supported.
+
+        :param score: the list of p-values to adjust
+        :return: the list of adjusted p-values
+        """
+        if 'pvaladjust' not in self.args_dict.keys():
+            return score
+        elif self.args_dict['pvaladjust'] == 'BH':
+            return fdr_bh(score)
+        # Add other adjustments here
+        else:
+            print 'Currently only BH (Benjamini-Hochberg) is supported, the original P-values will be used'
+            return score
+        pass
+
     def save_settings(self):
+        """
+        Saves the parameters: Output file, analysis type, Known truth type, and threshold to a text file
+
+        :return: saved settings file
+        """
         writeSettings(self.args_dict)
 
 
@@ -150,10 +173,10 @@ def initialize():
     """
     initializeGraphics()
     folder, analysis, truth, snp, score, beta, filename, threshold, separ, kt_type, \
-    kt_type_separ, severity = checkArgs()
+    kt_type_separ, severity, pvaladjust = checkArgs()
     args = {'folder': folder, 'analysis': analysis, 'truth': truth, 'snp': snp, 'score': score, 'beta': beta,
             'filename': filename, 'threshold': threshold, 'separ': separ, 'kt_type': kt_type,
-            'kt_type_separ': kt_type_separ}
+            'kt_type_separ': kt_type_separ, 'severity': severity, 'pvaladjust': pvaladjust}
     return args
 
 
