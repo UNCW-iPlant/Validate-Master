@@ -5,6 +5,7 @@ Class for consolidating unittests for the winnow folder
 import unittest
 import winnow_unittest
 import performetrics_unittest
+import adjustments_unittest
 
 
 def main():
@@ -16,6 +17,7 @@ def main():
     # Test suite's to add
     test_suite.addTests(winnow_unittest.get_test_suite())
     test_suite.addTests(performetrics_unittest.get_test_suite())
+    test_suite.addTests(adjustments_unittest.get_test_suite())
     # Runs tests
     unittest.TextTestRunner(verbosity=2).run(test_suite)
 
