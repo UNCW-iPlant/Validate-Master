@@ -58,7 +58,7 @@ class Winnow:
         :param snp_col: the column number that the SNPs are listed in
         :param kt_snp: list of known truth SNPs
         :param kt_beta: list of known truth betas
-        :return: Stores the float representation of betas as booleans in the instance variable beta_true_false
+        :return: Stores the float representation of betas in the instance variable beta_true_false
         """
         if self.args_dict['beta'] is not None:
             count = 0

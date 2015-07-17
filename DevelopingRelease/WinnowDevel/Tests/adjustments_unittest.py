@@ -13,8 +13,8 @@ class AdjustmentsTest(unittest.TestCase):
         test2 = [0.010, 0.013, 0.014, 0.190, 0.350, 0.500, 0.630, 0.670, 0.750, 0.810]
         results2 = [0.04666666666666667, 0.04666666666666667, 0.04666666666666667, 0.475, 0.7, 0.8100000000000002,
                     0.8100000000000002, 0.8100000000000002, 0.8100000000000002, 0.8100000000000002]
-        self.assertEquals(adjustments.fdr_bh(test1), results1)
-        self.assertEquals(adjustments.fdr_bh(test2), results2)
+        self.assertAlmostEquals(adjustments.fdr_bh(test1), results1)
+        self.assertAlmostEquals(adjustments.fdr_bh(test2), results2)
 
 
 def get_test_suite():
