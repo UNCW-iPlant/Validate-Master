@@ -156,7 +156,6 @@ class Winnow:
         else:
             print 'Currently only BH (Benjamini-Hochberg) is supported, the original P-values will be used'
             return score
-        pass
 
     def save_adjust_score(self, data, score, adjusted):
         """
