@@ -81,11 +81,13 @@ class Winnow:
         """
         acquired_data = loadFile(self.args_dict['folder'], data_file, self.args_dict['separ'])
         score_column = data_to_list(acquired_data, 1, acquired_data.header.index(self.args_dict['score']), True)
+        adjusted_score_column = self.adjust_score(score_column)
+        self.save_adjust_score(data_file, score_column, adjusted_score_column)
         if self.args_dict['beta'] is not None:
             beta_column = data_to_list(acquired_data, 1, acquired_data.header.index(self.args_dict['beta']), True)
-            return self.adjust_score(score_column), beta_column
+            return adjusted_score_column, beta_column
         else:
-            return score_column
+            return adjusted_score_column
 
     def do_analysis(self):
         """
@@ -155,6 +157,27 @@ class Winnow:
             print 'Currently only BH (Benjamini-Hochberg) is supported, the original P-values will be used'
             return score
         pass
+
+    def save_adjust_score(self, data, score, adjusted):
+        """
+        Saves the file name, p-value, and adjusted p-value
+
+        :param data: the data file
+        :param score: the list of p-values
+        :param adjusted: the list of adjusted p-values
+        :return: saves a text file in the format file, p-value, adjusted p-value if adjustments has been selected
+        """
+        if 'pvaladjust' in self.args_dict.keys():
+            try:
+                with open(self.args_dict['filename'] + '_adjustments.txt') as f:
+                    f.close()
+                    with open(self.args_dict['filename'] + '_adjustments.txt', 'a') as a:
+                        for (x, y) in zip(score, adjusted):
+                            a.write('\n' + data + '\t' + str(x) + '\t' + str(y))
+            except IOError:
+                with open(self.args_dict['filename'] + '_adjustments.txt', 'w') as f:
+                    f.write('File Name \tP-Value \tP-Value Adjusted')
+                self.save_adjust_score(data, score, adjusted)
 
     def save_settings(self):
         """
