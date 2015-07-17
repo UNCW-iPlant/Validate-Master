@@ -38,6 +38,7 @@ def usage():
 	print "--seper or -s to specify either whitespace or comma"
 	print "--kttype or -k to specify the type of known-truth file for --class (either OTE or FGS)"
 	print "--kttypeseper or -r to specify delimination in known-truth file"
+	print "--pvaladjust or -p to specify the type of P-value adjustment"
 	print "--help or -h to see help menu\n\n"
 
 
@@ -45,9 +46,9 @@ def checkArgs():
 	"""Checks for arguments at beginning of the execution of the main function"""
 
 	try:
-		opts, args = getopt.getopt(sys.argv[1:], shortopts="vhpa:F:C:S:P:b:y:f:t:s:k:r:", longopts=["verbose", "help", 
+		opts, args = getopt.getopt(sys.argv[1:], shortopts="vhpa:F:C:S:P:b:y:f:t:s:k:r:p:", longopts=["verbose", "help",
 			"analysis=", "Folder=", "Class=", "Snp=", "Score=", "beta=", "filename=", "threshold=", "seper=", "kttype=",
-			"kttypeseper=", "severity="])
+			"kttypeseper=", "pvaladjust="])
 
 	except getopt.GetoptError as err:
 		print(err)
@@ -72,6 +73,7 @@ def checkArgs():
 	# file type lists every SNP with their effects. Both file formats can be arranged with either two rows or two columns.
 	kttypeseper = "whitespace"
 	# Similar to input data separation, the known-truth file has two options: whitespace or comma
+	pvaladjustment = None
         
 	"""Looping through command-line arguments to replace and/or create initialized values"""
 	for o in opts:
@@ -131,6 +133,10 @@ def checkArgs():
 			severity = float(o[1])
 			if verbose:
 				print "Severity ratio is specified at", severity
+		if o[0] in ("--pvaladjust", "-p"):
+			pvaladjustment = str(o[1])
+			if verbose:
+				print "P-value adjustment is set as", pvaladjustment
 
 	"""Check to see if needed variables are defined"""
 	try:
@@ -173,7 +179,8 @@ def checkArgs():
 	except NameError:
 		severity = None
 
-	return folder, analysis, truth, snp, score, beta, filename, threshold, seper, kttype, kttypeseper, severity
+	return folder, analysis, truth, snp, score, beta, filename, threshold, seper, kttype, kttypeseper, \
+		   severity, pvaladjustment
 if __name__ == "__main__":
     import doctest
     doctest.testmod()
