@@ -178,6 +178,9 @@ def checkArgs():
 		severity
 	except NameError:
 		severity = None
+	
+	if pvaladjustment not in ["BH"]:
+	    print 'Currently only BH (Benjamini-Hochberg) is supported, the original P-values will be used'
 
 	return folder, analysis, truth, snp, score, beta, filename, threshold, seper, kttype, kttypeseper, \
 		   severity, pvaladjustment

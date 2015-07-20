@@ -44,45 +44,32 @@ def mae(betaColumn, betaTrueFalse):
 	betaTrueFalse = np.array(betaTrueFalse)
 	return np.mean(np.absolute(np.subtract(betaColumn, betaTrueFalse)))
 
-def r(betaColumn, betaTrueFalse):
-	"""
-	Returns the correlation coefficient between the known-truth effects and the detected true/false effects
-
+def mattcorr(snpTrueFalse, threshold, scoreColumn):
+        """
+	Returns the Matthews correlation coefficient value, a metric for measuring the quality of binary classification 
+	(i.e. true/false on whether a SNP was part of the known-truth list or not). The value ranges from -1 to 1; a coefficient of 1
+	indicates a perfect prediction, while a coefficient of -1 indicates complete misclassification. 
+	A zero value corresponds to a 0.5 on the AUC metric: the classifier was just as good as random guessing.
+	
 		Example:
 
-			>>> x = [1, 2, 3, 4, 5]
-			>>> y = [5, 9, 10, 12, 13]
-			>>> r(x, y)
-			0.96457885687693812
+			>>> snpTF=[True,False,True,True,True,False,False,True,False,False,True,False]
+			>>> threshold=0.05
+			>>> score=[0.003,0.65,0.004,0.006,0.078,0.003,0.0001,0.513,0.421,0.0081,0.043,0.98]
+			>>> mattcorr(snpTF, threshold, score)
+			0.1690308509457033
 
-	:param betaColumn: collected known-truth effects
-	:param betaTrueFalse: detected true/false effects
-	:return: the correlation coefficient
-	"""
-
-	betaColumn = np.array(betaColumn)
-	betaTrueFalse = np.array(betaTrueFalse)
-	return stats.stats.pearsonr(betaColumn, betaTrueFalse)[0]
-
-def r2(betaColumn, betaTrueFalse):
-	"""
-	Produces the coefficient of determination (AKA the correlation coefficient squared); gives the percentage of
-	variation accounted for by the relationship between the given variables
-
-		Example:
-
-			>>> x = [3, 4, 5, 6, 7]
-			>>> y = [9, 10, 13, 12, 18]
-			>>> r2(x, y)
-			0.81300813008130068
-
-	:param betaColumn: data set
-	:param betaTrueFalse: data set
-	:return: the coefficient of determination
-	"""
-	betaColumn = np.array(betaColumn)
-	betaTrueFalse = np.array(betaTrueFalse)
-	return np.square(stats.stats.pearsonr(betaColumn, betaTrueFalse)[0])
+	:param snpTrueFalse: true/false data set
+	:param threshold: significance threshold
+	:param scoreColumn: score data set
+	:return: the float representation of the specificity value
+        """
+        truePositives = float(tp(snpTrueFalse, threshold, scoreColumn))
+        falsePositives = float(fp(snpTrueFalse, threshold, scoreColumn))
+        trueNegatives = float(tn(snpTrueFalse, threshold, scoreColumn))
+        falseNegatives = float(fn(snpTrueFalse, threshold, scoreColumn)) 
+        denom = np.sqrt((truePositives+falsePositives)*(truePositives+falseNegatives)*(falsePositives+trueNegatives)*(trueNegatives+falseNegatives))
+        return (truePositives*trueNegatives - falsePositives*falseNegatives) / denom
 
 def auc(snpTrueFalse, scoreColumn):
 	"""
@@ -123,7 +110,7 @@ def tp(snpTrueFalse, threshold, scoreColumn):
 			4
 
 	:param snpTrueFalse: true/false data set
-	:param threshold: significant threshold
+	:param threshold: significance threshold
 	:param scoreColumn: score data set
 	:return: the total number of SNPs correctly identified as significant
 	"""
@@ -154,7 +141,7 @@ def fp(snpTrueFalse, threshold, scoreColumn):
 			3
 
 	:param snpTrueFalse: true/false data set
-	:param threshold: significant threshold
+	:param threshold: significance threshold
 	:param scoreColumn: score data set
 	:return: the total number of SNPs incorrectly identified as significant
 	"""
@@ -185,7 +172,7 @@ def tn(snpTrueFalse, threshold, scoreColumn):
 			3
 
 	:param snpTrueFalse: true/false data set
-	:param threshold: significant threshold
+	:param threshold: significance threshold
 	:param scoreColumn: score data set
 	:return: the total number of SNPs correctly identified as not significant
 	"""
@@ -216,7 +203,7 @@ def fn(snpTrueFalse, threshold, scoreColumn):
 			2
 
 	:param snpTrueFalse: true/false data set
-	:param threshold: significant threshold
+	:param threshold: significance threshold
 	:param scoreColumn: score data set
 	:return: the total number of SNPs incorrectly identified as not significant
 	"""
@@ -247,7 +234,7 @@ def tpr(snpTrueFalse, threshold, scoreColumn):
 			0.6666666666666666
 
 	:param snpTrueFalse: true/false data set
-	:param threshold: significant threshold
+	:param threshold: significance threshold
 	:param scoreColumn: score data set
 	:return: the float representation of the proportion of true positives
 	"""
@@ -271,7 +258,7 @@ def fpr(snpTrueFalse, threshold, scoreColumn):
 			0.5
 
 	:param snpTrueFalse: true/false data set
-	:param threshold: significant threshold
+	:param threshold: significance threshold
 	:param scoreColumn: score data set
 	:return: the float representation of the proportion of false positives
 	"""
@@ -296,7 +283,7 @@ def error(snpTrueFalse, threshold, scoreColumn):
 			0.4166666666666667
 
 	:param snpTrueFalse: true/false data set
-	:param threshold: significant threshold
+	:param threshold: significance threshold
 	:param scoreColumn: score data set
 	:return: the float representation of the error value
 	"""
@@ -305,6 +292,30 @@ def error(snpTrueFalse, threshold, scoreColumn):
 	trueNegatives = float(tn(snpTrueFalse, threshold, scoreColumn))
 	falseNegatives = float(fn(snpTrueFalse, threshold, scoreColumn))
 	return (falseNegatives + falsePositives) / (truePositives + trueNegatives + falsePositives + falseNegatives)
+	
+def accuracy(snpTrueFalse, threshold, scoreColumn):
+	"""
+	Returns the accuracy value of the analysis defined as the total true identifications,
+	positive or negative, by the total number identified
+
+		Example:
+
+			>>> snpTF=[True,False,True,True,True,False,False,True,False,False,True,False]
+			>>> threshold=0.05
+			>>> score=[0.003,0.65,0.004,0.006,0.078,0.003,0.0001,0.513,0.421,0.0081,0.043,0.98]
+			>>> accuracy(snpTF,threshold,score)
+			0.5833333333333333
+
+	:param snpTrueFalse: true/false data set
+	:param threshold: significance threshold
+	:param scoreColumn: score data set
+	:return: the float representation of the accuracy value
+	"""
+	truePositives = float(tp(snpTrueFalse, threshold, scoreColumn))
+	falsePositives = float(fp(snpTrueFalse, threshold, scoreColumn))
+	trueNegatives = float(tn(snpTrueFalse, threshold, scoreColumn))
+	falseNegatives = float(fn(snpTrueFalse, threshold, scoreColumn))
+	return (trueNegatives + truePositives) / (truePositives + trueNegatives + falsePositives + falseNegatives)
 
 def sens(snpTrueFalse, threshold, scoreColumn):
 	"""
@@ -320,7 +331,7 @@ def sens(snpTrueFalse, threshold, scoreColumn):
 			0.6666666666666666
 
 	:param snpTrueFalse: true/false data set
-	:param threshold: significant threshold
+	:param threshold: significance threshold
 	:param scoreColumn: score data set
 	:return: the float representation of the sensitivity value
 	"""
@@ -342,7 +353,7 @@ def spec(snpTrueFalse, threshold, scoreColumn):
 			0.5
 
 	:param snpTrueFalse: true/false data set
-	:param threshold: significant threshold
+	:param threshold: significance threshold
 	:param scoreColumn: score data set
 	:return: the float representation of the specificity value
 	"""
@@ -364,7 +375,7 @@ def precision(snpTrueFalse, threshold, scoreColumn):
 			0.5714285714285714
 
 	:param snpTrueFalse: true/false data set
-	:param threshold: significant threshold
+	:param threshold: significance threshold
 	:param scoreColumn: score data set
 	:return: the float representation of the precision value
 	"""
@@ -385,7 +396,7 @@ def youden(snpTrueFalse, threshold, scoreColumn):
 			0.16666666666666652
 
 	:param snpTrueFalse: true/false data set
-	:param threshold: significant threshold
+	:param threshold: significance threshold
 	:param scoreColumn: score data set
 	:return: the float representation of the Youden statistic
 	"""

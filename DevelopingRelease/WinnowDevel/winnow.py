@@ -148,13 +148,12 @@ class Winnow:
         :param score: the list of p-values to adjust
         :return: the list of adjusted p-values
         """
-        if 'pvaladjust' not in self.args_dict.keys():
+        if self.args_dict['pvaladjust'] == None:
             return score
         elif self.args_dict['pvaladjust'] == 'BH':
             return fdr_bh(score)
         # Add other adjustments here
         else:
-            print 'Currently only BH (Benjamini-Hochberg) is supported, the original P-values will be used'
             return score
         pass
 
