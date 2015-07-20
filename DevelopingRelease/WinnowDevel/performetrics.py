@@ -268,7 +268,7 @@ def fpr(snpTrueFalse, threshold, scoreColumn):
 		if each is False:
 			count += 1.0
 	return float(falsePositives/count)
-
+	
 def error(snpTrueFalse, threshold, scoreColumn):
 	"""
 	Returns the error value of the analysis (NOT standard error!) defined as the total false identifications,
@@ -382,6 +382,29 @@ def precision(snpTrueFalse, threshold, scoreColumn):
 	truePositives = float(tp(snpTrueFalse, threshold, scoreColumn))
 	falsePositives = float(fp(snpTrueFalse, threshold, scoreColumn))
 	return truePositives / (truePositives + falsePositives)
+	
+def fdr(snpTrueFalse, threshold, scoreColumn):
+        """
+        Returns the false discovery rate for the analysis, defined as the number of false positives divided by the total
+        identified positives
+                
+                Example:
+                        
+                        >>> snpTF=[True,False,True,True,True,False,False,True,False,False,True,False]
+                        >>> threshold = 0.05
+                        >>> score = [0.003,0.65,0.004,0.006,0.078,0.003,0.0001,0.513,0.421,0.0081,0.043,0.98]
+                        >>> fdr(snpTrueFalse, threshold, scoreColumn)
+                        0.4285714285714286
+        
+        :param snpTrueFalse: true/false data set
+	:param threshold: significance threshold
+	:param scoreColumn: score data set
+	:return: the float representation of the precision value
+        """
+        truePositives = float(tp(snpTrueFalse, threshold, scoreColumn))
+	falsePositives = float(fp(snpTrueFalse, threshold, scoreColumn))
+	return falsePositives / (truePositives + falsePositives)
+        
 
 def youden(snpTrueFalse, threshold, scoreColumn):
 	"""

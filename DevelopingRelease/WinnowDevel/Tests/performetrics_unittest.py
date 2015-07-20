@@ -92,13 +92,18 @@ class PerformetricsTest(unittest.TestCase):
         score = [0.003, 0.65, 0.004, 0.006, 0.078, 0.003, 0.0001, 0.513, 0.421, 0.0081, 0.043, 0.98]
         threshold = 0.05
         self.assertEqual(performetrics.precision(snp_tf, threshold, score), 0.5714285714285714)
+    
+    def test_fdr(self):
+        snp_tf = [True, False, True, True, True, False, False, True, False, False, True, False]
+        score = [0.003, 0.65, 0.004, 0.006, 0.078, 0.003, 0.0001, 0.513, 0.421, 0.0081, 0.043, 0.98]
+        threshold = 0.05
+        self.assertEqual(performetrics.fdr(snp_tf, threshold, score), 0.4285714285714286)
 
     def test_youden(self):
         snp_tf = [True, False, True, True, True, False, False, True, False, False, True, False]
         score = [0.003, 0.65, 0.004, 0.006, 0.078, 0.003, 0.0001, 0.513, 0.421, 0.0081, 0.043, 0.98]
         threshold = 0.05
         self.assertEqual(performetrics.youden(snp_tf, threshold, score), 0.16666666666666652)
-
 
 def get_test_suite():
     """
