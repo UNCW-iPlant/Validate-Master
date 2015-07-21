@@ -13,7 +13,7 @@ class WinnowTest(unittest.TestCase):
     destination = os.getcwd()[:os.getcwd().index("Validate-Master")] + "Validate-Master/ExampleData/Winnow/results"
     args = {'folder': folder, 'analysis': 'GWAS', 'truth': ote, 'snp': 'SNP', 'score': 'P', 'beta': 'BETA',
             'filename': destination, 'threshold': 0.05, 'separ': 'whitespace', 'kt_type': 'OTE',
-            'kt_type_separ': 'whitespace'}
+            'kt_type_separ': 'whitespace', 'savep': False}
 
     def test_load_ote(self):
         self.win = winnow.Winnow(self.args)
@@ -47,7 +47,8 @@ class WinnowTest(unittest.TestCase):
         gen = self.win.do_analysis()
         a = gen.next()[1]
         self.assertEqual(format_float(a),
-                         [0.05896121, 0.18211783, 0.02643402, 0.00069876, 0.43427679, 0.00000, 384.00000, 2816.00000, 35.00000,
+                         [0.05896121, 0.18211783, 0.02643402, 0.00069876, 0.43427679, 0.00000, 384.00000, 2816.00000,
+                          35.00000,
                           0.00000, 0.12000, 0.12952087, 0.00000, 0.88000, 0.00000, -0.12000])
         gen.close()
 
@@ -71,6 +72,7 @@ class WinnowTest(unittest.TestCase):
                           'IDP755', 'mmp49', 'cdo1081a', 'gpm330', 'gpm83b', 'gpm767', 'asg31', 'npi415', 'AY108650',
                           'ufg31', 'ufg33', 'ufg32', 'ufg34', 'IDP4043', 'gpm495', 'bnlg1014', 'umc1363a'])
 
+
 def format_float(float_list):
     '''
     Truncuates floats to 5 decimal places
@@ -82,6 +84,7 @@ def format_float(float_list):
     for each in float_list:
         return_list.append(float('%.8f' % each))
     return return_list
+
 
 def get_test_suite():
     """
