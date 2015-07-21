@@ -34,11 +34,12 @@ def usage():
 	print "--Score or -P to specify a string for the name of the scoring column in results file (e.g., p-value; required)"
 	print "--beta or -b to specify a string for the name of the estimated SNP effect column in results file"
 	print "--filename or -f to specify the desired filename for the Winnow output file"
-	print "--threshold ir -t to specify a desired threshold for classification performetrics where necessary"
+	print "--threshold or -t to specify a desired threshold for classification performetrics where necessary"
 	print "--seper or -s to specify either whitespace or comma"
 	print "--kttype or -k to specify the type of known-truth file for --class (either OTE or FGS)"
 	print "--kttypeseper or -r to specify delimination in known-truth file"
 	print "--pvaladjust or -p to specify the type of P-value adjustment"
+	print "--savep or -P to save P-values as the given filename appended with _scores"
 	print "--help or -h to see help menu\n\n"
 
 
@@ -46,9 +47,9 @@ def checkArgs():
 	"""Checks for arguments at beginning of the execution of the main function"""
 
 	try:
-		opts, args = getopt.getopt(sys.argv[1:], shortopts="vhpa:F:C:S:P:b:y:f:t:s:k:r:p:", longopts=["verbose", "help",
+		opts, args = getopt.getopt(sys.argv[1:], shortopts="vhpa:F:C:S:P:b:y:f:t:s:k:r:p:P", longopts=["verbose", "help",
 			"analysis=", "Folder=", "Class=", "Snp=", "Score=", "beta=", "filename=", "threshold=", "seper=", "kttype=",
-			"kttypeseper=", "pvaladjust="])
+			"kttypeseper=", "pvaladjust=", "savep"])
 
 	except getopt.GetoptError as err:
 		print(err)
@@ -74,6 +75,7 @@ def checkArgs():
 	kttypeseper = "whitespace"
 	# Similar to input data separation, the known-truth file has two options: whitespace or comma
 	pvaladjustment = None
+	savep = False
         
 	"""Looping through command-line arguments to replace and/or create initialized values"""
 	for o in opts:
@@ -137,6 +139,9 @@ def checkArgs():
 			pvaladjustment = str(o[1])
 			if verbose:
 				print "P-value adjustment is set as", pvaladjustment
+		if o[0] in ("--savep", "-P"):
+			savep = True
+			print "Saving P-Values is set as True"
 
 	"""Check to see if needed variables are defined"""
 	try:
@@ -180,7 +185,7 @@ def checkArgs():
 		severity = None
 
 	return folder, analysis, truth, snp, score, beta, filename, threshold, seper, kttype, kttypeseper, \
-		   severity, pvaladjustment
+		   severity, pvaladjustment, savep
 if __name__ == "__main__":
     import doctest
     doctest.testmod()
