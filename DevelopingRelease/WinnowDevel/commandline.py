@@ -5,8 +5,7 @@ Functions for indentifying and using the command-line to execute Winnow for Pyth
 
 
 # Dependencies
-import getopt
-import sys
+import argparse
 
 # Functions to be used later in the software
 def initializeGraphics():
@@ -44,143 +43,73 @@ def usage():
 
 def checkArgs():
 	"""Checks for arguments at beginning of the execution of the main function"""
-
-	try:
-		opts, args = getopt.getopt(sys.argv[1:], shortopts="vhpa:F:C:S:P:b:y:f:t:s:k:r:p:", longopts=["verbose", "help",
-			"analysis=", "Folder=", "Class=", "Snp=", "Score=", "beta=", "filename=", "threshold=", "seper=", "kttype=",
-			"kttypeseper=", "pvaladjust="])
-
-	except getopt.GetoptError as err:
-		print(err)
-		usage()
-		sys.exit()
-
-	"""Specifying initial values of needed variables; unneeded specification when desiring defaults"""
-	verbose = False 
-	# Tells the program whether or not to enter verbose mode, which displays the inputs and parameters as they are
-	# specified
-	analysis = "GWAS"
-	# GWAS is the only analysis option available currently; prediction mode forthcoming in later versions
-	filename = "Results"
-	threshold = 0.05
-	# Threshold for determining Pvalue of correctly identified SNPs. Set at the standard significance level of 0.05;
-	# however,please note this default threshold does not take multiple test corrections into account!
-	seper = "whitespace"
-	# Two options for delimiting input data: whitespace or comma
-	kttype = "OTE"
-	# For the format of the known-truth file, OTE stands for “Only Truth and Effect.” As the name implies, such a file
-	# only contains the SNPs with effects and the values of those effects. FGS stands for “Full Genome Set,” and this
-	# file type lists every SNP with their effects. Both file formats can be arranged with either two rows or two columns.
-	kttypeseper = "whitespace"
-	# Similar to input data separation, the known-truth file has two options: whitespace or comma
-	pvaladjustment = None
+        parser=argparse.ArgumentParser(description="Winnow command line arguments")
+        parser.add_argument("-v", "--verbose", help="Trigger verbose mode", action="store_true")
+        parser.add_argument("-a", "--analysis", nargs='?', help="The type of analysis for Winnow to perform (currently, only GWAS is supported)", \
+        default="GWAS", type=str, choices=["GWAS"])
+        parser.add_argument("-F", "--Folder", required=True, type=str, help="The input folder of box results")
+        parser.add_argument("-C", "--Class", required=True, type=str, help="The known-truth file for used simulation")
+        parser.add_argument("-S", "--Snp", required=True, type=str, help="The name of the SNP column in results file")
+        parser.add_argument("-P", "--Score", required=True, type=str, help="The name of the scoring column in results file (e.g. p-value)")
+        parser.add_argument("-b", "--beta", type=str, help="Name of the estimated SNP effect column in results file")
+        parser.add_argument("-f", "--filename", type=str, default="Results", help="The desired filename for the Winnow output file")
+        parser.add_argument("-t", "--threshold", type=float, default=0.05, help="A desired threshold for classification performetrics where necessary")
+        parser.add_argument("-s", "--seper", type=str, choices=["comma", "whitespace", "tab"], default="whitespace", help="Delimiter for box results")
+        parser.add_argument("-k", "--kttype", type=str, required=True, choices=["OTE", "FGS"], default="OTE", help="The type of known-truth file for --Class")
+        parser.add_argument("-r", "--kttypeseper", choices=["comma", "whitespace", "tab"], nargs='?', default="whitespace", help="Specify delimitation in known-truth file")
+	parser.add_argument("-y", "--severity", type=float, default=None, nargs='?', help="Severity ratio used in the h-measure calculation (currently not available, can leave blank)")
+	parser.add_argument("-p", "--pvaladjust", default=None, nargs='?', choices=["BH"], help="Specify the type of p-value adjustment")
+	args = parser.parse_args()
         
-	"""Looping through command-line arguments to replace and/or create initialized values"""
-	for o in opts:
-		if o[0] in ("--help", "-h"):
-			usage()
-			sys.exit()
-	for o in opts:
-		if o[0] in ("--verbose", "-v"):
-			verbose = True
-			print ("Verbose mode\n")
-	for o in opts:
-		if o[0] in ("--Folder", "-F"):
-			folder = str(o[1])
-			if verbose:
-				print "Folder of results files for validation is located in", folder
-		if o[0] in ("--analysis", "-a"):
-			analysis = str(o[1])
-			if verbose:
-				print "Analysis method being validated is specified as", analysis
-		if o[0] in ("--Class", "-C"):
-			truth = str(o[1])
-			if verbose:
-				print "Truth file is", truth
-		if o[0] in ("--Snp", "-S"):
-			snp = str(o[1])
-			if verbose:
-				print "SNP column name in results files is specified as", snp
-		if o[0] in ("--Score", "-P"):
-			score = str(o[1])
-			if verbose:
-				print "Scoring column name (e.g., p-value column) in results files is specified as", score
-		if o[0] in ("--beta", "-b"):
-			beta = str(o[1])
-			if verbose:
-				print "Estimated SNP Weight column name (e.g., regression betas) in results files is specified as", beta
-		if o[0] in ("--filename", "-f"):
-			filename = str(o[1])
-			if verbose:
-				print "Filename specified as", filename
-		if o[0] in ("--threshold", "-t"):
-			threshold = float(o[1])
-			if verbose:
-				print "Theshold is set at", threshold
-		if o[0] in ("--seper", "-s"):
-			seper = str(o[1])
-			if verbose:
-				print "Delimination of results files is set as", seper
-		if o[0] in ("--kttype", "-k"):
-			kttype = str(o[1])
-			if verbose:
-				print "Known-truth data format is set as", kttype
-		if o[1] in ("--kttypeseper", "-r"):
-			kttypeseper = str(o[1])
-			if verbose:
-				print "Known-truth data format delimination is set as", kttypeseper
-		if o[1] in ("--severity", "-y"):
-			severity = float(o[1])
-			if verbose:
-				print "Severity ratio is specified at", severity
-		if o[0] in ("--pvaladjust", "-p"):
-			pvaladjustment = str(o[1])
-			if verbose:
-				print "P-value adjustment is set as", pvaladjustment
-
-	"""Check to see if needed variables are defined"""
-	try:
-		folder
-	except NameError:
-		print "ERROR: Folder of results files to be validated must be specificed."
-		usage()
-		sys.exit()
-	try:
-		truth
-	except NameError:
-		print "ERROR: Known-truth data file must be supplied in order for results to be validated."
-		usage()
-		sys.exit()
-	try:
-		snp
-	except NameError:
-		print "ERROR: Name of SNP column in results files must be specified."
-		usage()
-		sys.exit()
-	try:
-		score
-	except NameError:
-		print "ERROR: Name of scoring column must be specified in order to validate SNP classifications."
-		usage()
-		sys.exit()
-
-	# Setting beta equal to null if not used; this will placehold the need to not run beta analyses
-	# NOTE: The beta corresponds to the effect size columns for SNPs found in the initial GWAS analysis
-	try:
-		beta
-	except NameError:
-		beta = None
-
-	# Severity ratio was originally included in the options for the proposed but unused H-measure fit statistic.
-	# Currently, the H-measure is not in the list of fit statistics, but once a formula can be implemented in Python,
-	# it will be shown in the command line options. For now, we will leave this as the default None.
-	try:
-		severity
-	except NameError:
-		severity = None
+	"""Change command line arguments into variables to pass along to the rest of the program"""
+	if args.verbose:
+	    verbose=True
+	    print ("Verbose mode\n")
+	folder = args.Folder
+	if verbose:
+	    print "Folder of results files for validation is located in", folder
+	analysis = args.analysis
+	if verbose:
+	    print "Analysis method being validated is specified as", analysis
+	truth = args.Class
+	if verbose:
+	    print "Truth file is", truth
+	snp = args.Snp
+	if verbose:
+	    print "SNP column name in results files is specified as", snp
+	score = args.Score
+	if verbose:
+	    print "Scoring column name (e.g. p-value column) in results files is specified as", score
+	beta = args.beta
+	if verbose:
+	    print "Estimated SNP weight column name (e.g. regression betas) in results files is specified as", beta
+	filename = args.filename
+	if verbose:
+	    print "Filename specified as", filename
+	threshold = args.threshold
+	if verbose:
+	    print "Threshold is set at", threshold
+	seper = args.seper
+	if verbose:
+	    print "Delimitation of results files is set as", seper
+	kttype = args.kttype
+	if verbose:
+	    print "Known-truth data format is set as", kttype
+	kttypeseper = args.kttypeseper
+	if verbose:
+	    print "Known-truth delimiter is set as", kttypeseper
+	severity = args.severity
+	if verbose:
+	    print "Severity ratio is specified at", severity
+	pvaladjust = args.pvaladjust
+	if verbose:
+	    print "P-value adjustment set as", pvaladjust
+	
+	if pvaladjust not in ["BH"]:
+	    print 'Currently only BH (Benjamini-Hochberg) is supported, the original P-values will be used'
 
 	return folder, analysis, truth, snp, score, beta, filename, threshold, seper, kttype, kttypeseper, \
-		   severity, pvaladjustment
+		   severity, pvaladjust
 if __name__ == "__main__":
     import doctest
     doctest.testmod()

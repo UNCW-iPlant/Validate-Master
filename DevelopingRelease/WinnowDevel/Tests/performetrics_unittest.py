@@ -16,15 +16,11 @@ class PerformetricsTest(unittest.TestCase):
         beta_tf = [1, 0, 1, 1, 0, 0]
         self.assertEqual(performetrics.mae(beta_col, beta_tf), 3.0)
 
-    def test_r(self):
-        x = [1, 2, 3, 4, 5]
-        y = [5, 9, 10, 12, 13]
-        self.assertEqual(performetrics.r(x, y), 0.96457885687693812)
-
-    def test_r2(self):
-        x = [3, 4, 5, 6, 7]
-        y = [9, 10, 13, 12, 18]
-        self.assertEqual(performetrics.r2(x, y), 0.81300813008130068)
+    def test_mattcorr(self):
+        snp_tf = [True, False, True, True, True, False, False, True, False, False, True, False]
+        score = [0.003, 0.65, 0.004, 0.006, 0.078, 0.003, 0.0001, 0.513, 0.421, 0.0081, 0.043, 0.98]
+        threshold = 0.05
+        self.assertEqual(performetrics.mattcorr(snp_tf, threshold, score), 0.1690308509457033)
 
     def test_auc(self):
         snp_tf = [True, False, True, True, True, False, False, True, False, False, True, False]
@@ -72,6 +68,12 @@ class PerformetricsTest(unittest.TestCase):
         score = [0.003, 0.65, 0.004, 0.006, 0.078, 0.003, 0.0001, 0.513, 0.421, 0.0081, 0.043, 0.98]
         threshold = 0.05
         self.assertEqual(performetrics.error(snp_tf, threshold, score), 0.4166666666666667)
+    
+    def test_accuracy(self):
+        snp_tf = [True, False, True, True, True, False, False, True, False, False, True, False]
+        score = [0.003, 0.65, 0.004, 0.006, 0.078, 0.003, 0.0001, 0.513, 0.421, 0.0081, 0.043, 0.98]
+        threshold = 0.05
+        self.assertEqual(performetrics.accuracy(snp_tf, threshold, score), 0.5833333333333333)
 
     def test_sens(self):
         snp_tf = [True, False, True, True, True, False, False, True, False, False, True, False]
@@ -90,13 +92,18 @@ class PerformetricsTest(unittest.TestCase):
         score = [0.003, 0.65, 0.004, 0.006, 0.078, 0.003, 0.0001, 0.513, 0.421, 0.0081, 0.043, 0.98]
         threshold = 0.05
         self.assertEqual(performetrics.precision(snp_tf, threshold, score), 0.5714285714285714)
+    
+    def test_fdr(self):
+        snp_tf = [True, False, True, True, True, False, False, True, False, False, True, False]
+        score = [0.003, 0.65, 0.004, 0.006, 0.078, 0.003, 0.0001, 0.513, 0.421, 0.0081, 0.043, 0.98]
+        threshold = 0.05
+        self.assertEqual(performetrics.fdr(snp_tf, threshold, score), 0.4285714285714286)
 
     def test_youden(self):
         snp_tf = [True, False, True, True, True, False, False, True, False, False, True, False]
         score = [0.003, 0.65, 0.004, 0.006, 0.078, 0.003, 0.0001, 0.513, 0.421, 0.0081, 0.043, 0.98]
         threshold = 0.05
         self.assertEqual(performetrics.youden(snp_tf, threshold, score), 0.16666666666666652)
-
 
 def get_test_suite():
     """
