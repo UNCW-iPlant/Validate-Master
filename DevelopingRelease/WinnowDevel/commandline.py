@@ -38,6 +38,7 @@ def usage():
 	print "--kttype or -k to specify the type of known-truth file for --class (either OTE or FGS)"
 	print "--kttypeseper or -r to specify delimination in known-truth file"
 	print "--pvaladjust or -p to specify the type of P-value adjustment"
+	print "--savep or -o to save P-values"
 	print "--help or -h to see help menu\n\n"
 
 
@@ -59,6 +60,7 @@ def checkArgs():
         parser.add_argument("-r", "--kttypeseper", choices=["comma", "whitespace", "tab"], nargs='?', default="whitespace", help="Specify delimitation in known-truth file")
 	parser.add_argument("-y", "--severity", type=float, default=None, nargs='?', help="Severity ratio used in the h-measure calculation (currently not available, can leave blank)")
 	parser.add_argument("-p", "--pvaladjust", default=None, nargs='?', choices=["BH"], help="Specify the type of p-value adjustment")
+	parser.add_argument("-o", "--savep", default=False, action="store_true", help="Saves P-values in a text file if specified")
 	args = parser.parse_args()
         
 	"""Change command line arguments into variables to pass along to the rest of the program"""
@@ -104,12 +106,15 @@ def checkArgs():
 	pvaladjust = args.pvaladjust
 	if verbose:
 	    print "P-value adjustment set as", pvaladjust
+	savep = args.savep
+	if verbose:
+		print "Saving P-values is set as", savep
 	
 	if pvaladjust not in ["BH"]:
 	    print 'Currently only BH (Benjamini-Hochberg) is supported, the original P-values will be used'
 
 	return folder, analysis, truth, snp, score, beta, filename, threshold, seper, kttype, kttypeseper, \
-		   severity, pvaladjust
+		   severity, pvaladjust, savep
 if __name__ == "__main__":
     import doctest
     doctest.testmod()
