@@ -13,7 +13,7 @@ class WinnowTest(unittest.TestCase):
     destination = os.getcwd()[:os.getcwd().index("Validate-Master")] + "Validate-Master/ExampleData/Winnow/results"
     args = {'folder': folder, 'analysis': 'GWAS', 'truth': ote, 'snp': 'SNP', 'score': 'P', 'beta': 'BETA',
             'filename': destination, 'threshold': 0.05, 'separ': 'whitespace', 'kt_type': 'OTE',
-            'kt_type_separ': 'whitespace', 'savep': False}
+            'kt_type_separ': 'whitespace', 'pvaladjust': False, 'savep': False}
 
     def test_load_ote(self):
         self.win = winnow.Winnow(self.args)
@@ -47,9 +47,8 @@ class WinnowTest(unittest.TestCase):
         gen = self.win.do_analysis()
         a = gen.next()[1]
         self.assertEqual(format_float(a),
-                         [0.05896121, 0.18211783, 0.02643402, 0.00069876, 0.43427679, 0.00000, 384.00000, 2816.00000,
-                          35.00000,
-                          0.00000, 0.12000, 0.12952087, 0.00000, 0.88000, 0.00000, -0.12000])
+                         [0.05896121, 0.18211783, -0.03838186, 0.43427679, 0, 384,
+                          2816, 35, 0.0, 0.12, 0.12952087, 0.87047913, 0.0, 0.88, 0.0, 1.0, -0.12])
         gen.close()
 
     def test_do_gwas(self):
@@ -60,9 +59,8 @@ class WinnowTest(unittest.TestCase):
         beta_column = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12)
         a = format_float(self.win.do_gwas(score_column, beta_column)[1])
         self.assertEqual(a,
-                         [47.08333333, 5.91666667, 0.02448266, 0.0005994,
-                          0.56944444, 4, 3, 3, 2, 0.66666667, 0.5, 0.41666667,
-                          0.66666667, 0.5, 0.57142857, 0.16666667])
+                         [47.08333333, 5.91666667, 0.16903085, 0.56944444, 4.0, 3.0, 3.0, 2.0, 0.66666667, 0.5,
+                          0.41666667, 0.58333333, 0.66666667, 0.5, 0.57142857, 0.42857143, 0.16666667])
 
     def test_data_to_list(self):
         kt_file = loadKT(self.args['truth'], self.args['kt_type_separ'])
@@ -74,12 +72,12 @@ class WinnowTest(unittest.TestCase):
 
 
 def format_float(float_list):
-    '''
-    Truncuates floats to 5 decimal places
+    """
+    Truncates floats to 5 decimal places
 
     :param float_list:
     :return: a list of float truncuated to 5 decimal places
-    '''
+    """
     return_list = list()
     for each in float_list:
         return_list.append(float('%.8f' % each))
