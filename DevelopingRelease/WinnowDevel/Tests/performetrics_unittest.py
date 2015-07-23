@@ -73,7 +73,7 @@ class PerformetricsTest(unittest.TestCase):
         snp_tf = [True, False, True, True, True, False, False, True, False, False, True, False]
         score = [0.003, 0.65, 0.004, 0.006, 0.078, 0.003, 0.0001, 0.513, 0.421, 0.0081, 0.043, 0.98]
         threshold = 0.05
-        self.assertEqual(performetrics.accuracy(snp_tf, threshold, score), 0.5833333333333333)
+        self.assertEqual(format_float(performetrics.accuracy(snp_tf, threshold, score)), 0.58333333)
 
     def test_sens(self):
         snp_tf = [True, False, True, True, True, False, False, True, False, False, True, False]
@@ -97,13 +97,24 @@ class PerformetricsTest(unittest.TestCase):
         snp_tf = [True, False, True, True, True, False, False, True, False, False, True, False]
         score = [0.003, 0.65, 0.004, 0.006, 0.078, 0.003, 0.0001, 0.513, 0.421, 0.0081, 0.043, 0.98]
         threshold = 0.05
-        self.assertEqual(performetrics.fdr(snp_tf, threshold, score), 0.4285714285714286)
+        self.assertEqual(format_float(performetrics.fdr(snp_tf, threshold, score)), 0.42857143)
 
     def test_youden(self):
         snp_tf = [True, False, True, True, True, False, False, True, False, False, True, False]
         score = [0.003, 0.65, 0.004, 0.006, 0.078, 0.003, 0.0001, 0.513, 0.421, 0.0081, 0.043, 0.98]
         threshold = 0.05
         self.assertEqual(performetrics.youden(snp_tf, threshold, score), 0.16666666666666652)
+
+
+def format_float(x):
+    """
+    Truncates floats to 5 decimal places
+
+    :param float_list:
+    :return: a list of float truncuated to 5 decimal places
+    """
+    return float('%.8f' % x)
+
 
 def get_test_suite():
     """
