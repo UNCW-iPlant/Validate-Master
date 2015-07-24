@@ -19,7 +19,8 @@ before_install:
     - ./configure --enable-R-schlib # --prefix=...
     - sudo make
     - sudo make install
-    - pip install rpy2
+    - sudo apt-get install python-dev
+    - sudo apt-get install python-rpy2
 
 install:
     - conda install --yes python=$TRAVIS_PYTHON_VERSION numpy scipy
