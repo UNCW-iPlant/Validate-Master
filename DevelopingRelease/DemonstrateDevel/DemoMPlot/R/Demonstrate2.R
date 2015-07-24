@@ -162,7 +162,8 @@ Demonstrate2<-function(dir, make.pos.plot=TRUE, pos.plot.title="True Positives b
       xlab("False Positives") +
       ylab("True Positives") +
       ggtitle("False Positives by True Positves") +
-      xlim(0, fa) + ylim(0, ta)
+      xlim(0, fa) + ylim(0, ta) +
+      scale_colour_discrete(labels=filenames)
     
     print(p2)
     
@@ -192,7 +193,8 @@ Demonstrate2<-function(dir, make.pos.plot=TRUE, pos.plot.title="True Positives b
     
     p2 <- p + geom_smooth(method=lm, fullrange=TRUE) + 
       theme(panel.background=element_rect(fill='white', colour='black')) +
-      theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank()) 
+      theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank()) +
+      scale_colour_discrete(label=filenames) 
     
     print(p2)
     
