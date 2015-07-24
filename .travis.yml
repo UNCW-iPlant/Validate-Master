@@ -15,7 +15,7 @@ before_install:
 install:
     - conda install --yes python=$TRAVIS_PYTHON_VERSION numpy scipy
     - conda install --yes -c r r
-    - pip install scipy
+    - conda install --yes -c https://conda.binstar.org/r rpy2
 
 script:
     - cd DevelopingRelease/WinnowDevel/Tests
