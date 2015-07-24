@@ -13,8 +13,8 @@ before_install:
     - sudo apt-get install gfortran
     - sudo apt-get install build-essential
     - wget https://cran.r-project.org/src/base/R-3/R-3.2.1.tar.gz
-    - tar -xzf R-3.0.0.tar.gz
-    - cd R-3.0.3
+    - tar -xzf R-3.2.1.tar.gz
+    - cd R-3.2.1
     - sudo apt-get install libreadline6 libreadline6-dev
     - sudo apt-get install xorg-dev
     - ./configure --enable-R-schlib # --prefix=...
