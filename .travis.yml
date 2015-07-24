@@ -14,7 +14,7 @@ before_install:
 
 install:
     - conda install --yes python=$TRAVIS_PYTHON_VERSION numpy scipy
-    - conda install -- yes -c r r
+    - conda install --yes -c r r
     - pip install scipy
 
 script:
