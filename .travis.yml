@@ -4,7 +4,7 @@ python:
     - "2.7"
 
 before_install:
-
+    - ls
     - wget http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh
     - chmod +x miniconda.sh
     - ./miniconda.sh -b
@@ -27,6 +27,7 @@ install:
     - pip install scipy
 
 script:
+    - ls
     - cd DevelopingRelease/WinnowDevel/Tests
     - python winnowdevel_test_suite.py
     - cd ..
