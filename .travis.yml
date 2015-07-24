@@ -17,8 +17,8 @@ before_install:
     - cd R-3.2.1
     - sudo apt-get install libreadline6 libreadline6-dev
     - ./configure --enable-R-schlib # --prefix=...
-    - make
-    - make install
+    - sudo make
+    - sudo make install
     - pip install rpy2
 
 install:
