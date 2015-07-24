@@ -17,6 +17,7 @@ install:
     - conda install --yes -c r r
     - conda install --yes -c https://conda.binstar.org/r rpy2
     - conda install --yes -c https://conda.binstar.org/r r-testthat
+    - R CMD INSTALL https://cran.r-project.org/src/contrib/Rcpp_0.11.6.tar.gz
 
 script:
     - cd DevelopingRelease/WinnowDevel/Tests
