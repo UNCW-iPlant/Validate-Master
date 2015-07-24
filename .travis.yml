@@ -10,13 +10,13 @@ before_install:
     - ./miniconda.sh -b
     - export PATH=/home/travis/miniconda/bin:$PATH
     - conda update --yes conda
-    - apt-get install gfortran
-    - apt-get install build-essential
+    - sudo apt-get install gfortran
+    - sudo apt-get install build-essential
     - wget http://cran.r-project.org/src/base/R-3/R-3.0.3.tar.giz
     - tar -xzf R-3.0.0.tar.gz
     - cd R-3.0.3
-    - apt-get install libreadline6 libreadline6-dev
-    - apt-get install xorg-dev
+    - sudo apt-get install libreadline6 libreadline6-dev
+    - sudo apt-get install xorg-dev
     - ./configure --enable-R-schlib # --prefix=...
     - make
     - make install
