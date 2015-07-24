@@ -10,7 +10,8 @@ def main():
 library(testthat)
 
 #NOTE: If you are running this unit test on your own device,
-#you may need to change the following directories before testing!""" + mplot_source + """
+#you may need to change the following directories before testing!
+""" + mplot_source + """
 
 """ + test_dir + """
 test_that("Directory checks", {
@@ -33,5 +34,8 @@ test_that("Manhattan Plot output checks", {
   #Finally, the file should be non-empty...
   expect_that(file.info("Manhattan Plot.pdf")$size, is_more_than(0))
 })"""
-
+    print unit_test_string
     powerpack = stap(unit_test_string, "pack")
+
+if __name__ == "__main__":
+    main()
