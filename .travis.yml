@@ -13,6 +13,7 @@ before_install:
     - wget http://cran.rstudio.com/src/base/R-3/R-3.1.1.tar.gz
     - tar xvf R-3.1.1.tar.gz
     - cd R-3.1.1
+    - ./configure
     - make && make install
     - pip install rpy2
 
