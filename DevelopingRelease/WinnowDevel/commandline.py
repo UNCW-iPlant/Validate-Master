@@ -108,7 +108,7 @@ def checkArgs():
         if savep:
             print "Saving p-values"
 
-    if pvaladjust not in ["BH"]:
+    if pvaladjust not in ["BH"] and pvaladjust is not None:
         print 'Currently only BH (Benjamini-Hochberg) is supported, the original P-values will be used'
 
     return folder, analysis, truth, snp, score, beta, filename, \
