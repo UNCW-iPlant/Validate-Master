@@ -92,3 +92,5 @@ def writeSettings(winnowargs):
         openFileWriter.writerow(('Analysis Type: ', a))
         openFileWriter.writerow(('KT Type: ', winnowargs['kt_type']))
         openFileWriter.writerow(('Threshold: ', winnowargs['threshold']))
+        if winnowargs['pvaladjust'] is not None and 'pvaladjust' in winnowargs.keys():
+            openFileWriter.writerow(('Adjustment:', winnowargs['pvaladjust']))
