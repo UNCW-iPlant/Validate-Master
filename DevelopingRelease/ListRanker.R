@@ -23,4 +23,5 @@ ListRanker<-function(dir, filename.tp, filename.fp){
   rankedlist.fp<-as.matrix(listrank(fp))
   MASS::write.matrix(rankedlist.tp, file=filename.tp, sep = ",")
   MASS::write.matrix(rankedlist.fp, file=filename.fp, sep = ",")
+  print("Done")
 }

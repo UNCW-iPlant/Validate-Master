@@ -48,7 +48,7 @@ def checkArgs():
     parser = argparse.ArgumentParser(description="Winnow command line arguments")
     parser.add_argument("-v", "--verbose", help="Trigger verbose mode", action="store_true")
     parser.add_argument("-a", "--analysis", nargs='?',
-                        help="The type of analysis for Winnow to perform (currently, only GWAS is supported)", \
+                        help="The type of analysis for Winnow to perform (currently, only GWAS is supported)",
                         default="GWAS", type=str, choices=["GWAS"])
     parser.add_argument("-F", "--Folder", required=True, type=str, help="The input folder of box results")
     parser.add_argument("-C", "--Class", required=True, type=str, help="The known-truth file for used simulation")
