@@ -17,8 +17,8 @@ install:
     - conda install --yes -c r r
     - conda install --yes -c https://conda.binstar.org/r rpy2
     - conda install --yes -c https://conda.binstar.org/r r-testthat
-    - wget https://cran.r-project.org/src/contrib/Rcpp_0.11.6.tar.gz
-    - R CMD INSTALL Rcpp_0.11.6.tar.gz
+    - wget https://cran.r-project.org/src/contrib/Rcpp_0.12.0.tar.gz
+    - R CMD INSTALL Rcpp_0.12.0.tar.gz
     - wget https://cran.r-project.org/src/contrib/plyr_1.8.3.tar.gz
     - R CMD INSTALL plyr_1.8.3.tar.gz
     - wget https://cran.r-project.org/src/contrib/digest_0.6.8.tar.gz
