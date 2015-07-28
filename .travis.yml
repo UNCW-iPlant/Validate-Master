@@ -55,5 +55,7 @@ script:
     - cd DevelopingRelease/WinnowDevel/Tests
     - python winnowdevel_test_suite.py
     - cd ..
-    - cd ../DemonstrateDevel/Tests
+    - cd ..
+    - ls
+    - cd /DemonstrateDevel/Tests
     - python demonstratedevel_test_suite.py

@@ -35,7 +35,7 @@ class ListRankerTest(unittest.TestCase):
         self.assertTrue(os.path.getsize(self.maindir + "/" + self.thirdarg) > 0)
 
     def load_r(self):
-        with open(os.getcwd()[:os.getcwd().index('DemonstrateDevel')]+'Listranker.R') as f:
+        with open(os.getcwd()[:os.getcwd().index('DemonstrateDevel')]+'ListRanker.R') as f:
             lr = f.read()
         robjects.r(lr)
 
