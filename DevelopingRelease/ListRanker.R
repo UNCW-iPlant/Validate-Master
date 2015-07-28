@@ -9,7 +9,7 @@ ListRanker<-function(dir, filename.tp, filename.fp){
     listOfFiles <- lapply(files, function(x) read.table(x, header=TRUE))
     return(listOfFiles)
   }
-  myfiles<-readFiles(maindir)
+  myfiles<-readFiles(dir)
   tp<-fp<-list()
   for (i in 1:length(myfiles)){
     tp[[i]]<-myfiles[[i]]$tp
@@ -23,5 +23,4 @@ ListRanker<-function(dir, filename.tp, filename.fp){
   rankedlist.fp<-as.matrix(listrank(fp))
   MASS::write.matrix(rankedlist.tp, file=filename.tp, sep = ",")
   MASS::write.matrix(rankedlist.fp, file=filename.fp, sep = ",")
-  print("Done")
 }

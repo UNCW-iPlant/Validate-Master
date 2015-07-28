@@ -19,51 +19,25 @@ class ListRankerTest(unittest.TestCase):
         self.load_r()
         r_listranker = robjects.globalenv['ListRanker']
         return_value = str(r_listranker(self.maindir, self.secondarg, self.thirdarg))
-        self.assertEquals(return_value, '[1] "Done"\n')
+        self.assertEquals(return_value, 'NULL')
 
     def test_outputs(self):
         self.load_r()
         r_listranker = robjects.globalenv['ListRanker']
         if os.path.isfile(self.maindir + "/" + self.secondarg):
             os.remove(self.maindir + "/" + self.secondarg)
-        if os.path.isfile(self.maindir+ "/" + self.thirdarg):
+        if os.path.isfile(self.maindir + "/" + self.thirdarg):
             os.remove(self.maindir + "/" + self.thirdarg)
         r_listranker(self.maindir, self.secondarg, self.thirdarg)
         self.assertTrue(os.path.isfile(self.maindir + "/" + self.secondarg))
         self.assertTrue(os.path.isfile(self.maindir + "/" + self.thirdarg))
         self.assertTrue(os.path.getsize(self.maindir + "/" + self.secondarg) > 0)
         self.assertTrue(os.path.getsize(self.maindir + "/" + self.thirdarg) > 0)
-        if os.path.isfile(self.maindir + "/" + self.secondarg):
-            os.remove(self.maindir + "/" + self.secondarg)
-        if os.path.isfile(self.maindir+ "/" + self.thirdarg):
-            os.remove(self.maindir + "/" + self.thirdarg)
 
     def load_r(self):
-        robjects.r("""
-            readFiles <- function(d) {
-                setwd(d)
-                files <- Sys.glob("*.txt")
-                listOfFiles <- lapply(files, function(x) read.table(x, header=TRUE))
-                return(listOfFiles)
-            }
-            listrank<-function(tps) {
-                l <- lapply(tps, function(x) rank(x, ties.method="first"))
-                return(l)
-            }
-            ListRanker<-function(dir, filename.tp, filename.fp) {
-                myfiles <- readFiles(dir)
-                tp<-fp<-list()
-                for (i in 1:length(myfiles)){
-                    tp[[i]]<-myfiles[[i]]$tp
-                    fp[[i]]<-myfiles[[i]]$fp
-                }
-                rankedlist.tp<-as.matrix(listrank(tp))
-                rankedlist.fp<-as.matrix(listrank(fp))
-                MASS::write.matrix(rankedlist.tp, file=filename.tp, sep = ",")
-                MASS::write.matrix(rankedlist.fp, file=filename.fp, sep = ",")
-                return("Done")
-            }
-        """)
+        with open(os.getcwd()[:os.getcwd().index('DemonstrateDevel')]+'Listranker.R') as f:
+            lr = f.read()
+        robjects.r(lr)
 
 
 def get_test_suite():
