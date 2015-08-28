@@ -10,7 +10,7 @@ Folder="$WRAPPERDIR/test/OutputPlink/"
 SNP="SNP"
 Score="P"
 beta="BETA"
-module load python/2.7.3-epd-7.3.2
+module load python
 tar xvzf winnow.tgz
 #Now to execute the main program
 python ./winpy/winnow.py --Folder $Folder --Class $knowntruth --Snp $SNP --Score $Score --beta $beta

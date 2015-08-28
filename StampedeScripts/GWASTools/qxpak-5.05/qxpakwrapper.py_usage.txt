@@ -1,0 +1,43 @@
+Python Qxpak Instructions
+
+DESCRIPTION
+    Wrapper for a DE interface to the QXPAK analysis tool found at:
+    http://www.icrea.cat/Web/OtherSectionViewer.aspx?key=485&titol=Software:Qxpak
+    
+	Full instructions for the various files can be found in the
+	manual posted there.
+	
+	This wrapper allows you you to create a parameter file as per
+	that manual but will allow the correct files to be chosen
+	through TiTo. In the parameter file, use the following markers
+	in place of actual filenames:
+    
+    $data         Date file
+    $pedigree     Pedigree file
+    $marker       Marker file
+    $userInverse  User inverse - user-defined covariance matrix file
+    $userDirect   User direct - user-defined covariance matrix file
+    $haplotype    Haplotype file
+    $output       Output file
+
+USAGE
+    qxpakwrapper.py <options>
+    
+OPTIONS
+    -p<filename> or --par=<filename>
+        Filename or full path of the parameter file, e.g. "parameterFile.par".
+    -d<filename> or --data=<filename>
+        Filename or full path of data file, e.g. "dataFile.dat".
+    -g<filename> or --ped=<filename>
+        Filename or full path of pedigree file, e.g. "pedigreeFile.ped".
+    -m<filename> or --mkr=<filename>
+        Filename or full path of marker file, e.g. "markerFile.mkr".
+    -i<filename> or --uinv=<filename>
+        Filename or full path of user-defined inverse file, e.g., "userInverse.inverse".
+    -t<filename> or --udir=<filename>
+        Filename or full path of user-defined direct file, e.g., "UserDirect.direct".
+    -h<filename> or --haplo=<filename>
+        Filename or full path of haplotype file, e.g. "haplotypes.haplo".
+    -o<filename> or --output=<filename>
+        Filename or full path of output file, e.g. "results.txt"
+

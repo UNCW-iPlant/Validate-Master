@@ -26,6 +26,7 @@ class Dem2Test(unittest.TestCase):
         for name in outputnames:
             self.assertTrue(os.path.isfile(self.testdir + '/' + name))
             self.assertTrue(os.path.getsize(self.testdir + '/'+ name) > 0)
+        
     def load_r(self):
         with open(os.getcwd()[:os.getcwd().index('Tests')]+'DemoMPlot/R/Demonstrate2.R') as f:
             dem2 = f.read()

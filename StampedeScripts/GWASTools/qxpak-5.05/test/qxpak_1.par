@@ -1,0 +1,27 @@
+# Example 1
+# Simple F2 cross beteen inbred lines
+ML_OPTION
+Y
+DATAFILE
+qxpak_1.dat
+OUTFILE
+qxpak_1.out
+MARKERFILE
+qxpak_1.mkr
+PEDIGREEFILE
+qxpak_1.ped
+MARKER_POSITIONS
+chr1 0.0 5 10 15
+NUMBER_OF_MCMC_ITERATIONS
+1000
+QTL       
+qtl1   fix_ad chr1 all
+EFFECT
+mean cross 2 
+age covariate 3
+u0 cross 1 pedigree qxpak_1.ped
+TRAIT
+t1 5 mean age u0 qtl1
+#dummy_trait 6 mean snp2
+TEST
+qtl1

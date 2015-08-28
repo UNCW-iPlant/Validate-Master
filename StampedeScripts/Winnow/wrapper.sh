@@ -1,75 +1,54 @@
 #!/bin/bash
-WRAPPERDIR=$( cd "$( dirname "$0" )" && pwd ) 
 
-#Load the required arguments here and check if they exist
+#Load the required arguments here
+knowntruth=${Class}
+Folder=${Folder}
+SNP=${SNP}
+Score=${Score}
+kttype=${kttype}
+filename=${Filename}
+#Extra places for the optional arguments
+verbose=${verbose}
+threshold=${threshold}
+beta=${beta}
+seper=${seper}
+kttypeseper=${kttypeseper}
+OptArgs=""
 
-truth=${knowntruth}
-if [[ ! -e "$truth" ]]; then
-	echo "Known truth file was not found" >&2
-	exit 1
+# Boolean handler for --verbose mode
+if [ $verbose -eq 1 ]; then 
+	OptARGS="$OptARGS--verbose"
+else OptARGS="$OptARGS"
 fi
 
-inputFolder=${GWASResults}
-if [[ ! -e "$inputFolder" ]]; then
-	echo "Input folder was not found" >&2
-	exit 1
+if [ -n "$threshold" ]; then 
+	OptARGS="${OptARGS} --threshold $threshold"; 
 fi
 
-SNPname=${SNPcolname}
-if [[! -n "$SNPname" ]]; then
-	echo "Name for SNP column is required" >&2
-	exit 1
+if [ -n "$beta" ]; then 
+	OptARGS="${OptARGS} --beta $beta" 
 fi
 
-Score=${Pvalcolname}
-if [[! -n "$Score" ]]; then
-	echo "Name for significance/p-value column is required" >&2
-	exit 1
+if [ -n "$seper" ]; then 
+	OptARGS="${OptARGS} --seper $seper" 
 fi
 
-kttype=${truthtype}
-if [["$kttype"!="OTE" -o "$kttype"!="FGS" ]]; then
-	echo "Known-truth file type not accepted" >&2
-	exit 1
+if [ -n "$kttypeseper" ]; then 
+	OptARGS="${OptARGS} --kttypeseper $kttypeseper"
 fi
 
-#Extra places for the optional arguments and checking their existence
+#Print each of the arguments to make sure everything is being read correctly
+echo "knowntruth=$knowntruth"
+echo "Folder=$Folder"
+echo "SNP=$SNP"
+echo "Score=$Score"
+echo "kttype=$kttype"
+echo "filename=$filename"
+echo "verbose=$verbose"
+echo "threhsold=$threshold"
+echo "seper=$seper"
+echo "kttypeseper=$kttypeseper"
+echo "beta=$beta"
+echo python ./winpy/winnow.py --Folder $Folder --Class $knowntruth --Snp $SNP --Score $Score --kttype $kttype --filename $filename $OptARGS
 
-if [[ "${verbose}" == "1" ]]; then
-	VERBOSE="--verbose"
-fi
-
-threshold=${Siglevel}
-if [[ -n "$threshold" ]]; then
-	THRESH="--threshold ${threshold}"	
-fi
-
-beta=${effect}
-if [[ -n "$beta" ]]; then
-	BETA="--beta ${beta}"	
-fi
-
-seper=${delim}
-if [[ -n "$seper" ]]; then
-	if [[ "$seper"=="whitespace" -o "$seper"=="comma" ]]; then 
-		SPACER="--seper ${seper}"
-	fi	
-fi
-
-truthseper=${truthseper}
-if [[ -n "$kttype" ]]; then
-	if [[ "$truthseper"=="whitespace" -o "$truthseper"=="comma" ]]; then 
-		KTSPACER="--kttypeseper ${seper}"
-	fi	
-fi
-
-#Load the Enthought distribution for Python to get the necessary packages
-module load python/2.7.3-epd-7.3.2
-
-tar xvzf winnow.tgz
-
-outdir="$WRAPPERDIR/Winnow_output"
-mkdir -p "$outdir"
-
-#Now to execute the main program...
-python $WRAPPERDIR/winpy/winnow.py ${VERBOSE} --Folder "${inputFolder}" --Class "${truth}" --SNP "${SNPname}" --Score "${Score}" --kttype "${THRESH}" "${BETA}" "${SPACER}" "${KTSPACER}"
+python ./winpy/winnow.py --Folder $Folder --Class $knowntruth --Snp $SNP --Score $Score --kttype $kttype --filename $filename $OptARGS

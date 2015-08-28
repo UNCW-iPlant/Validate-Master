@@ -1,7 +1,7 @@
 {
   "name": "Winnow",
   "version": "0.7",
-  "helpURI": "https://pods.iplantcollaborative.org/wiki/display/atmman/Winnow.Py+Tutorial",
+  "helpURI": "https://pods.iplantcollaborative.org/wiki/display/atmman/Validate+Workflow+v0.7",
   "label": "winnow",
   "defaultQueue": "normal",
   "defaultNodeCount": 1,
@@ -10,13 +10,13 @@
   "defaultRequestedTime": "24:00:00",
   "shortDescription": "A Python-compatible known truth testing tool for genome wide association studies.",
   "longDescription": "Winnow is a tool that evaluates other tools. Winnow requires output from a GWAS tool after analyzing a data set. Given the \"known truth\" of the original data set, Winnow outputs a series of fit statistics to determine the validity of the GWAS tool and whether or not it was truly useful in analyzing the data.",
-  "executionSystem": "stampede.tacc.utexas.edu",
+  "executionSystem": "stampede-07282014-1215-spt6655",
   "executionType": "HPC",
   "parallelism": "SERIAL",
-  "deploymentPath": "iplant/home/spt6655/winnow-0.7",
+  "deploymentPath": "spt6655/applications/winnow-0.7",
   "deploymentSystem": "data.iplantcollaborative.org",
   "templatePath": "wrapper.sh",
-  "testPath": "test/test.sh",
+  "testPath": "test.sh",
   "checkpointable": true,
   "tags": [
     "python",
@@ -168,7 +168,6 @@
       "value": {
 	"default": "0.05",
         "type": "string",
-	"validator": "^(?:(1\\.00|(?:0\\.[0-9]{2})))$",
         "required": false,
 	"visible": true
       }
@@ -181,8 +180,13 @@
         "attribute": "--verbose",
         "showAttribute": true
       },
+	"semantics": {
+        "ontology": [
+          "xs:bool"
+        ]
+	},
       "value": {
-        "type": "flag",
+        "type": "number",
         "order": 0,
         "required": false,
         "visible": false
@@ -231,7 +235,7 @@
       }
     },
     {
-      "id": "BETA",
+      "id": "beta",
       "details": {
         "label": "Name effect size column",
         "description": "Specifies a string for the name of the estimated SNP effect size column in input files (if needed)",
