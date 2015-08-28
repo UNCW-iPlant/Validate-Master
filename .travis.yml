@@ -43,7 +43,7 @@ install:
     - R CMD INSTALL dichromat_2.0-0.tar.gz
     - wget https://cran.r-project.org/src/contrib/RColorBrewer_1.1-2.tar.gz
     - R CMD INSTALL RColorBrewer_1.1-2.tar.gz
-    - wget https://cran.r-project.org/src/contrib/scales_0.2.5.tar.gz
+    - wget https://cran.r-project.org/src/contrib/scales_0.3.0.tar.gz
     - R CMD INSTALL scales_0.2.5.tar.gz
     - wget https://cran.r-project.org/src/contrib/proto_0.3-10.tar.gz
     - R CMD INSTALL proto_0.3-10.tar.gz
