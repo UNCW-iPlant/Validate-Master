@@ -1,0 +1,472 @@
+{
+  "name": "Demonstrate",
+  "version": "0.9",
+  "helpURI": "https://pods.iplantcollaborative.org/wiki/display/atmman/Validate+Workflow+v0.7#ValidateWorkflowv0.7-Demonstrate",
+  "label": "demonstrate",
+  "defaultQueue": "normal",
+  "defaultNodeCount": "1",
+  "defaultMemoryPerNode": "8",
+  "defaultProcessorsPerNode": "1",
+  "defaultRequestedTime": "02:00:00",
+  "shortDescription": "",
+  "longDescription": "",
+  "executionSystem": "stampede.tacc.utexas.edu",
+  "executionType": "HPC",
+  "parallelism": "SERIAL",
+  "deploymentPath": "swb5075/demonstrate",
+  "deploymentSystem": "data.iplantcollaborative.org",
+  "templatePath": "wrapper.sh",
+  "testPath": "test.sh",
+  "checkpointable": true,
+  "tags": [
+    "python",
+    "R",
+    "demonstrate"
+  ],
+  "modules": [
+    "load python",
+    "load Rstats",
+    "load intel/15.0.2"
+  ],
+  "inputs": [
+    {
+      "id": "directory",
+      "details": {
+        "label": "Input directory name",
+        "description": "Specifies the directory with containing the input files",
+        "attribute": "--dir",
+        "showAttribute": true
+      },
+      "semantics": {
+        "minCardinality": -1,
+        "fileTypes": [
+          "Text-0"
+        ]
+      },
+      "value": {
+        "required": true,
+        "visibile": true,
+        "order": 0
+      }
+    },
+    {
+      "id": "settingsFile",
+      "details": {
+        "label": "",
+        "description": "",
+        "attribute": "--settings",
+        "showAttribute": true
+      },
+      "semantics": {
+        "minCardinality": -1,
+        "fileTypes": [
+          "Text-0"
+        ]
+      },
+      "value": {
+        "required": false,
+        "visible": true,
+        "order": 0
+      }
+    }
+  ],
+  "parameters": [
+    {
+      "id": "mode",
+      "details": {
+        "label": "Which version of Demonstrate to use",
+        "description": "Generate either the original Demonstrate or Demonstrate2 graphics",
+        "showAttribute": true
+      },
+      "semantics": {
+        "ontology": [
+          "xs:string"
+        ]
+      },
+      "value": {
+        "default": "demonstrate2",
+        "type": "string",
+        "required": true,
+        "visible": true,
+        "order": 0
+      }
+    },
+    {
+      "id": "output",
+      "details": {
+        "label": "Folder to store output",
+        "description": "Specifies where to save graphics produced in the Demonstrate program",
+        "attribute": "--output",
+        "showAttribute": true
+      },
+      "semantics": {
+        "ontology": [
+          "xs:string"
+        ]
+      },
+      "value": {
+        "type": "string",
+        "required": false,
+        "visible": true,
+        "order": 0
+      }
+    },
+    {
+      "id": "xauc",
+      "details": {
+        "label": "Exclude AUC",
+        "description": "Exclude AUC from the output graphics",
+        "attribute": "--xauc",
+        "showAttribute": true
+      },
+      "semantics": {
+        "ontology": [
+          "xs:string"
+        ]
+      },
+      "value": {
+        "default": false,
+        "type": "boolean",
+        "required": false,
+        "visible": true,
+        "order": 0
+      }
+    },
+    {
+      "id": "auctitle",
+      "details": {
+        "label": "AUC Title",
+        "description": "To set the title of the AUC graphic",
+        "attribute": "--auctitle",
+        "showAttribute": true
+      },
+      "semantics": {
+        "ontology": [
+          "xs:string"
+        ]
+      },
+      "value": {
+        "default": "Mean AUC By Population Structure and Heritability",
+        "type": "string",
+        "required": false,
+        "visible": true,
+        "order": 0
+      }
+    },
+    {
+      "id": "xmae",
+      "details": {
+        "label": "Exclude MAE",
+        "description": "Exclude MAE from the output graphics",
+        "attribute": "--xmae",
+        "showAttribute": true
+      },
+      "semantics": {
+        "ontology": [
+          "xs:string"
+        ]
+      },
+      "value": {
+        "default": false,
+        "type": "boolean",
+        "required": false,
+        "visible": true,
+        "order": 0
+      }
+    },
+    {
+      "id": "maetitle",
+      "details": {
+        "label": "MAE Title",
+        "description": "To set the title of the MAE graphic",
+        "attribute": "--maetitle",
+        "showAttribute": true
+      },
+      "semantics": {
+        "ontology": [
+          "xs:string"
+        ]
+      },
+      "value": {
+        "default": "Mean MAE By Population Structure and Heritability",
+        "type": "string",
+        "required": false,
+        "visible": true,
+        "order": 0
+      }
+    },
+    {
+      "id": "heritstring",
+      "details": {
+        "label": "Heritability String",
+        "description": "String(s) in input data representing heritability",
+        "attribute": "--heritstring",
+        "showAttribute": true
+      },
+      "semantics": {
+        "ontology": [
+          "xs:string"
+        ]
+      },
+      "value": {
+        "default": "_03_, _04_, _06_",
+        "type": "string",
+        "required": false,
+        "visible": true,
+        "order": 0
+      }
+    },
+    {
+      "id": "heritvalue",
+      "details": {
+        "label": "Heritability Value",
+        "description": "Value in input data representing heritability",
+        "attribute": "--heritvalue",
+        "showAttribute": true
+      },
+      "semantics": {
+        "ontology": [
+          "xs:string"
+        ]
+      },
+      "value": {
+        "default": "0.3, 0.4, 0.6",
+        "type": "string",
+        "required": false,
+        "visible": true,
+        "order": 0
+      }
+    },
+    {
+      "id": "structstring",
+      "details": {
+        "label": "Structure String",
+        "description": "String(s) in input data representing Structure",
+        "attribute": "--structstring",
+        "showAttribute": true
+      },
+      "semantics": {
+        "ontology": [
+          "xs:string"
+        ]
+      },
+      "value": {
+        "default": "PheHasStruct, PheNPStruct",
+        "type": "string",
+        "required": false,
+        "visible": true,
+        "order": 0
+      }
+    },
+    {
+      "id": "structvalue",
+      "details": {
+        "label": "Structure Value",
+        "description": "Value in input data representing Structure",
+        "attribute": "--structvalue",
+        "showAttribute": true
+      },
+      "semantics": {
+        "ontology": [
+          "xs:string"
+        ]
+      },
+      "value": {
+        "default": "True, False",
+        "type": "boolean",
+        "required": false,
+        "visible": true,
+        "order": 0
+      }
+    },
+    {
+      "id": "xpos",
+      "details": {
+        "label": "Exclude TP by FP Plot",
+        "description": "Not include TP by FP plots in the output graphics",
+        "attribute": "--xpos",
+        "showAttribute": true
+      },
+      "semantics": {
+        "ontology": [
+          "xs:string"
+        ]
+      },
+      "value": {
+        "default": false,
+        "type": "boolean",
+        "required": false,
+        "visible": true,
+        "order": 0
+      }
+    },
+    {
+      "id": "postitle",
+      "details": {
+        "label": "TP by FP Plot Title",
+        "description": "To specify the title of the TP by FP plot",
+        "attribute": "--postitle",
+        "showAttribute": true
+      },
+      "semantics": {
+        "ontology": [
+          "xs:string"
+        ]
+      },
+      "value": {
+        "default": "True Positives by False Positives",
+        "type": "string",
+        "required": false,
+        "visible": true,
+        "order": 0
+      }
+    },
+    {
+      "id": "xerror",
+      "details": {
+        "label": "Exclude Error Plot",
+        "description": "Not include TP by FP plots in the output graphics",
+        "attribute": "--xerror",
+        "showAttribute": true
+      },
+      "semantics": {
+        "ontology": [
+          "xs:string"
+        ]
+      },
+      "value": {
+        "default": false,
+        "type": "boolean",
+        "required": false,
+        "visible": true,
+        "order": 0
+      }
+    },
+    {
+      "id": "errortitle",
+      "details": {
+        "label": "Error Plot Title",
+        "description": "To specify the title of the error plot",
+        "attribute": "--errortitle",
+        "showAttribute": true
+      },
+      "semantics": {
+        "ontology": [
+          "xs:string"
+        ]
+      },
+      "value": {
+        "default": "Plot of AUC by MAE",
+        "type": "string",
+        "required": false,
+        "visible": true,
+        "order": 0
+      }
+    },
+    {
+      "id": "extraplots",
+      "details": {
+        "label": "Extra Plots",
+        "description": "To include additional plots in output graphics",
+        "attribute": "--extraplots",
+        "showAttribute": true
+      },
+      "semantics": {
+        "ontology": [
+          "xs:string"
+        ]
+      },
+      "value": {
+        "default": true,
+        "type": "boolean",
+        "required": false,
+        "visible": true,
+        "order": 0
+      }
+    },
+    {
+      "id": "aucmin",
+      "details": {
+        "label": "Minimum AUC Axis",
+        "description": "To specify the minimum AUC axis value",
+        "attribute": "--aucmin",
+        "showAttribute": true
+      },
+      "semantics": {
+        "ontology": [
+          "xs:string"
+        ]
+      },
+      "value": {
+        "default": "0",
+        "type": "string",
+        "required": false,
+        "visible": true,
+        "order": 0
+      }
+    },
+    {
+      "id": "aucmax",
+      "details": {
+        "label": "Maximum AUC Axis",
+        "description": "To specify the maximum AUC axis value",
+        "attribute": "--aucmax",
+        "showAttribute": true
+      },
+      "semantics": {
+        "ontology": [
+          "xs:string"
+        ]
+      },
+      "value": {
+        "default": "1.0",
+        "type": "string",
+        "required": false,
+        "visible": true,
+        "order": 0
+      }
+    },
+    {
+      "id": "maemin",
+      "details": {
+        "label": "Minimum MAE Axis",
+        "description": "To specify the minimum MAE axis value",
+        "attribute": "--maemin",
+        "showAttribute": true
+      },
+      "semantics": {
+        "ontology": [
+          "xs:string"
+        ]
+      },
+      "value": {
+        "default": "0",
+        "type": "string",
+        "required": false,
+        "visible": true,
+        "order": 0
+      }
+    },
+        {
+      "id": "maemax",
+      "details": {
+        "label": "Maximum MAE Axis",
+        "description": "To specify the maximum MAE axis value",
+        "attribute": "--maemax",
+        "showAttribute": true
+      },
+      "semantics": {
+        "ontology": [
+          "xs:string"
+        ]
+      },
+      "value": {
+        "default": "2.0",
+        "type": "string",
+        "required": false,
+        "visible": true,
+        "order": 0
+      }
+    }
+  ]
+}
