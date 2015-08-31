@@ -24,7 +24,9 @@
     "winnow"
   ],
   "modules": [
-    "load python"
+    "purge",
+	"load TACC",
+	"load python"
   ],
   "inputs": [
     {
@@ -72,10 +74,8 @@
     {
       "id": "SNP",
       "details": {
-        "label": "Name for the SNP column in input file",
-        "description": "A name for the SNP column in the input file",
-        "attribute": "--SNP",
-        "showAttribute": true
+        "label": "Name for the SNP column in input files",
+        "description": "A name for the SNP column in the input file"
       },
       "semantics": {
         "ontology": [
@@ -87,16 +87,14 @@
         "type": "string",
         "required": true,
         "visible": true,
-        "order": 0
+        "order": 1
       }
     },
     {
       "id": "Score",
       "details": {
-        "label": "Name for p-value column",
-        "description": "Name for the p-value column in the input file (e.g. p-value)",
-        "attribute": "--Score",
-        "showAttribute": true
+        "label": "Name for p-value column in input files",
+        "description": "Name for the p-value column in the input file (e.g. p-value)"
       },
       "semantics": {
         "ontology": [
@@ -108,16 +106,14 @@
         "type": "string",
         "required": true,
         "visible": true,
-        "order": 0
+        "order": 2
       }
     },
     {
       "id": "Filename",
       "details": {
-        "label": "Name output file",
-        "description": "Specifies the name for the Winnow output file (without file extension)",
-        "attribute": "--filename",
-        "showAttribute": true
+        "label": "Name for output file",
+        "description": "Specifies the name for the Winnow output file (without file extension)"
       },
       "semantics": {
         "ontology": [
@@ -129,24 +125,34 @@
         "type": "string",
         "required": true,
         "visible": true,
-        "order": 0
+        "order": 3
       }
     },
     {
       "id": "kttype",
       "details": {
-        "label": "Specify the known-truth type",
-        "description": "Allows one to specify the type of known truth file denoted in --class (either OTE or FGS)",
-        "attribute": "--kttype",
-        "showAttribute": true
+        "label": "Type of known-truth file",
+        "description": "Allows one to specify the type of known truth file denoted in --class, either OTE (only truth and effect) or FGS (full genome set)"
       },
       "semantics": {
+	    "maxCardinality": 1,
+        "minCardinality": 1,
         "ontology": [
           "xs: string"
         ]
       },
       "value": {
-        "type": "string",
+	    "default": "OTE",
+		"enquote": false,
+		"enum_values": [
+            {
+                "OTE": "Only significant SNPs and effects listed"
+            },
+            {
+                "FGS": "All SNPs and effects listed"
+            }
+        ],
+        "type": "enumeration",
         "required": true,
         "visible": true,
         "order": 0
@@ -155,37 +161,42 @@
     {
       "id": "threshold",
       "details": {
-        "label": "Specifies the significance threshold",
-        "description": "A value used for determining the threshold on certain classification metrics",
-        "attribute": "--threshold",
-        "showAttribute": true
+        "label": "Significance threshold value",
+        "description": "A value used for determining the threshold on certain classification metrics (between 0 and 1)",
+        "repeatArgument": false,
+        "showArgument": false
       },
       "semantics": {
+	    "maxCardinality": 1,
+        "minCardinality": 0,
         "ontology": [
-          "xs: string"
+          "xs: decimal"
         ]
       },
       "value": {
-	"default": "0.05",
-        "type": "string",
+		"default": 0.05,
+        "type": "number",
         "required": false,
-	"visible": true
+		"visible": true
       }
     },
     {
       "id": "verbose",
       "details": {
-        "label": "Triggers verbose mode",
+        "label": "Verbose mode",
         "description": "Triggers verbose mode for the program's execution",
-        "attribute": "--verbose",
-        "showAttribute": true
+        "repeatArgument": false,
+        "showArgument": false
       },
 	"semantics": {
+		"maxCardinality": 1,
+        "minCardinality": 0,
         "ontology": [
           "xs:bool"
         ]
 	},
       "value": {
+		"default": 0,
         "type": "number",
         "order": 0,
         "required": false,
@@ -195,19 +206,29 @@
     {
       "id": "seper",
       "details": {
-        "label": "Separation of values",
+        "label": "Value delimiter in input files",
         "description": "Denotes the way values are separated in the input file",
-        "attribute": "--seper",
-        "showAttribute": true
+        "repeatArgument": false,
+        "showArgument": false
       },
       "semantics": {
+		"maxCardinality": 1,
+        "minCardinality": 0,
         "ontology": [
           "xs:string"
         ]
       },
       "value": {
         "default": "whitespace",
-        "type": "string",
+		"enum_values": [
+            {
+                "whitespace": "File is whitespace-delimited"
+            },
+            {
+                "comma": "File is comma-delimited"
+            }
+        ],
+        "type": "enumeration",
         "visible": true,
         "order": 0,
         "required": false
@@ -216,20 +237,32 @@
     {
       "id": "kttypeseper",
       "details": {
-        "label": "Separator in known-truth file",
+        "label": "Delimiter in known-truth file",
         "description": "Describes the delimitation in the known-truth file (either comma or whitespace)",
-        "attribute": "--kttypeseper",
-        "showAttribute": true
+        "repeatArgument": false,
+        "showArgument": false
       },
       "semantics": {
+		"maxCardinality": 1,
+        "minCardinality": 0,
         "ontology": [
           "xs:string"
         ]
       },
       "value": {
         "default": "whitespace",
-        "type": "string",
+		"enquote": false,
+		"enum_values": [
+            {
+                "whitespace": "File is whitespace-delimited"
+            },
+            {
+                "comma": "File is comma-delimited"
+            }
+        ],
+        "type": "enumeration",
         "visible": true,
+		"validator": null,
         "order": 0,
         "required": false
       }
@@ -237,10 +270,10 @@
     {
       "id": "beta",
       "details": {
-        "label": "Name effect size column",
+        "label": "Name of effect size column",
         "description": "Specifies a string for the name of the estimated SNP effect size column in input files (if needed)",
-        "attribute": "--beta",
-        "showAttribute": true
+        "repeatArgument": false,
+        "showArgument": false
       },
       "semantics": {
         "ontology": [

@@ -3,7 +3,7 @@
   "version": "2.07",
   "helpURI": "https://pods.iplantcollaborative.org/wiki/display/atmman/Validate+Workflow+v0.7",
   "defaultQueue": "normal",
-  "defaultRequestedTime": "3:00:00",
+  "defaultMaxRunTime": "05:00:00",
   "shortDescription": "Whole genome association analysis toolset",
   "longDescription": "FaST-LMM (Factored Spectrally Transformed Linear Mixed Models) is a program for performing genome-wide association studies (GWAS) on large data sets",
   "executionSystem": "stampede-07282014-1215-spt6655",
@@ -29,16 +29,19 @@
     {
       "id": "inputTPED",
       "details": {
-        "label": "Input .tped (relative to /iplant/home)",
+        "label": "Input .tped file",
+		"description": "Specify the TPED file for the transposed PLINK set, if used",
         "showAttribute": false
       },
       "semantics": {
+		"maxCardinality": 1,
         "minCardinality": 0,
         "ontology": [
           "http://sswapmeet.sswap.info/soybase/"
         ]
       },
       "value": {
+		"order": 6,
         "visible": true,
         "required": false
       }
@@ -46,17 +49,19 @@
     {
       "id": "inputFAM",
       "details": {
-        "label": "Input folder (relative to /iplant/home)",
-        "description": "Specify folder that contains .map/.ped files",
+        "label": "Input .fam file",
+        "description": "Specify the FAM file for the PLINK binary set, if used",
         "showAttribute": false
       },
       "semantics": {
-        "minCardinality": 1,
+		"maxCardinality": 1,
+        "minCardinality": 0,
         "ontology": [
           "http://sswapmeet.sswap.info/soybase/"
         ]
       },
       "value": {
+		"order": 5,
 	"default": "agave://data.iplantcollaborative.org/spt6655/applications/fastlmm-2.07/fastlmm/test/toydata.fam",
         "visible": true,
         "required": false
@@ -66,15 +71,18 @@
       "id": "Sim",
       "details": {
         "label": "Genetic similarity matrix file",
+		"description": "Specifies the genetic similarity matrix file to be read, if the matrix was already calculated",
         "showAttribute": false
       },
       "semantics": {
-        "minCardinality": 1,
+		"maxCardinality": 1,
+        "minCardinality": 0,
         "ontology": [
           "http://sswapmeet.sswap.info/soybase/"
         ]
       },
       "value": {
+		"order": 9,
 	"default": "agave://data.iplantcollaborative.org/spt6655/applications/fastlmm-2.07/fastlmm/test/toydata.sim.txt",
         "visible": true,
         "required": false
@@ -83,16 +91,19 @@
     {
       "id": "inputPED",
       "details": {
-        "label": "Input .ped (relative to /iplant/home)",
+        "label": "Input .ped file",
+		"description": "Specifies the PED file for the main PLINK set, if used",
         "showAttribute": false
       },
       "semantics": {
-        "minCardinality": 1,
+		"maxCardinality": 1,
+        "minCardinality": 0,
         "ontology": [
           "http://sswapmeet.sswap.info/soybase/"
         ]
       },
       "value": {
+	  "order": 1,
 	"default": "agave://data.iplantcollaborative.org/spt6655/applications/fastlmm-2.07/fastlmm/test/toydata.ped",
         "visible": true,
         "required": false
@@ -101,16 +112,19 @@
     {
       "id": "inputBED",
       "details": {
-        "label": "Input .bed (relative to /iplant/home)",
+        "label": "Input .bed file",
+		"description": "Specifies the BED file for the PLINK binary set, if used",
         "showAttribute": false
       },
       "semantics": {
-        "minCardinality": 1,
+		"maxCardinality": 1,
+        "minCardinality": 0,
         "ontology": [
           "http://sswapmeet.sswap.info/soybase/"
         ]
       },
       "value": {
+		"order": 3,
 	"default": "agave://data.iplantcollaborative.org/spt6655/applications/fastlmm-2.07/fastlmm/test/toydata.bed",
         "visible": true,
         "required": false
@@ -119,16 +133,19 @@
     {
       "id": "inputBIM",
       "details": {
-        "label": "Input .bim (relative to /iplant/home)",
+        "label": "Input .bim file",
+		"description": "Specify the BIM file for the PLINK binary set, if used",
         "showAttribute": false
       },
       "semantics": {
-        "minCardinality": 1,
+		"maxCardinality": 1,
+        "minCardinality": 0,
         "ontology": [
           "http://sswapmeet.sswap.info/soybase/"
         ]
       },
       "value": {
+		"order": 4,
 	"default": "agave://data.iplantcollaborative.org/spt6655/applications/fastlmm-2.07/fastlmm/test/toydata.bim",
         "visible": true,
         "required": false
@@ -137,16 +154,19 @@
     {
       "id": "inputMAP",
       "details": {
-        "label": "Input .map file (relative to /iplant/home)",
+        "label": "Input .map file",
+		"description": "Specify the MAP file for the main PLINK set, if used",
         "showAttribute": false
       },
       "semantics": {
-        "minCardinality": 1,
+		"maxCardinality": 1,
+        "minCardinality": 0,
         "ontology": [
           "http://sswapmeet.sswap.info/soybase/"
         ]
       },
       "value": {
+		"order": 2,
 	"default": "agave://data.iplantcollaborative.org/spt6655/applications/fastlmm-2.07/fastlmm/test/toydata.map",
         "visible": true,
         "required": false
@@ -155,16 +175,19 @@
     {
       "id": "inputTFAM",
       "details": {
-        "label": "Input .tfam (relative to /iplant/home)",
+        "label": "Input .tfam file",
+		"description": "Specify the TFAM file for the transposed PLINK set, if used",
         "showAttribute": false
       },
       "semantics": {
+		"maxCardinality": 1,
         "minCardinality": 0,
         "ontology": [
           "http://sswapmeet.sswap.info/soybase/"
         ]
       },
       "value": {
+		"order": 7,
         "visible": true,
         "required": false
       }
@@ -173,7 +196,7 @@
       "id": "inputPHENO",
       "details": {
         "label": "Input phenotype file",
-        "description": "Specify the phenotype file corresponding to your fileset",
+        "description": "Specifies the phenotype file corresponding to your PLINK fileset",
         "showAttribute": false
       },
       "semantics": {
@@ -183,6 +206,7 @@
         ]
       },
       "value": {
+		"order": 8,
 	"default": "agave://data.iplantcollaborative.org/spt6655/applications/fastlmm-2.07/fastlmm/test/toydata.phe",
         "visible": true,
         "required": true
@@ -191,7 +215,7 @@
     {
       "id": "inputCOVAR",
       "details": {
-        "label": "Input covariate file (relative to /iplant/home)",
+        "label": "Input covariate file",
         "description": "Specify optional covariate file",
         "showAttribute": false
       },
@@ -202,6 +226,7 @@
         ]
       },
       "value": {
+		"order": 10,
 	"default": "agave://data.iplantcollaborative.org/spt6655/applications/fastlmm-2.07/fastlmm/test/toydata.cov",
         "visible": true,
         "required": false
@@ -213,6 +238,7 @@
       "id": "verboseOutput",
       "details": {
         "label": "Triggers verbose mode",
+		"description": "Boolean trigger for verbose mode (1 if true, 0 if false)",
         "showAttribute": false
       },
       "semantics": {
@@ -231,6 +257,7 @@
       "id": "C",
       "details": {
         "label": "The covariate file is an input",
+		"description": "Boolean trigger for whether the covariate file is included or not (1 if true, 0 if false)",
         "showAttribute": false
       },
       "semantics": {
@@ -248,7 +275,8 @@
     {
       "id": "B",
       "details": {
-        "label": "The binary files are inputs",
+        "label": "Binary files as inputs",
+		"description": "Boolean option for the binary PLINK fileset being the primary input (1 if true, 0 if false)",
         "showAttribute": false
       },
       "semantics": {
@@ -266,7 +294,7 @@
 	{
       "id": "SimFileset",
       "details": {
-        "label": "Fileset for similarity matrix",
+        "label": "Fileset for similarity matrix calculation",
 	"description": "The PLINK file group used to calculate the genetic similarity matrix (PEDMAP, BEDBIMFAM, or TPEDTFAM)",
         "showAttribute": false
       },
@@ -277,7 +305,18 @@
       },
       "value": {
         "default": "PEDMAP",
-        "type": "string",
+		"enum_values": [
+            {
+                "PEDMAP": "The main PLINK fileset will be used"
+            },
+            {
+                "BEDBIMFAM": "The binary PLINK fileset will be used"
+            },
+			{
+				"TPEDTFAM": "The transposed fileset will be used"
+			}
+        ],
+        "type": "enumeration",
         "visible": true,
         "required": false
       }
@@ -285,7 +324,7 @@
     {
       "id": "mpheno",
       "details": {
-        "label": "Proper column number for phenotype file",
+        "label": "Proper column number for phenotype file (if multiple phenotypes are used)",
         "showAttribute": false
       },
       "semantics": {
@@ -304,6 +343,7 @@
       "id": "T",
       "details": {
         "label": "The transposed files are inputs",
+		"description": "Boolean option for the transposed PLINK fileset being the primary inputs (1 if true, 0 if false)",
         "showAttribute": false
       },
       "semantics": {
@@ -322,6 +362,7 @@
       "id": "output",
       "details": {
         "label": "The name of the analysis output file",
+		"description": "Specifies the name of the output file (without file extension)",
         "showAttribute": false
       },
       "semantics": {

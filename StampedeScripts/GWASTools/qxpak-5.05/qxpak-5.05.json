@@ -7,7 +7,7 @@
   "defaultNodeCount": 1,
   "defaultMemoryPerNode": 4,
   "defaultProcessorsPerNode": 1,
-  "defaultRequestedTime": "6:00:00",
+  "defaultMaxRunTime": "05:00:00",
   "shortDescription": "QxPak is a Fortran program aimed at simplifying statistical genetic analyses implementing a mixed model approach.",
   "longDescription": "This software aims at simplifying statistical genetic analyses implementing a coherent and unified mixed model approach. The goal is to provide software that can be used in a wide variety of situations with ample genetic and statistical modeling flexibility. The main kind of analyses that QxPak may be used for include regular mixed model solving, QTL, segment analysis, multitrait, association, molecular relation matrix, and sequence based association studies.",
   "executionSystem": "stampede-07282014-1215-spt6655",
@@ -27,8 +27,8 @@
     {
       "id": "parameter_file",
       "details": {
-        "label": "Gives input details",
-        "description": "File where all settings and additional input files are specified (leave data, marker, and pedigree file areas as $data, $marker, and $pedigree respectively)",
+        "label": "Parameter file",
+        "description": "Parameter file where all settings and additional input files are specified",
         "showAttribute": false
       },
       "semantics": {
@@ -44,8 +44,8 @@
     {
       "id": "data_file",
       "details": {
-        "label": "File containing phenotypes",
-        "description": "A free format file that contains the records and effects. Note that it may contain more information than is used in the model.",
+        "label": "Data file",
+        "description": "Data file in a free format file that contains the phenotypes, records, and effects. Note that it may contain more information than is used in the model.",
         "showAttribute": false
       },
       "semantics": {
@@ -61,8 +61,8 @@
     {
       "id": "pedigree_file",
       "details": {
-        "label": "Offers pedigree information",
-        "description": "File displaying the pedigree information. The format must be as follows: individual, father, mother, (sex(breed)). Sex and/or breed may be missing.",
+        "label": "Pedigree file",
+        "description": "The pedigree file displays the pedigree information. The format must be as follows: individual, father, mother, (sex(breed)). Sex and/or breed may be missing.",
         "showAttribute": false
       },
       "semantics": {
@@ -78,8 +78,8 @@
     {
       "id": "marker_file",
       "details": {
-        "label": "Offers genotype information",
-        "description": "This file offers genetic marker and genotype information. The file may be in either usual format or transposed format (see helpURL link for more details)",
+        "label": "Marker file",
+        "description": "The marker file offers genetic marker and genotype information. The file may be in either usual format or transposed format (see helpURL link for more details)",
         "showAttribute": false
       },
       "semantics": {
@@ -97,7 +97,7 @@
   {
       "id": "output",
       "details": {
-        "label": "Name for output",
+        "label": "Output file name",
         "description": "The desired name of the output file for QxPak",
         "showAttribute": false
       },
