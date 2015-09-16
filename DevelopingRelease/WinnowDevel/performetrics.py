@@ -67,9 +67,12 @@ def mattcorr(snpTrueFalse, threshold, scoreColumn):
         truePositives = float(tp(snpTrueFalse, threshold, scoreColumn))
         falsePositives = float(fp(snpTrueFalse, threshold, scoreColumn))
         trueNegatives = float(tn(snpTrueFalse, threshold, scoreColumn))
-        falseNegatives = float(fn(snpTrueFalse, threshold, scoreColumn)) 
-        denom = np.sqrt((truePositives+falsePositives)*(truePositives+falseNegatives)*(falsePositives+trueNegatives)*(trueNegatives+falseNegatives))
-        return (truePositives*trueNegatives - falsePositives*falseNegatives) / denom
+        falseNegatives = float(fn(snpTrueFalse, threshold, scoreColumn))
+        if (truePositives == 0) and (falsePositives == 0):
+            return "undefined"
+        else:
+            denom = np.sqrt((truePositives+falsePositives)*(truePositives+falseNegatives)*(falsePositives+trueNegatives)*(trueNegatives+falseNegatives))
+            return (truePositives*trueNegatives - falsePositives*falseNegatives) / denom
 
 def auc(snpTrueFalse, scoreColumn):
 	"""
@@ -381,7 +384,10 @@ def precision(snpTrueFalse, threshold, scoreColumn):
 	"""
 	truePositives = float(tp(snpTrueFalse, threshold, scoreColumn))
 	falsePositives = float(fp(snpTrueFalse, threshold, scoreColumn))
-	return truePositives / (truePositives + falsePositives)
+	if (truePositives == 0) and (falsePositives == 0):
+	    return "undefined"
+	else:
+	    return truePositives / (truePositives + falsePositives)
 	
 def fdr(snpTrueFalse, threshold, scoreColumn):
         """
@@ -403,7 +409,10 @@ def fdr(snpTrueFalse, threshold, scoreColumn):
         """
         truePositives = float(tp(snpTrueFalse, threshold, scoreColumn))
 	falsePositives = float(fp(snpTrueFalse, threshold, scoreColumn))
-	return falsePositives / (truePositives + falsePositives)
+	if (truePositives == 0) and (falsePositives == 0):
+	    return "undefined"
+	else:
+	    return falsePositives / (truePositives + falsePositives)
         
 
 def youden(snpTrueFalse, threshold, scoreColumn):

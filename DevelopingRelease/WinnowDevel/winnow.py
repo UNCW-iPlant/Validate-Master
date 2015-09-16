@@ -8,7 +8,7 @@ from commandline import initializeGraphics, checkArgs
 from fileimport import getList, loadKT, loadFile, trueFalse, writeCSV, writeSettings
 from checkhidden import checkList
 from gwas import gwasWithBeta, gwasWithoutBeta
-from adjustments import fdr_bh
+from statsmodels.sandbox.stats.multicomp import multipletests
 
 
 class Winnow:
@@ -152,7 +152,7 @@ class Winnow:
         if self.args_dict['pvaladjust'] is None:
             return score
         elif self.args_dict['pvaladjust'] == 'BH':
-            return fdr_bh(score)
+            return multipletests(score, alpha=self.args_dict['threshold'], method="fdr_bh")
         # Add other adjustments here
         else:
             return score
