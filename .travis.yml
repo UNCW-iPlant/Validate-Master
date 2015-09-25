@@ -17,8 +17,8 @@ install:
     - conda install --yes -c r r
     - conda install --yes -c https://conda.binstar.org/r rpy2
     - conda install --yes -c https://conda.binstar.org/r r-testthat
-    - wget https://cran.r-project.org/src/contrib/Rcpp_0.12.0.tar.gz
-    - R CMD INSTALL Rcpp_0.12.0.tar.gz
+    - wget https://cran.r-project.org/src/contrib/Rcpp_0.12.1.tar.gz
+    - R CMD INSTALL Rcpp_0.12.1.tar.gz
     - wget https://cran.r-project.org/src/contrib/plyr_1.8.3.tar.gz
     - R CMD INSTALL plyr_1.8.3.tar.gz
     - wget https://cran.r-project.org/src/contrib/digest_0.6.8.tar.gz
@@ -49,11 +49,26 @@ install:
     - R CMD INSTALL proto_0.3-10.tar.gz
     - wget https://cran.r-project.org/src/contrib/ggplot2_1.0.1.tar.gz
     - R CMD INSTALL ggplot2_1.0.1.tar.gz
-
+    - wget https://cran.r-project.org/src/contrib/sciplot_1.1-0.tar.gz
+    - R CMD INSTALL sciplot_1.1-0.tar.gz
+    - pip install coveralls
 
 script:
-    - cd DevelopingRelease/WinnowDevel/Tests
-    - python winnowdevel_test_suite.py
-    - cd ..
-    - cd ../DemonstrateDevel/Tests
-    - python demonstratedevel_test_suite.py
+    - cd DevelopingRelease/WinnowDevel/
+    - path=$PWD
+    - cd Tests
+    - coverage run --source $path/adjustments.py,$path/checkhidden.py,$path/data.py,$path/fileimport.py,$path/gwas.py,$path/performetrics.py,$path/winnow.py winnowdevel_test_suite.py
+    - ls -a
+    - cd ../../DemonstrateDevel/
+    - demopath=$PWD
+    - echo $demopath
+    - cd Tests
+    - coverage run --source $demopath/demonstrate.py demonstratedevel_test_suite.py
+    - coverage report
+    - ls -a
+    - cd ../..
+    - mv DemonstrateDevel/Tests/.coverage .coverage.demonstrate
+    - mv WinnowDevel/Tests/.coverage .coverage.winnow
+    - coverage combine
+after_success:
+    - coveralls
