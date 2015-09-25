@@ -37,8 +37,8 @@ Demonstrate2<-function(dir, make.pos.plot=TRUE, pos.plot.title="True Positives b
     listOfFiles <- lapply(files, function(x) read.table(x, header=TRUE))
     return(listOfFiles)
   }
-  filenames <- unlist(tools::file_path_sans_ext(Sys.glob("*.txt")))
   myfiles<-readFiles(dir)
+  filenames <- unlist(tools::file_path_sans_ext(Sys.glob("*.txt")))
   print(filenames)
   
   #Create some extra plots for univariate visualization
@@ -53,11 +53,12 @@ Demonstrate2<-function(dir, make.pos.plot=TRUE, pos.plot.title="True Positives b
       hist(myfiles[[i]]$fp, main=paste(filenames[[i]]," False Positives",sep=":"), xlab="False Positives")
     }
     dev.off()
+    
     #Make a quick summary table comparing PPV/Precision, sensivity, and specificity
     #and output said table to a CSV file
     sens<-unlist(lapply(myfiles, function(x) mean(x$sens)))
     spec<-unlist(lapply(myfiles, function(x) mean(x$spec)))
-    prec<-unlist(lapply(myfiles, function(x) mean(x$precision)))
+    prec<-unlist(lapply(myfiles, function(x) mean(as.numeric(setdiff(x$precision, "undefined")))))
     fitdat<-data.frame(sens,spec,prec, row.names=filenames)
     colnames(fitdat)<-c("Average Sensitivity","Average Specificity","Average Precision")
     write.csv(fitdat, "ComparisonTable.csv")
@@ -71,7 +72,6 @@ Demonstrate2<-function(dir, make.pos.plot=TRUE, pos.plot.title="True Positives b
       myfiles[[i]]$file <- sQuote(i)
       detach(myfiles[[i]])
     }
-    
     #Determines maximum value of all true positives
     tpmax<-function(list){
       tps<-list()
@@ -134,7 +134,6 @@ Demonstrate2<-function(dir, make.pos.plot=TRUE, pos.plot.title="True Positives b
     fc<-fpmed(myfiles)
     
     all.data<-do.call("rbind", myfiles)
-    
     TPFP <- ddply(all.data, .(tp, fp, file), summarize, count=length(file))
     
     #Creates pdf output
