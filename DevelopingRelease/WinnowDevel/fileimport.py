@@ -94,3 +94,5 @@ def writeSettings(winnowargs):
         openFileWriter.writerow(('Threshold: ', winnowargs['threshold']))
         if winnowargs['pvaladjust'] is not None and 'pvaladjust' in winnowargs.keys():
             openFileWriter.writerow(('Adjustment:', winnowargs['pvaladjust']))
+        if winnowargs['covar'] is not None:
+            openFileWriter.writerow(('Covariates:', True))

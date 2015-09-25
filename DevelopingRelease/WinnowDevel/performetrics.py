@@ -67,7 +67,7 @@ def mattcorr(snpTrueFalse, threshold, scoreColumn):
         truePositives = float(tp(snpTrueFalse, threshold, scoreColumn))
         falsePositives = float(fp(snpTrueFalse, threshold, scoreColumn))
         trueNegatives = float(tn(snpTrueFalse, threshold, scoreColumn))
-        falseNegatives = float(fn(snpTrueFalse, threshold, scoreColumn))
+        falseNegatives = float(fn(snpTrueFalse, threshold, scoreColumn)) 
         if (truePositives == 0) and (falsePositives == 0):
             return "undefined"
         else:
@@ -92,9 +92,9 @@ def auc(snpTrueFalse, scoreColumn):
 	"""
 	scoreColumn = np.array(scoreColumn)
 	snpTrueFalse = np.array(snpTrueFalse)
-	x1 = scoreColumn[snpTrueFalse == True]
+	x1 = scoreColumn[snpTrueFalse==True]
 	n1 = x1.size
-	x2 = scoreColumn[snpTrueFalse == False]
+	x2 = scoreColumn[snpTrueFalse==False]
 	n2 = x2.size
 	r = stats.rankdata(np.hstack((x1,x2)))
 	auc = (np.sum(r[0:n1]) - n1 * (n1+1)/2) / (n1 * n2)
@@ -413,7 +413,6 @@ def fdr(snpTrueFalse, threshold, scoreColumn):
 	    return "undefined"
 	else:
 	    return falsePositives / (truePositives + falsePositives)
-        
 
 def youden(snpTrueFalse, threshold, scoreColumn):
 	"""
@@ -435,6 +434,21 @@ def youden(snpTrueFalse, threshold, scoreColumn):
 	sensitivity = float(sens(snpTrueFalse, threshold, scoreColumn))
 	specificity = float(spec(snpTrueFalse, threshold, scoreColumn))
 	return sensitivity + specificity - 1.0
+
+def avgcovarweight(covar_column):
+        """
+        Returns the average covariate weight based on the model produced from the data set
+        
+                Example:
+                    
+                        >>>covar_column=np.array([0.08410,0.00161,0.25200,0.00161,0.24000,0.25000,0.00161,0.25000,0.00161,0.25200,0.25000,0.00161,-0.02440,0.05360])
+                        >>>avgcovarweight(covar_column)
+                        0.11538214285714285
+                        
+        :param covar_column: covariate column from data set
+        :return: float representation of average covariate weight                
+        """
+        return np.mean(np.array(covar_column))
 
 if __name__ == "__main__":
     import doctest

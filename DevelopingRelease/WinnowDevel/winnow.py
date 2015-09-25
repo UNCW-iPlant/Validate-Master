@@ -7,9 +7,8 @@
 from commandline import initializeGraphics, checkArgs
 from fileimport import getList, loadKT, loadFile, trueFalse, writeCSV, writeSettings
 from checkhidden import checkList
-from gwas import gwasWithBeta, gwasWithoutBeta
+from gwas import gwasWithBeta, gwasWithoutBeta, gwasBetaCovar, gwasNoBetaCovar
 from statsmodels.sandbox.stats.multicomp import multipletests
-
 
 class Winnow:
     def __init__(self, args):
@@ -33,6 +32,7 @@ class Winnow:
         else:
             print 'Currently only OTE is supported'
 
+
     def load_ote(self):
         """
         Loads only truth and effect type known truth file.
@@ -49,6 +49,7 @@ class Winnow:
         for each in snp_column:
             self.snp_true_false.append(trueFalse(each, kt_snps))
         self.load_ote_betas(snp_column, kt_snps, kt_betas)
+
 
     def load_ote_betas(self, snp_col, kt_snp, kt_beta):
         """
@@ -72,6 +73,7 @@ class Winnow:
                     self.beta_true_false.append(float(0))
                 count += 1
 
+
     def load_data(self, data_file):
         """
         Returns a list of score and beta values from a file that is given as the parameter
@@ -86,9 +88,18 @@ class Winnow:
         self.save_snp_score(snp_column, score_column, adjusted_score_column)
         if self.args_dict['beta'] is not None:
             beta_column = data_to_list(acquired_data, 1, acquired_data.header.index(self.args_dict['beta']), True)
-            return adjusted_score_column, beta_column
+            if self.args_dict['covar'] is not None:
+                covar_column = data_to_list(acquired_data, 1, acquired_data.header.index(self.args_dict['covar']), True)
+                return adjusted_score_column, beta_column, covar_column
+            else:
+                return adjusted_score_column, beta_column
         else:
-            return adjusted_score_column
+            if self.args_dict['covar'] is not None:
+                covar_column = data_to_list(acquired_data, 1, acquired_data.header.index(self.args_dict['covar']), True)
+                return adjusted_score_column, covar_column
+            else:
+                return adjusted_score_column
+
 
     def do_analysis(self):
         """
@@ -101,15 +112,25 @@ class Winnow:
         app_output_list = sorted(checkList(getList(self.args_dict['folder'])))
         for each in app_output_list:
             if self.args_dict['beta'] is not None:
-                score_column, beta_column = self.load_data(each)
+                if self.args_dict['covar'] is not None:
+                    score_column, beta_column, covar_column = self.load_data(each)
+                else:
+                    score_column, beta_column = self.load_data(each)
+                    covar_column = None
             else:
-                score_column = self.load_data(each)
-                beta_column = None
+                if self.args_dict['covar'] is not None:
+                    score_column, covar_column = self.load_data(each)
+                    beta_column = None
+                else:
+                    score_column = self.load_data(each)
+                    beta_column = None
+                    covar_column = None
             if self.args_dict['analysis'] == 'GWAS':
-                yield self.do_gwas(score_column, beta_column)
+                yield self.do_gwas(score_column, beta_column, covar_column)
             else:
                 # Add other analysis methods here
                 print 'Currently, only GWAS is supported.'
+
 
     def write_to_file(self, gen):
         """
@@ -127,7 +148,8 @@ class Winnow:
                 first_for_header = False
         gen.close()
 
-    def do_gwas(self, score_column, beta_column):
+
+    def do_gwas(self, score_column, beta_column, covar_column):
         """
         Returns the results of the GWAS analysis, with or without beta, using the instance variables snp_true_false and
         beta_true_false and the lists, from the parameters, the lists of scores and, if applicable, the list of betas.
@@ -138,9 +160,15 @@ class Winnow:
         """
         threshold = self.args_dict['threshold']
         if self.args_dict['beta'] is None:
-            return gwasWithoutBeta(self.snp_true_false, score_column, threshold)
+            if self.args_dict['covar'] is None:
+                return gwasWithoutBeta(self.snp_true_false, score_column, threshold)
+            else:
+                return gwasNoBetaCovar(self.snp_true_false, score_column, threshold, covar_column)
         else:
-            return gwasWithBeta(beta_column, self.beta_true_false, self.snp_true_false, score_column, threshold)
+            if self.args_dict['covar'] is not None:
+                return gwasBetaCovar(beta_column, self.beta_true_false, self.snp_true_false, score_column, threshold, covar_column)
+            else:
+                return gwasWithBeta(beta_column, self.beta_true_false, self.snp_true_false, score_column, threshold)
 
     def adjust_score(self, score):
         """
@@ -151,12 +179,8 @@ class Winnow:
         """
         if self.args_dict['pvaladjust'] is None:
             return score
-        elif self.args_dict['pvaladjust'] == 'BH':
-            return multipletests(score, alpha=self.args_dict['threshold'], method="fdr_bh")
-        # Add other adjustments here
         else:
-            return score
-        pass
+            return multipletests(score, alpha=self.args_dict['threshold'], method=self.args_dict['pvaladjust'])[1]
 
     def save_snp_score(self, snp, score, adjusted):
         """
@@ -186,6 +210,7 @@ class Winnow:
                         f.write('SNP ID \tP-Value')
                 self.save_snp_score(snp, score, adjusted)
 
+
     def save_settings(self):
         """
         Saves the parameters: Output file, analysis type, Known truth type, and threshold to a text file
@@ -203,10 +228,10 @@ def initialize():
     """
     initializeGraphics()
     folder, analysis, truth, snp, score, beta, filename, threshold, separ, kt_type, \
-    kt_type_separ, severity, pvaladjust, savep = checkArgs()
+    kt_type_separ, severity, pvaladjust, covar, savep= checkArgs()
     args = {'folder': folder, 'analysis': analysis, 'truth': truth, 'snp': snp, 'score': score, 'beta': beta,
             'filename': filename, 'threshold': threshold, 'separ': separ, 'kt_type': kt_type,
-            'kt_type_separ': kt_type_separ, 'severity': severity, 'pvaladjust': pvaladjust, 'savep': savep}
+            'kt_type_separ': kt_type_separ, 'severity': severity, 'pvaladjust': pvaladjust, 'covar': covar, 'savep': savep}
     return args
 
 
