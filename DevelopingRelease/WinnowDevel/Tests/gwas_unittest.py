@@ -15,6 +15,14 @@ class GWASTest(unittest.TestCase):
                           'kt_type': 'OTE','kt_type_separ': 'whitespace', 'pvaladjust': None, 'savep': False,
                           'covar': None}
 
+    covar_folder = os.getcwd()[:os.getcwd().index("Validate-Master")] + "Validate-Master/ExampleData/Winnow/data/covar"
+    covar_ote = os.getcwd()[:os.getcwd().index("Validate-Master")] + "Validate-Master/ExampleData/Winnow/data/covarfakekt.ote"
+    covar_destination = os.getcwd()[:os.getcwd().index("Validate-Master")] + "Validate-Master/ExampleData/Winnow/covarresults"
+    args_with_covar = {'folder': covar_folder, 'analysis': 'GWAS', 'truth': covar_ote, 'snp': 'SNP', 'score': 'Pvalue',
+                          'filename': covar_destination, 'threshold': 0.05, 'separ': 'comma',
+                          'kt_type': 'OTE','kt_type_separ': 'whitespace', 'pvaladjust': None, 'savep': False,
+                          'covar': "Cov01Weight", 'beta': None}
+
     def test_gwas_with_beta(self):
         self.args_without_covar['beta'] = 'BETA'
         self.win = Winnow.Winnow(self.args_without_covar)
@@ -28,7 +36,19 @@ class GWASTest(unittest.TestCase):
             self.assertAlmostEquals(desired[x], result[x])
 
     def test_gwas_with_beta_covariate(self):
-        pass
+        self.args_with_covar['beta'] = 'SNPWeight'
+        self.win = Winnow.Winnow(self.args_with_covar)
+        s, b, c = self.win.load_data('/Testwithcovar.csv')
+        self.win.load_ote()
+        desired = [0.0020088036966301225, 0.034581652709999869, 0.086763105180589231, 0.85191672505254723, 6, 475,
+                   9516, 3, 0.6666666666666666, 0.04754278850965869, 0.0478, 0.9522, 0.6666666666666666,
+                   0.9524572114903413, 0.012474012474012475, 0.9875259875259875, 0.6191238781570081,
+                   0.08342692016000644]
+
+        result = gwas.gwasBetaCovar(b, self.win.beta_true_false, self.win.snp_true_false, s,
+                                    self.args_with_covar['threshold'], c)[1]
+        for x in range(0, len(result)):
+            self.assertAlmostEquals(desired[x], result[x])
 
     def test_gwas_without_beta(self):
         self.args_without_covar['beta'] = None
@@ -41,8 +61,17 @@ class GWASTest(unittest.TestCase):
         for x in range(0, len(result)):
             self.assertAlmostEquals(desired[x], result[x])
 
-    def test_gwas_with_beta_covariate(self):
-        pass
+    def test_gwas_without_beta_covariate(self):
+        self.args_with_covar['beta'] = None
+        self.win = Winnow.Winnow(self.args_with_covar)
+        s, c = self.win.load_data("/Testwithcovar.csv")
+        self.win.load_ote()
+        desired = [0.086763105180589231, 0.85191672505254723, 6, 475, 9516, 3, 0.6666666666666666, 0.04754278850965869,
+                   0.0478, 0.9522, 0.6666666666666666, 0.9524572114903413, 0.012474012474012475, 0.9875259875259875,
+                   0.6191238781570081, 0.08342692016000644]
+        result = gwas.gwasNoBetaCovar(self.win.snp_true_false, s, self.args_with_covar['threshold'], c)[1]
+        for x in range(0, len(result)):
+            self.assertAlmostEquals(desired[x], result[x])
 
 
 def get_test_suite():
