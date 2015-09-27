@@ -169,9 +169,3 @@ def print_parameters(args_dict):
         print "AUC axis maximum specified as", args_dict["aucmax"]
         print "MAE axis minimum specified as", args_dict["maemin"]
         print "MAE axis maximum specified as", args_dict["maemax"]
-
-
-if __name__ == "__main__":
-    initialize_graphics()
-    #usage()
-    check_args()

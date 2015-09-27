@@ -54,7 +54,7 @@ def trueFalse(currentSnp, ktSnps):
         return False
 
 
-def writeCSV(filename, keepToWrite, method="wb", exportDelimiter=","):
+def writeCSV(filename, keepToWrite, method="wb", exportDelimiter=","):  # pragma: no cover
     """
     Writes the Winnow output file once analysis is complete
 
@@ -73,7 +73,7 @@ def writeCSV(filename, keepToWrite, method="wb", exportDelimiter=","):
         openFileWriter.writerow(currentRow)
 
 
-def writeSettings(winnowargs):
+def writeSettings(winnowargs):  # pragma: no cover
     """
     Saves a settings file with parameters used in Winnow
 

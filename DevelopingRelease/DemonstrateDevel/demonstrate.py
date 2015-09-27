@@ -19,7 +19,8 @@ class Demonstrate:
 
         """
         if self.args["mode"] == "demonstrate":
-            with open(os.getcwd() + "/DemoMPlot/R/Demonstrate.R") as f:
+            with open(os.getcwd()[:os.getcwd().index('DemonstrateDevel')] +
+                              "DemonstrateDevel/DemoMPlot/R/Demonstrate.R") as f:
                 dem = f.read()
             robjects.r(dem)
         elif self.args["mode"] == "demonstrate2":
@@ -46,11 +47,14 @@ class Demonstrate:
         parameters
         """
         r_dem = robjects.globalenv['Demonstrate']
-        self.args["auctitle"] = add_pdf_extension(self.args["auctitle"])
-        self.args["maetitle"] = add_pdf_extension(self.args["maetitle"])
-        r_dem(self.args["dir"], check_for_null(self.args["output"]), check_for_null(self.args["settings"]),
-              self.args["xauc"] is False, self.args["auctitle"], self.args["xmae"] is False, self.args["maetitle"] + ".pdf",
-              self.args["heritstring"], self.args["heritvalue"], self.args["structstring"], self.args["structvalue"])
+        if self.args.get("auctitle") is not None:
+            self.args["auctitle"] = add_pdf_extension(self.args["auctitle"])
+        if self.args.get("maetitle") is not None:
+            self.args["maetitle"] = add_pdf_extension(self.args["maetitle"])
+        r_dem(self.args["dir"], check_for_null(self.args.get("output")), check_for_null(self.args.get("settings")),
+              self.args["xauc"] is False, self.args["auctitle"], self.args["xmae"] is False,
+              self.args["maetitle"] + ".pdf", self.args["heritstring"], self.args["heritvalue"],
+              self.args["structstring"], self.args["structvalue"])
 
     def demonstrate_two(self):
         """
@@ -62,8 +66,8 @@ class Demonstrate:
         """
         r_dem2 = robjects.globalenv['Demonstrate2']
         self.args["postitle"] = add_pdf_extension(self.args["postitle"])
-        r_dem2(self.args["dir"], check_for_null(self.args["output"]), check_for_null(self.args["settings"]),
-               self.args["xpos"] is False, self.args["postitle"],self.args["xerror"] is False, self.args["errortitle"],
+        r_dem2(self.args["dir"], check_for_null(self.args.get("output")), check_for_null(self.args.get("settings")),
+               self.args["xpos"] is False, self.args["postitle"], self.args["xerror"] is False, self.args["errortitle"],
                self.args["extraplots"], self.args["aucmin"], self.args["aucmax"], self.args["maemin"],
                self.args["maemax"])
 
