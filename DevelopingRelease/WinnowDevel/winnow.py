@@ -29,9 +29,8 @@ class Winnow:
         """
         if self.args_dict['kt_type'] == 'OTE':
             self.load_ote()
-        else:
+        else:  # pragma: no cover
             print 'Currently only OTE is supported'
-
 
     def load_ote(self):
         """
@@ -49,7 +48,6 @@ class Winnow:
         for each in snp_column:
             self.snp_true_false.append(trueFalse(each, kt_snps))
         self.load_ote_betas(snp_column, kt_snps, kt_betas)
-
 
     def load_ote_betas(self, snp_col, kt_snp, kt_beta):
         """
@@ -72,7 +70,6 @@ class Winnow:
                 else:
                     self.beta_true_false.append(float(0))
                 count += 1
-
 
     def load_data(self, data_file):
         """
@@ -99,7 +96,6 @@ class Winnow:
                 return adjusted_score_column, covar_column
             else:
                 return adjusted_score_column
-
 
     def do_analysis(self):
         """
@@ -131,8 +127,7 @@ class Winnow:
                 # Add other analysis methods here
                 print 'Currently, only GWAS is supported.'
 
-
-    def write_to_file(self, gen):
+    def write_to_file(self, gen):  # pragma: no cover
         """
         Writes the results of the analysis to the file given at runtime. Gets the resulting data from a generator.
 
@@ -147,7 +142,6 @@ class Winnow:
                 writeCSV(self.args_dict['filename'], each, 'wb', '\t')
                 first_for_header = False
         gen.close()
-
 
     def do_gwas(self, score_column, beta_column, covar_column):
         """
@@ -182,7 +176,7 @@ class Winnow:
         else:
             return multipletests(score, alpha=self.args_dict['threshold'], method=self.args_dict['pvaladjust'])[1]
 
-    def save_snp_score(self, snp, score, adjusted):
+    def save_snp_score(self, snp, score, adjusted):  # pragma: no cover
         """
         Saves the file name, p-value, and adjusted p-value if set
 
@@ -210,7 +204,6 @@ class Winnow:
                         f.write('SNP ID \tP-Value')
                 self.save_snp_score(snp, score, adjusted)
 
-
     def save_settings(self):
         """
         Saves the parameters: Output file, analysis type, Known truth type, and threshold to a text file
@@ -220,7 +213,7 @@ class Winnow:
         writeSettings(self.args_dict)
 
 
-def initialize():
+def initialize():  # pragma: no cover
     """
     Displays graphics from commandline.py and loads runtime parameters, from a tuple, as a dictionary.
 
@@ -254,7 +247,7 @@ def data_to_list(data_file, x, y, is_float=False):
     return column
 
 
-def main():
+def main():  # pragma: no cover
     """
     Sets the args dictionary - the runtime parameters - from the initialize function, creates a new Winnow using those
     parameters, and performs the analysis.
@@ -265,7 +258,3 @@ def main():
     w.load_kt()
     w.write_to_file(w.do_analysis())
     w.save_settings()
-
-
-if __name__ == "__main__":
-    main()

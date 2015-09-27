@@ -42,5 +42,6 @@ class GWASTest(unittest.TestCase):
     def test_gwas_with_beta_covariate(self):
         pass
 
+
 def get_test_suite():
     return unittest.TestLoader().loadTestsFromTestCase(GWASTest)
