@@ -28,7 +28,8 @@ def gwasWithBeta(betaColumn, betaTrueFalse, snpTrueFalse, scoreColumn, threshold
             sens(snpTrueFalse, threshold, scoreColumn), spec(snpTrueFalse, threshold, scoreColumn),
             precision(snpTrueFalse, threshold, scoreColumn), fdr(snpTrueFalse, threshold, scoreColumn),
             youden(snpTrueFalse, threshold, scoreColumn)]
-            
+
+
 def gwasBetaCovar(betaColumn, betaTrueFalse, snpTrueFalse, scoreColumn, threshold, covar):
     """
     Performs GWAS analysis with beta/effect size and covariates
@@ -54,6 +55,7 @@ def gwasBetaCovar(betaColumn, betaTrueFalse, snpTrueFalse, scoreColumn, threshol
             precision(snpTrueFalse, threshold, scoreColumn), fdr(snpTrueFalse, threshold, scoreColumn),
             youden(snpTrueFalse, threshold, scoreColumn),
             avgcovarweight(covar)]
+
 
 def gwasWithoutBeta(snpTrueFalse, scoreColumn, threshold):
     """
@@ -81,7 +83,8 @@ def gwasWithoutBeta(snpTrueFalse, scoreColumn, threshold):
                precision(snpTrueFalse, threshold, scoreColumn),
                fdr(snpTrueFalse, threshold, scoreColumn),
                youden(snpTrueFalse, threshold, scoreColumn)]
-               
+
+
 def gwasNoBetaCovar(snpTrueFalse, scoreColumn, threshold, covar):
     """
     Performs GWAS analysis without beta/effect size but with covariates
