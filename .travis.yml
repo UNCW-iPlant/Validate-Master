@@ -66,5 +66,6 @@ script:
     - mv DemonstrateDevel/Tests/.coverage .coverage.demonstrate
     - mv WinnowDevel/Tests/.coverage .coverage.winnow
     - coverage combine
+
 after_script:
     - coveralls
