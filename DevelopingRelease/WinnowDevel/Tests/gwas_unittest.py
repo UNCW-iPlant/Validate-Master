@@ -22,9 +22,10 @@ class GWASTest(unittest.TestCase):
         self.win.load_ote()
         desired = [0.058961209687231286, 0.18211782935394086, -0.038381861728111748, 0.43427678571428574, 0, 384,
                    2816, 35, 0.0, 0.12, 0.1295208655332303, 0.8704791344667697, 0.0, 0.88, 0.0, 1.0, -0.12]
-        self.assertAlmostEquals(gwas.gwasWithBeta(b, self.win.beta_true_false, self.win.snp_true_false, s,
-                                self.args_without_covar['threshold'])[1], desired)
-        pass
+        result = gwas.gwasWithBeta(b, self.win.beta_true_false, self.win.snp_true_false,
+                                   s, self.args_without_covar['threshold'])[1]
+        for x in range(0, len(result)):
+            self.assertAlmostEquals(desired[x], result[x])
 
     def test_gwas_with_beta_covariate(self):
         pass
@@ -36,8 +37,9 @@ class GWASTest(unittest.TestCase):
         self.win.load_ote()
         desired = [-0.038381861728111748, 0.43427678571428574, 0, 384, 2816, 35, 0.0, 0.12, 0.1295208655332303,
                    0.8704791344667697, 0.0, 0.88, 0.0, 1.0, -0.12]
-        self.assertAlmostEquals(gwas.gwasWithoutBeta(self.win.snp_true_false, s,
-                                self.args_without_covar['threshold'])[1], desired)
+        result = gwas.gwasWithoutBeta(self.win.snp_true_false, s, self.args_without_covar['threshold'])[1]
+        for x in range(0, len(result)):
+            self.assertAlmostEquals(desired[x], result[x])
 
     def test_gwas_with_beta_covariate(self):
         pass
