@@ -13,7 +13,7 @@ class WinnowTest(unittest.TestCase):
     destination = os.getcwd()[:os.getcwd().index("Validate-Master")] + "Validate-Master/ExampleData/Winnow/results"
     args = {'folder': folder, 'analysis': 'GWAS', 'truth': ote, 'snp': 'SNP', 'score': 'P', 'beta': 'BETA',
             'filename': destination, 'threshold': 0.05, 'separ': 'whitespace', 'kt_type': 'OTE',
-            'kt_type_separ': 'whitespace', 'pvaladjust': False, 'savep': False}
+            'kt_type_separ': 'whitespace', 'pvaladjust': None, 'savep': False, 'covar': None}
 
     def test_load_ote(self):
         self.win = winnow.Winnow(self.args)
@@ -57,7 +57,7 @@ class WinnowTest(unittest.TestCase):
         score_column = (0.003, 0.65, 0.004, 0.006, 0.078, 0.003, 0.0001, 0.513, 0.421, 0.0081, 0.043, 0.98)
         self.win.beta_true_false = (1, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1)
         beta_column = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12)
-        a = format_float(self.win.do_gwas(score_column, beta_column)[1])
+        a = format_float(self.win.do_gwas(score_column, beta_column, None)[1])
         self.assertEqual(a,
                          [47.08333333, 5.91666667, 0.16903085, 0.56944444, 4.0, 3.0, 3.0, 2.0, 0.66666667, 0.5,
                           0.41666667, 0.58333333, 0.66666667, 0.5, 0.57142857, 0.42857143, 0.16666667])
