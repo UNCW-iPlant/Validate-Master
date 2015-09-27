@@ -31,13 +31,3 @@ def fdr_bh(score_col):
         adjusted = val
     # Returns the list of adjusted p-vals in the original order
     return new_pval
-
-
-if __name__ == '__main__':
-    # Example from "Notes on Bonferroni-Holm method"
-    t1 = [0.012, 0.033, 0.212, 0.9, 0.98, 0.001, 0.999, 0.0003, 0.00001]
-    print fdr_bh(t1)
-
-    # Example from "Nov 12 Lecture"
-    t2 = [0.010, 0.013, 0.014, 0.190, 0.350, 0.500, 0.630, 0.670, 0.750, 0.810]
-    print fdr_bh(t2)
