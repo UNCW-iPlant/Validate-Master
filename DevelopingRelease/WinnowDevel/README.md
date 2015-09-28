@@ -80,17 +80,17 @@ Prediction methods for missing values is forthcoming in later versions. Set to "
 Represents the desired threshold for certain classification metrics (i.e. the threshold at which certain SNPs would be deemed significant).
 Set to 0.05 by default.
 
-* **-s** or **--seper**: Two options: "comma" or "whitespace." Indicates the delimiter used in the GWAS analysis outputs. If the file is separated by tabs or spaces, use "whitespace." If the file is in CSV format, use "comma."
+* **-s** or **--seper**: Three options: "comma," "whitespace," or "tab." Indicates the delimiter used in the GWAS analysis outputs. If the file is separated by tabs or spaces, use "whitespace." If the file is in CSV format, use "comma."
 Set to "whitespace" by default.
 
 * **-b** or **--beta**: A character string representing the effect size column in the GWAS results outputs. 
 Set to "None" by default. If beta is kept at None, this will produce a different set of fit statistics than a dataset with an effect size column. 
 More specifically, certain statistics (such as RMSE and the correlation coefficient) will be excluded from the final results if the beta column is not specified.
 
-* **-r** or **--kttypeseper**: Two options: "comma" or "whitespace." Indicates the delimiter used in the known-truth file.
+* **-r** or **--kttypeseper**: Three options: "comma," "whitespace," or "tab." Indicates the delimiter used in the known-truth file.
 Set to "whitespace" by default.
 
-* **-p** or **--pvaladjust**: Character string. Represents the type of p-value adjustment to use during the analysis, if any is desired. If this option is excluded, it will default to *None*. The ten possible options for adjustment come from the statsmodels package and are:
+* **-p** or **--pvaladjust**: Character string. Represents the type of p-value adjustment to use during the analysis, if any is desired. If this option is excluded, it will default to *None*. The ten possible options for adjustment come from the statsmodels Python package and are as follows:
  1. bonferroni: one-step Bonferroni method
  2. sidak: one-step Sidak method
  3. holm-sidak: step down method using Sidak adjustments
