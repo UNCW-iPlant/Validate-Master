@@ -1,7 +1,7 @@
-#Winnow: Known-Truth Testing for Genome Wide Association Studies Tools
+#Winnow: Known-Truth Testing for Genome Wide Association Studies Tools (version 0.9)
 
 ##Note:
-This README is for the full documentation related to the Winnow program. 
+This README is for the full documentation related to the latest version of the Winnow program. 
 If you just want to dive right in and spare yourself some reading, **[head over to the Quickstart guide.](https://github.com/UNCW-iPlant/Quickstart-guide/blob/master/docs/Winnow.md)** 
 If you want a more thorough explanation of Winnow's options and inner workings, read on.
 
@@ -90,32 +90,54 @@ More specifically, certain statistics (such as RMSE and the correlation coeffici
 * **-r** or **--kttypeseper**: Two options: "comma" or "whitespace." Indicates the delimiter used in the known-truth file.
 Set to "whitespace" by default.
 
+* **-p** or **--pvaladjust**: Character string. Represents the type of p-value adjustment to use during the analysis, if any is desired. If this option is excluded, it will default to *None*. The ten possible options for adjustment come from the statsmodels package and are:
+ 1. bonferroni: one-step Bonferroni method
+ 2. sidak: one-step Sidak method
+ 3. holm-sidak: step down method using Sidak adjustments
+ 4. holm: step down method using Bonferroni adjustments
+ 5. simes-hochberg: step down method (for independent statistics)
+ 6. hommel: closed method based on Simes procedure (non-negatively associated statistics only)
+ 7. fdr_bh: Benjamini-Hochberg method for false discovery rate control (non-negatively associated or independent statistics only)
+ 8. fdr_by: Benjamini-Yekutieli method for false discovery rate control
+ 9. fdr_tsbh: Two-stage false discovery rate control (non-negatively associated or independent statistics only) 
+ 10. fdr_tsbky: Two-stage false discovery rate control
+
+* **-c** or **--covar**: A string representing the name of the covariate weight column in the GWAS output. Obviously, this option will only need to be included if the GWAS tool under analysis supports covariates. Please note that even GWAS tools that support covariates may only generate the weight column if verbose output options are used (e.g. FaST-LMM).
+
+* **-o** or **--savep**: Requires no argument. Command line flag indicating whether or not to save p-values. If this flag is set, Winnow will generate an extra file named <filename>_scores.txt with the following columns: *SNP ID*, *P-Value*, and *P-Value Adjusted* (if the --pvaladjust option was given) 
+
 An example of running Winnow from the command line with these options would look like so:
 
-`python winnow.py --verbose --Folder Example_Data/OutputPlink --Class Example_Data/kt.ote --Snp SNP --Score P --beta BETA --filename ~/Desktop/MyResults --seper whitespace --kttype OTE --kttypeseper whitespace`
+`python winnow.py --verbose --Folder Example_Data/OutputPlink --Class Example_Data/kt.ote --Snp SNP --Score P --beta BETA --filename ~/Desktop/MyResults --threshold 0.01 --seper whitespace --kttype OTE --kttypeseper whitespace --pvaladjust fdr_bh --savep`
 
 ###The Output File
 
 The output file for Winnow, specified with whatever name you chose, contains 16 columns, and the number of rows depends on how many results files were placed in the aggregated folder. 
 Each column indicates a particular fit statistic with each row indicating one GWAS result file. 
-The 16 fit statistics currently used in Validate are…
+The 16 fit statistics currently used in Validate 0.9, in order of appearance are…
 
 * Mean absolute error^
 * Root mean-squared error (RMSE)^
-* Pearson’s correlation coefficient (r)^
-* Coefficient of determination (r^2)^
-* Area under the receiver-operator curve (AUC)
-* True/False positives
-* True/False negatives
-* True/False positive rates
-* True/False negative rates
-* Total precision (defined as true positives divided by sum of true and false positives)
+* [Matthews correlation coefficient](https://en.wikipedia.org/wiki/Matthews_correlation_coefficient)
+* [Area under the receiver-operator curve (AUC)](https://www.kaggle.com/wiki/AUC)
+* True positives
+* False positives
+* True negatives
+* False negatives
+* True positive rate
+* False positive rate
 * Error (defined as the total number of falses, positive or negative, divided by the total)
-* Sensitivity
-* Specificity, and
-* Youden statistic
+* Accuracy (defined as total number of trues, positive or negative, divided by total)
+* Sensitivity (defined as true positives divided by sum of true positives and false negatives) 
+* Specificity (defined as true negatives divided by sum of true negatives and false positives)
+* Total precision (defined as true positives divided by sum of true and false positives)
+* False discovery rate (FDR) (false positives divided by sum of true and false positives)
+* [Youden statistic](https://en.wikipedia.org/wiki/Youden's_J_statistic)
+* Average covariate weight†
 
 ^Statistic excluded from the final output if a beta/effect size column is not included in the command line.
+
+†Statistic excluded from the final output if a covariate weight column is not included in the command line.
 
 Here is an example of what the final Winnow output will look like:
 ![Example](https://pods.iplantcollaborative.org/wiki/download/attachments/14582582/Screen%20Shot%202015-02-12%20at%2011.57.00%20AM.png?version=1&modificationDate=1423760331000&api=v2)
@@ -124,4 +146,4 @@ We recommend referring to the AUC, RMSE, and true/false positive rates when maki
 Remember, for RMSE and false positives, lower numbers are better! For AUC the closer to 1, the better! And obviously, higher true positive counts are better as well.
 
 If all you need are the fit statistics, you may simply end the workflow here; however, if you wish to convert your Winnow results into more human-readable output, please
-consult [the full documentation](Demonstrate/README.md) or [the Quickstart-guide](https://github.com/UNCW-iPlant/Quickstart-guide/blob/master/docs/Demonstrate.md) for Demonstrate.
+consult [the full documentation for Demonstrate](Demonstrate/README.md) or [the Quickstart-guide](https://github.com/UNCW-iPlant/Quickstart-guide/blob/master/docs/Demonstrate.md).
