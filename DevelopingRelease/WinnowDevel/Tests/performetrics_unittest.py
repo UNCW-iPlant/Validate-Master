@@ -127,6 +127,3 @@ def get_test_suite():
 
     """
     return unittest.TestLoader().loadTestsFromTestCase(PerformetricsTest)
-
-if __name__ == "__main__":
-    unittest.main()
