@@ -105,6 +105,11 @@ class PerformetricsTest(unittest.TestCase):
         threshold = 0.05
         self.assertEqual(performetrics.youden(snp_tf, threshold, score), 0.16666666666666652)
 
+    def test_avgcovarweight(self):
+        covar = [0.08410, 0.00161, 0.25200, 0.00161, 0.24000, 0.25000, 0.00161, 0.25000, 0.00161, 0.25200, 0.25000,
+                 0.00161, -0.02440, 0.05360]
+        self.assertAlmostEquals(performetrics.avgcovarweight(covar), 0.11538214285714285)
+
 
 def format_float(x):
     """
@@ -122,6 +127,3 @@ def get_test_suite():
 
     """
     return unittest.TestLoader().loadTestsFromTestCase(PerformetricsTest)
-
-if __name__ == "__main__":
-    unittest.main()
