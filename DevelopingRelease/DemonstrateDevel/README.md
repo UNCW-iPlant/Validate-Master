@@ -1,14 +1,25 @@
-# Demonstrate: A Data Visualization Tool for Summarizing Validate Output
+# Demonstrate: A Data Visualization Tool for Summarizing Validate Output (version 0.9)
 
-Demonstrate is the final step in the Validate known-truth pipeline for iPlant Collaborative. It produces a single data set from several Winnow results files as well as two graphics showing differences in a GWAS/QTL applications performance under varying heritability and population structure. Furthermore, the Demonstrate2 function allows for visualizations of other data sets regardless of whether or not population structure or heritability is included. Like the original function, Demonstrate2 also creates graphics showing differences in GWAS/QTL applications; however, since Demonstrate2 does not account for heritability or population structure, it instead creates other graphics: scatterplots based on AUC/MAE and true/false positives, true and false positives histograms for each dataset, and a comparison table based on precision, sensitivity, and specificity.
+Demonstrate is the final step in the Validate known-truth pipeline for iPlant Collaborative. It produces a single data set from several Winnow results files as well as human-readable graphics showing differences in a GWAS/QTL applications performance under varying heritability and population structure. Furthermore, the Demonstrate2 function allows for visualizations of other data sets regardless of whether or not population structure or heritability is included. Like the original function, Demonstrate2 also creates graphics showing differences in GWAS/QTL applications; however, since Demonstrate2 does not account for heritability or population structure, it instead creates other graphics: scatterplots based on AUC/MAE and true/false positives, true and false positives histograms for each dataset, and a comparison table based on precision, sensitivity, and specificity.
 
-**Now included for version 0.9:** An additional [Manhattan plot](https://en.wikipedia.org/wiki/Manhattan_plot) function, *MPlot*, is now available in the Demonstrate package. This Manhattan plot allows one to bypass the Winnow program entirely and directly plot any GWAS output based on transformed P-values in relation to genetic distance. An example of this Manhattan Plot is shown under the usage section. In addition, the scatterplots in the Demonstrate2 function have been updated to color regions of high true/false positive concentration along with plotting the individual points. Please note that this new Demonstrate version **requires that the ggplot2 package be in your R library.**
+**Now included for version 0.9:** An additional [Manhattan plot](https://en.wikipedia.org/wiki/Manhattan_plot) function, *MPlot*, is now available in the Demonstrate package. This Manhattan plot allows one to bypass the Winnow program entirely and directly plot any GWAS output based on transformed P-values in relation to genetic distance. An example of this Manhattan Plot is shown under the usage section. In addition, the scatterplots in the Demonstrate2 function have been updated to color regions of high true/false positive concentration along with plotting the individual points. 
+
+###Requirements 
+The requirements for running the DemoMPlot package smoothly are:
+* R version >= 3.2.1
+* Package *plyr*
+* Package *ggplot2*
 
 ##Usage
+Please note that to use any of these functions, you must first download and install the package from Github. Once downloaded, boot up an R or RStudio session, and install DemoMPlot with the following command:
 
-Please note that to use any of these functions, you must first download and install the package from Github. Once this is done, bring up an R or RStudio session, and type `library(DemoMPlot)` to load the package. If the prompt returns with no additional feedback, the loading process worked.
+`install.packages("DemoMPlot.tar.gz" repos=NULL, type="source")`
+
+Once this is done, type `library(DemoMPlot)` to load the package. If the prompt returns with no additional feedback, the loading process worked.
 
 ###Demonstrate usage
+
+NOTE: All of these details are also included under the *man* folder in the DemoMPlot package itself; however, this README documentation has been included for convenience.
 
 `Demonstrate(dir, make.AUC.plot=TRUE, AUC.plot.title="Mean AUC By Population Structure and Heritability", make.MAE.plot=TRUE, MAE.plot.title="Mean MAE By Population Structure and Heritability",herit.strings=list("_03_","_04_","_06_"),herit.values=list(0.3,0.4,0.6),struct.strings=list("PheHasStruct","PheNPStruct"),struct.values=list(TRUE,FALSE))`
 
@@ -51,6 +62,6 @@ Assuming all options are used in the function call, Demonstrate2 will give five 
 
 * *dir*: The directory where your GWAS ouputs are stored.
 
-This function will create a [Manhattan plot](https://en.wikipedia.org/wiki/Manhattan_plot) for all individual GWAS output files in a given folder. These Manhattan plots show genetic distance for SNPs plotted by the -log(P-value), and the plots have a color coded cutoff for significance at -log(0.05). A sample plot is linked below: 
+This function will create a [Manhattan plot](https://en.wikipedia.org/wiki/Manhattan_plot) for all individual GWAS output files in a given folder. These Manhattan plots show genetic distance for SNPs plotted by the -log(P-value), and the plots have a color coded cutoff for significance at -log(0.05). Please note that for the Manhattan plot to work, the GWAS output must actually include a valid genetic distance column. A sample plot is linked below: 
 
 [Manhattan Plot](https://github.com/UNCW-iPlant/Validate-Master/files/535/Manhattan.Plot.pdf)
