@@ -109,7 +109,7 @@ def checkArgs():
 		if o[0] in ("--threshold", "-t"):
 			threshold = float(o[1])
 			if verbose:
-				print "Theshold is set at", threshold
+				print "Threshold is set at", threshold
 		if o[0] in ("--seper", "-s"):
 			seper = str(o[1])
 			if verbose:
