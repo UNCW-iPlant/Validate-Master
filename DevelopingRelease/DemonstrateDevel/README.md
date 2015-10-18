@@ -13,7 +13,7 @@ The requirements for running the DemoMPlot package smoothly are:
 ##Usage
 Please note that to use any of these functions, you must first download and install the package from Github. Once downloaded, boot up an R or RStudio session, and install DemoMPlot with the following command:
 
-`install.packages("DemoMPlot.tar.gz" repos=NULL, type="source")`
+`install.packages("DemoMPlot.tar.gz", repos=NULL, type="source")`
 
 Once this is done, type `library(DemoMPlot)` to load the package. If the prompt returns with no additional feedback, the loading process worked.
 
