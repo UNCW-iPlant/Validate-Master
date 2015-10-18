@@ -56,6 +56,61 @@ Assuming all options are used in the function call, Demonstrate2 will give five 
 
 [MAE by AUC scatterplot](https://github.com/UNCW-iPlant/Validate-Master/files/538/My.Error.Plot.pdf)
 
+###Demonstrate With Python Usage
+
+The Python implementation of Demonstrate works similar to the original program and provides the same output. The most important difference is the syntax to run the program. 
+
+To see all of the possible options, type this command into the terminal/command line from the directory containing demonstrate.py:
+
+`python demonstrate.py --help`
+
+Though there are quite a few possible options, the following are the only arguments that are needed for both versions of Demonstrate: 
+* **--verbose** (or **-v**) to trigger verbose mode 
+* **--dir** (or **-d**) which denotes the folder of input files (_required_)
+* **--output** (or **-o**) which denotes the folder to store the output. This is optional and the input folder will be used if this is not specified
+* **--settings** (or **-s**) which denotes the .param file from Winnow containing the settings used to be included on the output plots. This is optional and not used by default
+* **demonstrate** or **demonstrate2** to specify which version of Demonstrate to use (_required_)
+
+To run Demonstrate with only these settings; note the only 2 _required_ settings are **--dir** and the mode
+
+`python demonstrate.py --verbose --dir ~/Documents/DemInputFiles --output ~/Documents/DemOutput --settings ~/Documents/DemInputFiles/winnowoutput.param demonstrate`
+
+`python demonstrate.py --verbose --dir ~/Documents/Dem2InputFiles --output ~/Documents/Dem2Output --settings ~/Documents/Dem2InputFiles/winnowoutput.param demonstrate2`
+
+####Extra Parameters
+
+These have default settings but can be changed by adding the argument after the mode (e.g. after "demonstrate")
+
+####Demonstrate
+
+* **--xauc** (or **-a**) to exclude the AUC by Population Structure and Heritability plot (not set _by default_)
+* **--auctitle** (or **-t**) to specify the AUC plot title ("Mean AUC by Population Structure and Heritability" _by default_)
+* **--xmae** (or **-m**) to exclude the MAE by Population Structure and Heritability plot (not set _by default_)
+* **--maetitle** (or **-y**) to specify the MAE plot title ("Mean MAE by Population Structure and Heritability" _by default_)
+* **--heritstring** (or **-r**) to specify the heritability string found in the input data ("\_03_","\_04_","\_06_" _by default_)
+* **--heritvalue** (or **-l**) to specify the heritability value found in the input data (0.3, 0.4, 0.6 _by default_)
+* **--structstring** (or **-u**) to secify the structure string found in the input data ("PheHasStruct", "PheNPStruct" _by default_)
+* **--structvalue** (or **-p**) to specify the structure value found in the input data (True, False _by default_)
+
+#####Run Example (Including all plots)
+
+`python demonstrate.py --verbose --dir ~/Documents/DemInputFiles --output ~/Documents/DemOutput --settings ~/Documents/DemInputFiles/winnowoutput.param demonstrate --auctitle AUC --maetitle MAE --heritstrig _03_ _04_ _06_ --heritvalue 0.3 0.4 0.6 --structstring PheHasStruct PheNPStruct --structvalue True False`
+
+####Demonstrate2
+* **--xpos** (or **-q**) to exclude the True Positives by False Positives plot (not set _by default_)
+* **--postitle** (or **-i**) to specify the True Positives by False Positives plot title ("True Positives by False Positives _by default_)
+* **--xerror** (or **-e**) to exclude the error plot (not set _by default_)
+* **--errortitle** (or **-w**) to specify the error plot title ("Plot of AUC by MAE" _by default_)
+* **--extraplots** (or **-x**) to exclude the extra plots (not set _by default_)
+* **--aucmin** (or **-z**) to specify minimum axis value for the AUC plot (0 _by default_)
+* **--aucmax** (or **-b**) to specify maximum axis value for the AUC plot (1.0 _by default_)
+* **--maemin** (or **-n**) to specify minimum axis value for the MAE plot (0 _by default_)
+* **--maemax** (or **-c**) to specify minimum axis value for the MAE plot (2.0 _by default_)
+
+#####Run Example (Including all plots)
+
+`python demonstrate.py --verbose --dir ~/Documents/Dem2InputFiles --output ~/Documents/Dem2Output --settings ~/Documents/Dem2InputFiles/winnowoutput.param demonstrate2 --postitle TPbyFP --errortitle AUCbyMAE --aucmin 0 --aucmax 1.5 --maemin 0 --maemax 2.5`
+
 ###MPlot usage
 
 `MPlot(dir)`
