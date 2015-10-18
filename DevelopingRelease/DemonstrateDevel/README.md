@@ -21,7 +21,7 @@ Once this is done, type `library(DemoMPlot)` to load the package. If the prompt 
 
 NOTE: All of these details are also included under the *man* folder in the DemoMPlot package itself; however, this README documentation has been included for convenience.
 
-`Demonstrate(dir, make.AUC.plot=TRUE, AUC.plot.title="Mean AUC By Population Structure and Heritability", make.MAE.plot=TRUE, MAE.plot.title="Mean MAE By Population Structure and Heritability",herit.strings=list("_03_","_04_","_06_"),herit.values=list(0.3,0.4,0.6),struct.strings=list("PheHasStruct","PheNPStruct"),struct.values=list(TRUE,FALSE))`
+`Demonstrate(dir, outputdir=NULL, settingsfile=NULL, make.AUC.plot=TRUE, AUC.plot.title="Mean AUC By Population Structure and Heritability", make.MAE.plot=TRUE, MAE.plot.title="Mean MAE By Population Structure and Heritability",herit.strings=list("_03_","_04_","_06_"),herit.values=list(0.3,0.4,0.6),struct.strings=list("PheHasStruct","PheNPStruct"),struct.values=list(TRUE,FALSE))`
 
   * *dir:*  The directory where your Winnow outputs are stored (must give full path!)
   * *make.AUC.plot:* Boolean value (i.e. either TRUE or FALSE). Indicates to the function whether or not to run the Area under the RO curve lineplot
