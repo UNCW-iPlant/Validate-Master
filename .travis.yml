@@ -15,8 +15,8 @@ before_install:
 install:
     - conda install --yes python=$TRAVIS_PYTHON_VERSION numpy scipy
     - conda install --yes -c r r
-    - conda install --yes -c https://conda.binstar.org/r rpy2
-    - conda install --yes -c https://conda.binstar.org/r r-testthat
+    - conda install --yes -c https://conda.anaconda.org/r rpy2
+    - conda install --yes -c https://conda.anaconda.org/r r-testthat
     - wget https://cran.r-project.org/src/contrib/Rcpp_0.12.1.tar.gz
     - R CMD INSTALL Rcpp_0.12.1.tar.gz
     - wget https://cran.r-project.org/src/contrib/plyr_1.8.3.tar.gz
@@ -27,8 +27,8 @@ install:
     - R CMD INSTALL gtable_0.1.2.tar.gz
     - wget https://cran.r-project.org/src/contrib/magrittr_1.5.tar.gz
     - R CMD INSTALL magrittr_1.5.tar.gz
-    - wget https://cran.r-project.org/src/contrib/stringi_0.5-5.tar.gz
-    - R CMD INSTALL stringi_0.5-5.tar.gz
+    - wget https://cran.r-project.org/src/contrib/stringi_1.0-1.tar.gz
+    - R CMD INSTALL stringi_1.0-1.tar.gz
     - wget https://cran.r-project.org/src/contrib/stringr_1.0.0.tar.gz
     - R CMD INSTALL stringr_1.0.0.tar.gz
     - wget https://cran.r-project.org/src/contrib/reshape2_1.4.1.tar.gz
