@@ -18,16 +18,7 @@ def drange(start, stop, step):
 		yield r
 		r += step
 
-def SNPGenerator(num):
-    import string
-    SNPlist=[]
-    for i in range(0,num):
-        SNPstring = ''.join(random.choice(string.ascii_uppercase) for _ in range(3))
-        SNPnum = ''.join(random.choice(string.digits) for _ in range(5))
-        SNPname = SNPstring+SNPnum
-        SNPlist.append(SNPname)
-    return SNPlist
-
+# restricted_float limits the range of a float number between 0.0 and 1.0, returning an error otherwise 
 def restricted_float(x):
     x = float(x)
     if x < 0.0 or x > 1.0:
@@ -52,12 +43,10 @@ def additive_model(geno):
 	my_trait = my_total_sum
 	return my_trait
 
-# restricted_float limits the range of a float number between 0.0 and 1.0, returning an error otherwise 
-
 # The main function: executes the obtaining of command-line flags and then executes the simuPOP simulation.
 def main():
-    # First, grab and interpret command line arguments
     
+    # First, grab and interpret command line arguments
     parser=argparse.ArgumentParser(description="Command line arguments for Simulate")
     parser.add_argument("-v", "--verbose", help="Triggers verbose mode", action="store_true")
     parser.add_argument("-d", "--distribution", default="normal", choices=["normal", "gamma"], help="Distribution option")
@@ -118,10 +107,9 @@ def main():
         "File will be saved as", filename
     
     ## Start quantitative trait simulation via simuPOP
-    
     if verbose:
         print "Creating population..."
-    pop = sim.Population(size=individuals, loci=int(number), infoFields=["qtrait", "ind_id"])
+    pop = sim.Population(size=individuals, loci=int(number), infoFields=["qtrait"])
     if verbose:
         print "Evolving population..."
     type(gen)
