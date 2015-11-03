@@ -1,0 +1,16 @@
+Package: DemoMPlot
+Title: Creates visual output for iPlant Collaborative's Validate Workflow
+Version: 0.9
+Date: 2015-06-26
+Authors@R: c(
+	person("Dustin", "Landers", role = "aut"),
+	person("Stephen", "Talley", role=c("aut", "cre"), email = "labstapleton@gmail.com"), 
+	person("Grace", "Cowen", role= "aut"))
+Description: This package has three main functions including MPlot, Demonstrate, and Demonstrate2. The MPlot function uses output from a GWAS 
+    tool to create a Manhattan Plot where the -log of the pvalue is plotted by genetic distance and effect size. Gray points represent SNPs that 
+    were found to not be significant and all colored pionts represent significant SNPs. The function Demonstrate creates graphs from Winnow output
+    in which the population structure is known. Demonstrate2 also uses Winnow output, but is used when population structure data is not available. 
+Depends: R (>= 3.2.1)
+Imports: plyr, ggplot2
+License: GPL-2
+LazyData: true
