@@ -97,6 +97,8 @@ def auc(snpTrueFalse, scoreColumn):
     """
     scoreColumn = np.array(scoreColumn)
     snpTrueFalse = np.array(snpTrueFalse)
+    if len(scoreColumn)!=len(snpTrueFalse):
+        snpTrueFalse = snpTrueFalse[0:len(scoreColumn)]
     x1 = scoreColumn[snpTrueFalse == True]
     n1 = x1.size
     x2 = scoreColumn[snpTrueFalse == False]

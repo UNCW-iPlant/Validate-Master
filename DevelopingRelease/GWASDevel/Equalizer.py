@@ -8,6 +8,7 @@ import argparse
 import os.path
 import os
 import pandas as pd
+import csv
 
 parser = argparse.ArgumentParser(description="List of command line arguments for input standardizer")
 parser.add_argument("-v", "--verbose", action="store_true", help="Trigger verbose mode")
@@ -58,7 +59,7 @@ for one in filelist:
     if verbose:
         print "Rewriting file "+one+" with delimiter "+delimiter
     # Next, write everything to a regular file, delimited based on command line argument
-    df.to_csv(os.path.abspath(one), sep=seper, index=False, header=True)
+    df.to_csv(os.path.abspath(one), sep=seper, index=False, header=True, quoting=csv.QUOTE_NONE)
 if verbose:
     print "Standardization complete."
     print "All SNP column names rewritten to SNP"
@@ -67,4 +68,3 @@ if verbose:
         print "All effect size column names rewritten to BETA"
     if covarcols is not None:
         print "All covariate column names rewritten to COVAR"
-    

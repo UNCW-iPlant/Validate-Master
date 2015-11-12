@@ -9,6 +9,9 @@ from fileimport import getList, loadKT, loadFile, trueFalse, writeCSV, writeSett
 from checkhidden import checkList
 from gwas import gwasWithBeta, gwasWithoutBeta, gwasBetaCovar, gwasNoBetaCovar
 from statsmodels.sandbox.stats.multicomp import multipletests
+import os
+import shutil
+import os.path
 
 class Winnow:
     def __init__(self, args):
@@ -105,7 +108,12 @@ class Winnow:
         :return: loads all files from the folder given at runtime, parses data with the load_data function, returns the
         results of the analysis with this data
         """
-        app_output_list = sorted(checkList(getList(self.args_dict['folder'])))
+        if os.path.isfile(self.args_dict['folder']):
+            os.makedirs("./default_input")
+            shutil.move(self.args_dict['folder'], "default_input"+ "/" + self.args_dict['folder'])
+            app_output_list = sorted(checkList(getList("./default_input")))
+        if os.path.isdir(self.args_dict['folder']):
+            app_output_list = sorted(checkList(getList(self.args_dict['folder'])))
         for each in app_output_list:
             if self.args_dict['beta'] is not None:
                 if self.args_dict['covar'] is not None:
