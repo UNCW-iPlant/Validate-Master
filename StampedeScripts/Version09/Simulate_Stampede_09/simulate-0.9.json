@@ -1,0 +1,309 @@
+{
+  "name": "Simulate",
+  "version": "0.9",
+  "helpURI": "https://pods.iplantcollaborative.org/wiki/pages/viewpage.action?pageId=21139107",
+  "label": "Simulate",
+  "defaultQueue": "normal",
+  "defaultNodeCount": 1,
+  "defaultMemoryPerNode": 4,
+  "defaultProcessorsPerNode": 1,
+  "defaultRequestedTime": "24:00:00",
+  "shortDescription": "A forward-in-time data generation tool",
+  "longDescription": "A forward-in-time genetic individual-based simulation software that evolves for a specified number of generations and estimates a quantitative trait from an additive model given an initial mean value.",
+  "executionSystem": "stampede-07282014-1215-spt6655",
+  "executionType": "HPC",
+  "parallelism": "SERIAL",
+  "deploymentPath": "spt6655/applications/Validate_Workflow-0.9/simulate-0.9",
+  "deploymentSystem": "data.iplantcollaborative.org",
+  "templatePath": "simwrap09.sh",
+  "testPath": "simulate-test09.sh",
+  "checkpointable": true,
+  "tags": [
+    "GWAS",
+    "simulation",
+    "python",
+    "simuPOP"
+  ],
+  "modules": [
+	"purge",
+	"load TACC",
+    "load gcc/4.9.1",
+    "load python/2.7.3-epd-7.3.2"
+  ],
+  "parameters": [
+    {
+      "id": "verbose",
+      "details": {
+        "label": "Verbose mode",
+        "description": "Triggers verbose mode",
+        "attribute": "--verbose",
+        "showAttribute": false
+      },
+      "value": {
+        "default": true,
+        "type": "bool",
+        "visible": true,
+        "order": 0,
+        "required": false
+      }
+    },
+    {
+      "id": "distribution",
+      "details": {
+        "label": "Distribution for population(s)",
+        "description": "The underlying distribution of your population (either normal or gamma)"
+      },
+	  "semantics": {
+        "ontology": [
+          "xs:string"
+        ]
+	},
+      "value": {
+	  "enum_values": [
+            {
+                "normal": "Population will operate under normal distribution"
+            },
+            {
+                "gamma": "Population will operate under gamma distribution"
+            }
+        ],
+        "default": "normal",
+        "type": "enumeration",
+        "visible": true,
+        "order": 0,
+        "required": true
+      }
+    },
+    {
+      "id": "size",
+      "details": {
+        "label": "Size of population(s)",
+        "description": "The number of individuals within your specified population or sub-populations",
+        "attribute": "-s",
+        "showAttribute": false
+      },
+	  "semantics": {
+        "ontology": [
+          "xs:int"
+        ]
+	},
+      "value": {
+        "default": 1000,
+        "type": "number",
+        "required": true,
+        "visible": true,
+        "order": 0
+      }
+    },
+    {
+      "id": "number",
+      "details": {
+        "label": "Number of loci ",
+        "description": "The number of loci for each individual in the population(s)",
+        "attribute": "-n",
+        "showAttribute": false
+      },
+	  "semantics": {
+        "ontology": [
+          "xs:int"
+        ]
+	},
+      "value": {
+        "default": 3000,
+        "type": "number",
+        "required": true,
+        "visible": true,
+        "order": 0
+      }
+    },
+    {
+      "id": "parameter1",
+      "details": {
+        "label": "Alpha/Shape parameter",
+        "description": "The alpha/shape parameter value if the gamma distribution option is used",
+        "attribute": "-p1",
+        "showAttribute": false
+      },
+	  "semantics": {
+        "ontology": [
+          "xs:decimal"
+        ]
+	},
+      "value": {
+        "default": 3.0,
+        "type": "number",
+        "visible": true,
+        "order": 0,
+        "required": false
+      }
+    },
+    {
+      "id": "parameter2",
+      "details": {
+        "label": "Beta/Scale parameter",
+        "description": "The beta/scale parameter value if the gamma distribution option is used",
+        "attribute": "-p2",
+        "showAttribute": false
+      },
+	  "semantics": {
+        "ontology": [
+          "xs:decimal"
+        ]
+      },
+      "value": {
+        "default": 1.5,
+        "type": "number",
+        "visible": true,
+        "order": 0,
+        "required": false
+      }
+	 },
+	  {
+      "id": "loci",
+      "details": {
+        "label": "Loci with effects",
+        "description": "The list of loci for each individual that actually have effects",
+        "attribute": "-l",
+        "showAttribute": false
+      },
+	  "semantics": {
+        "ontology": [
+          "xs:string"
+        ]
+      },
+      "value": {
+        "default": "0 1 2",
+        "type": "string",
+        "visible": true,
+        "order": 0,
+        "required": true
+      }
+	 },
+	  {
+      "id": "effect",
+      "details": {
+        "label": "Loci effect size",
+        "description": "The effect size of the corresponding loci listed in the --loci argument",
+        "attribute": "-e",
+        "showAttribute": false
+      },
+	  "semantics": {
+        "ontology": [
+          "xs:string"
+        ]
+      },
+      "value": {
+        "default": "0.2 0.2 0.2",
+        "type": "string",
+        "visible": true,
+        "order": 0,
+        "required": true
+      }
+    },
+	{
+      "id": "mean",
+      "details": {
+        "label": "Population mean",
+        "description": "The population/sub-population mean for a given quantitative trait",
+        "attribute": "-m",
+        "showAttribute": false
+      },
+	  "semantics": {
+        "ontology": [
+          "xs:decimal"
+        ]
+      },
+      "value": {
+        "default": 2.0,
+        "type": "string",
+        "visible": true,
+        "order": 0,
+        "required": true
+      }
+	 },
+	{
+      "id": "generations",
+      "details": {
+        "label": "Generations to evolve",
+        "description": "The number of generations to evolve your population or sub-populations",
+        "attribute": "-g",
+        "showAttribute": false
+      },
+	  "semantics": {
+        "ontology": [
+          "xs:int"
+        ]
+      },
+      "value": {
+        "default": 100,
+        "type": "number",
+        "visible": true,
+        "order": 0,
+        "required": true
+      }
+	 },
+	 {
+      "id": "heritability",
+      "details": {
+        "label": "Heritability coefficient",
+        "description": "The probability of a child inheriting a given trait from a parent",
+        "attribute": "-i",
+        "showAttribute": false
+      },
+	  "semantics": {
+        "ontology": [
+          "xs:decimal"
+        ]
+      },
+      "value": {
+        "default": 0.25,
+        "type": "number",
+        "visible": true,
+        "order": 0,
+        "required": true
+      }
+	 },
+	 {
+      "id": "recombination",
+      "details": {
+        "label": "Recombination rate",
+        "description": "The recombination rate for your population",
+        "attribute": "-r",
+        "showAttribute": false
+      },
+	  "semantics": {
+        "ontology": [
+          "xs:decimal"
+        ]
+      },
+      "value": {
+        "default": 0.0,
+        "type": "number",
+        "visible": true,
+        "order": 0,
+        "required": false
+      }
+	 },
+	 {
+      "id": "filename",
+      "details": {
+        "label": "The output name",
+        "description": "The filename for the Simulate output",
+        "attribute": "-f",
+        "showAttribute": false
+      },
+	  "semantics": {
+        "ontology": [
+          "xs:string"
+        ]
+      },
+      "value": {
+        "default": "Test",
+        "type": "string",
+        "visible": true,
+        "order": 0,
+        "required": false
+      }
+	 }
+  ]
+}
