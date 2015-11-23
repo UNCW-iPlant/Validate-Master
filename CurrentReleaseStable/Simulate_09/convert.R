@@ -29,10 +29,21 @@ make.map <- function(prefix) {
   map[,4] <- c(1:my.names.len)
   return(map)
 }
-  
+
+make.pheno <- function(prefix) {
+  gen <- read.csv(file=paste(prefix,"_genomes.csv",sep=""),header=T)
+  qtrait <- read.table(file=paste(prefix,"_qtrait.txt",sep=""), header=F)
+  pheno <- matrix(nrow=nrow(gen),ncol=3)
+  pheno[,1] <- rep(1,nrow(gen))
+  pheno[,2] <- c(1:nrow(gen))
+  pheno[,3] <- qtrait$V1
+  return(pheno)
+}
+
 write.file <- function(prefix) {
   ped <- make.ped(prefix)
   map <- make.map(prefix)
+  pheno <- make.pheno(prefix)
   write.table(ped,file=paste(prefix,".ped",sep=""),quote=F,row.names=F,col.names=F)
   write.table(map,file=paste(prefix,".map",sep=""),quote=F,row.names=F,col.names=F)
 }
