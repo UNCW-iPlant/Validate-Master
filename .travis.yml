@@ -8,8 +8,8 @@ before_install:
     - chmod +x miniconda.sh
     - ./miniconda.sh -b
     - export PATH=/home/travis/miniconda/bin:$PATH
-    - conda update --yes conda
-    - conda create --yes -n r anaconda
+    - conda update --q conda
+    - conda create --q -n r anaconda
     - source activate r
 
 install:
