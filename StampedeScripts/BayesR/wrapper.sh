@@ -15,4 +15,4 @@ else
 	echo "Input files need to have the same prefix"
 fi
 
-./bayesR -bfile $input -out $output
+./bayesR $input -out $output

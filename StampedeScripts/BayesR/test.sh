@@ -5,15 +5,9 @@ WRAPPERDIR=$( cd "$( dirname "$0" )" && pwd )
 #SBATCH -n 15
 #SBATCH -A iPlant-Collabs 
 #SBATCH -J test-bayesR
-bfile="$WRAPPERDIR/test_data/simdata"
-out="$WRAPPERDIR/test_data/output/out"
-tar -xvf bin.tgz
-bayesR -bfile $bfile -out $out
-rm -rf bin
-
-inputBED="test_data/simdata.bed"
-inputBIM="test_data/simdata.bim"
-inputFAM="test_data/simdata.fam"
+inputBED="$WRAPPERDIR/test_data/simdata.bed"
+inputBIM="$WRAPPERDIR/test_data/simdata.bim"
+inputFAM="$WRAPPERDIR/test_data/simdata.fam"
 output="bayesRTest.txt"
 
 . ./wrapper.sh
