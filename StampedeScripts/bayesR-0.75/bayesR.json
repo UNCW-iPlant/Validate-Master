@@ -1,0 +1,284 @@
+{
+  "name": "bayesR",
+  "version": "0.75",
+  "helpURI": "https://github.com/syntheke/bayesR",
+  "defaultQueue": "development",
+  "defaultMaxRunTime": "02:00:00",
+  "shortDescription": "bayesR",
+  "longDescription": "bayesR",
+  "executionSystem": "stampede-08262015-1627-swb5075",
+  "executionType": "HPC",
+  "parallelism": "SERIAL",
+  "deploymentPath": "swb5075/applications/bayesR-0.75",
+  "deploymentSystem": "data.iplantcollaborative.org",
+  "templatePath": "wrapper.sh",
+  "testPath": "test.sh",
+  "checkpointable": false,
+  "inputs": [
+    {
+      "id": "inputBED",
+      "value": {
+        "default": "agave://data.iplantcollaborative.org/swb5075/applications/bayesR-0.75/test_data/simdata.bed",
+        "visible": true,
+        "required": true
+      }
+    },
+    {
+      "id": "inputBIM",
+      "value": {
+        "default": "agave://data.iplantcollaborative.org/swb5075/applications/bayesR-0.75/test_data/simdata.bim",
+        "visible": true,
+        "required": true
+      }
+    },
+    {
+      "id": "inputFAM",
+      "value": {
+        "default": "agave://data.iplantcollaborative.org/swb5075/applications/bayesR-0.75/test_data/simdata.fam",
+        "visible": true,
+        "required": true
+      }
+    },
+    {
+      "id": "model",
+      "value": {
+        "visible": true,
+        "required": false
+      }
+    },
+    {
+      "id": "freq",
+      "value": {
+        "visible": true,
+        "required": false
+      }
+    },
+    {
+      "id": "param",
+      "value": {
+        "visible": true,
+        "required": false
+      }
+    }
+  ],
+  "parameters": [
+    {
+      "id": "output",
+      "value": {
+        "default": "MyBayesRResults",
+        "type": "string",
+        "visible": true,
+        "required": true
+      }
+    },
+    {
+      "id": "n",
+      "value": {
+        "default": 1,
+        "type": "number",
+        "visible": true,
+        "required": false
+      },
+      "semantics": {
+        "ontology": [
+          "xs:int"
+        ]
+      }
+    },
+    {
+      "id": "vara",
+      "value": {
+        "default": 0.01,
+        "type": "number",
+        "visible": true,
+        "required": false
+      },
+      "semantics": {
+        "ontology": [
+          "xs:decimal"
+        ]
+      }
+    },
+    {
+      "id": "vare",
+      "value": {
+        "default": 0.01,
+        "type": "number",
+        "visible": true,
+        "required": false
+      },
+      "semantics": {
+        "ontology": [
+          "xs:decimal"
+        ]
+      }
+    },
+    {
+      "id": "dfvara",
+      "value": {
+        "default": -2.0,
+        "type": "number",
+        "visible": true,
+        "required": false
+      },
+      "semantics": {
+        "ontology": [
+          "xs:deciaml"
+        ]
+      }
+    },
+    {
+      "id": "dfvare",
+      "value": {
+        "default": -2.0,
+        "type": "number",
+        "visible": true,
+        "required": false
+      },
+      "semantics": {
+        "ontology": [
+          "xs:decimal"
+        ]
+      }
+    },
+    {
+      "id": "delta",
+      "value": {
+        "default": 1,
+        "type": "number",
+        "visible": true,
+        "required": false
+      },
+      "semantics": {
+        "ontology": [
+          "xs:int"
+        ]
+      }
+    },
+    {
+      "id": "msize",
+      "value": {
+        "default": 0,
+        "type": "number",
+        "visible": true,
+        "required": false
+      },
+      "semantics": {
+        "ontology": [
+          "xs:int"
+        ]
+      }
+    },
+    {
+      "id": "mrep",
+      "value": {
+        "default": 5000,
+        "type": "number",
+        "visible": true,
+        "required": false
+      },
+      "semantics": {
+        "ontology": [
+          "xs:int"
+        ]
+      }
+    },
+    {
+      "id": "thin",
+      "value": {
+        "default": 10,
+        "type": "number",
+        "visible": true,
+        "required": false
+      },
+      "semantics": {
+        "ontology": [
+          "xs:int"
+        ]
+      }
+    },
+    {
+      "id": "ndist",
+      "value": {
+        "default": 4,
+        "type": "number",
+        "visible": true,
+        "required": false
+      },
+      "semantics": {
+        "ontology": [
+          "xs:int"
+        ]
+      }
+    },
+    {
+      "id": "predict",
+      "value": {
+        "default": false,
+        "type": "bool",
+        "visible": true,
+        "required": false
+      }
+    },
+    {
+      "id": "snpout",
+      "value": {
+        "default": false,
+        "type": "bool",
+        "visible": true,
+        "required": false
+      }
+    },
+    {
+      "id": "permute",
+      "value": {
+        "default": false,
+        "type": "bool",
+        "visible": true,
+        "required": false
+      }
+    },
+    {
+      "id": "numberit",
+      "value": {
+        "default": 50000,
+        "type": "number",
+        "visible": true,
+        "required": false
+      },
+      "semantics": {
+        "ontology": [
+          "xs:int"
+        ]
+      }
+    },
+    {
+      "id": "burnin",
+      "value": {
+        "default": 20000,
+        "type": "number",
+        "visible": true,
+        "required": false
+      },
+      "semantics": {
+        "ontology": [
+          "xs:int"
+        ]
+      }
+    },
+    {
+      "id": "seed",
+      "value": {
+        "default": 0,
+        "type": "number",
+        "visible": true,
+        "required": false
+      },
+      "semantics": {
+        "ontology": [
+          "xs:int"
+        ]
+      }
+    }
+  ]
+}
