@@ -1,5 +1,6 @@
 #!/bin/bash
 chmod +x ./bayesR
+
 bedInput=${inputBED}
 bimInput=${inputBIM}
 famInput=${inputFAM}
@@ -134,6 +135,6 @@ else
 fi
 
 echo "Argument Line:"
-echo "./bayesR $ARGS"
-
-./bayesR $ARGS
+echo "./bayesR ${ARGS}"
+echo "Starting bayesR"
+./bayesR ${ARGS}
