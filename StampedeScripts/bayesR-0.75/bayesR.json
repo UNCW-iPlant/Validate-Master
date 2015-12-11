@@ -2,7 +2,7 @@
 	"name": "bayesR",
 	"version": "0.75",
 	"helpURI": "https://github.com/syntheke/bayesR",
-	"defaultQueue": "normal",
+	"defaultQueue": "development",
 	"defaultMaxRunTime": "02:00:00",
 	"shortDescription": "bayesR",
 	"longDescription": "bayesR",

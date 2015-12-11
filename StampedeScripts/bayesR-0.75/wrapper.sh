@@ -6,8 +6,8 @@ famInput=${inputFAM}
 nameBED="${bedInput%.*}"
 nameBIM="${bimInput%.*}"
 nameFAM="${famInput%.*}"
+ARGS="-out ${output}"
 
-ARGS="-out $output"
 
 if [ "$nameBED" = "$nameBIM" ] && [ "$nameBED" = "$nameFAM" ]; then
 	ARGS="${ARGS} -bfile $nameBED"
@@ -15,86 +15,125 @@ else
 	echo "Input files need to have the same prefix"
 fi
 
-if [ -z ${n+x} ]; then
-	echo "n is set to ${n}"
+if [ -z "${n}" ]; then
+	echo "n not set"
+else 
+	echo "n set to ${n}"
 	ARGS="${ARGS} -n ${n}"
 fi
 
-if [ -z ${vara+x} ]; then
+if [ -z ${vara} ]; then
+	echo "vara not set"
+else
 	echo "vara is set to ${vara}"
 	ARGS="${ARGS} -vara ${vara}"
 fi
 
-if [ -z ${vare+x} ]; then
+if [ -z ${vare} ]; then
+	echo "vare not set"
+else
 	echo "vare is set to ${vare}"
 	ARGS="${ARGS} -vare ${vare}"
 fi
 
-if [ -z ${dfvara+x} ]; then
+if [ -z ${dfvara} ]; then
+	echo "dfvara not set"
+else
 	echo "dfvara is set to ${dfvara}"
 	ARGS="${ARGS} -dfvara ${dfvara}"
 fi
 
-if [ -z ${dfvare+x} ]; then
+if [ -z ${dfvare} ]; then
+	echo "dfvare not set"
+else
 	echo "dfvare is set to ${dfvare}"
 	ARGS="${ARGS} -dfvare ${dfvare}"
 fi
 
-if [ -z ${delta+x} ]; then
+if [ -z ${delta} ]; then
+	echo "delta not set"
+else
 	echo "delta is set to ${delta}"
 	ARGS="${ARGS} -delta ${delta}"
 fi
 
-if [ -z ${msize+x} ]; then
+if [ -z ${msize} ]; then
+	echo "msize not set"
+else
 	echo "msize is set to ${msize}"
 	ARGS="${ARGS} -msize ${msize}"
 fi
 
-if [ -z ${mrep+x} ]; then
+if [ -z ${mrep} ]; then
+	echo "mrep not set"
+else
 	echo "mrep is set to ${mrep}"
 	ARGS="${ARGS} -mrep ${mrep}"
 fi
-if [ -z ${numit+x} ]; then
-	echo "numit is set to ${numit}"
-	ARGS="${ARGS} -numit ${numit}"
+
+if [ -z ${numberit} ]; then
+	echo "numit not set"
+else
+	echo "numit is set to ${numberit}"
+	ARGS="${ARGS} -numit ${numberit}"
 fi
 
-if [ -z ${burnin+x} ]; then
+if [ -z ${burnin} ]; then
+	echo "burnin not set"
+else
 	echo "burnin is set to ${burnin}"
 	ARGS="${ARGS} -burnin ${burnin}"
 fi
 
-if [ -z ${thin+x} ]; then
+if [ -z ${thin} ]; then
+	echo "thin not set"
+else
 	echo "thin is set to ${thin}"
 	ARGS="${ARGS} -thin ${thin}"
 fi
 
-if [ -z ${ndist+x} ]; then
+if [ -z ${ndist} ]; then
+	echo "ndist not set"
+else
 	echo "ndist is set to ${ndist}"
 	ARGS="${ARGS} -ndist ${ndist}"
 fi
 
-if [ -z ${seed+x} ]; then
+if [ -z ${seed} ]; then
+	echo "seed not set"
+else
 	echo "seed is set to ${seed}"
 	ARGS="${ARGS} -seed ${seed}"
 fi
 
-if [ -z ${predict+x} ] && [ "${predict}" -eq 1 ]; then
-	echo "predict is set to true"
-	ARGS="${ARGS} -predict"
+if [ -z ${predict} ]; then
+	echo "predict not set"
+else
+	if [ "${predict}" -eq 1 ]; then
+		echo "predict is set to true"
+		ARGS="${ARGS} -predict"
+	fi
 fi
 
-if [ -z ${snpout+x} ] && [ "${snpout}" -eq 1 ]; then
-	echo "snpout is set to true"
-	ARGS="${ARGS} -snpout"
+if [ -z ${snpout} ]; then
+	echo "snpout not set"
+else
+	if [ "${snpout}" -eq 1 ]; then
+		echo "snpout is set to true"
+		ARGS="${ARGS} -snpout"
+	fi
 fi
 
-if [ -z ${permute+x} ] && [ "${permute}" -eq 1 ]; then
-	echo "permute is set to true"
-	ARGS="${ARGS} -permute"
+if [ -z ${permute} ]; then
+	echo "permute not set"
+else
+	if [ "${permute}" -eq 1 ]; then
+		echo "permute is set to true"
+		ARGS="${ARGS} -permute"
+	fi
 fi
 
 echo "Argument Line:"
-echo "./bayesR ${ARGS}"
+echo "./bayesR $ARGS"
 
-./bayesR ${ARGS}
+./bayesR $ARGS
