@@ -79,6 +79,21 @@ if [ -z ${seed+x} ]; then
 	ARGS="${ARGS} -seed ${seed}"
 fi
 
+if [ -z ${predict+x} ] && [ "${predict}" -eq 1 ]; then
+	echo "predict is set to true"
+	ARGS="${ARGS} -predict"
+fi
+
+if [ -z ${snpout+x} ] && [ "${snpout}" -eq 1 ]; then
+	echo "snpout is set to true"
+	ARGS="${ARGS} -snpout"
+fi
+
+if [ -z ${permute+x} ] && [ "${permute}" -eq 1 ]; then
+	echo "permute is set to true"
+	ARGS="${ARGS} -permute"
+fi
+
 echo "Argument Line:"
 echo "./bayesR ${ARGS}"
 
