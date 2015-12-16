@@ -46,6 +46,7 @@ write.file <- function(prefix) {
   pheno <- make.pheno(prefix)
   write.table(ped,file=paste(prefix,".ped",sep=""),quote=F,row.names=F,col.names=F)
   write.table(map,file=paste(prefix,".map",sep=""),quote=F,row.names=F,col.names=F)
+  write.table(pheno,file=paste(prefix,".pheno",sep=""),quote=F,row.names=F,col.names=F)
 }
 
 write.file(prefix=filename)
