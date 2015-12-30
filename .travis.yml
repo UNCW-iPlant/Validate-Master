@@ -4,21 +4,24 @@ python:
     - "2.7"
 
 before_install:
-    - wget http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh
-    - chmod +x miniconda.sh
-    - ./miniconda.sh -b
-    - export PATH=/home/travis/miniconda/bin:$PATH
-    - conda update --yes conda
-    - conda create --yes -n r anaconda
+    - wget https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh;
+    - bash miniconda.sh -b -p $HOME/miniconda
+    - export PATH="$HOME/miniconda/bin:$PATH"
+    - hash -r
+    - conda config --set always_yes yes --set changeps1 no
+    - conda update -q conda
+    - conda info -a
+    - conda create -q -n r anaconda
     - source activate r
+
 
 install:
     - conda install --yes python=$TRAVIS_PYTHON_VERSION numpy scipy
     - conda install --yes -c r r
     - conda install --yes -c https://conda.anaconda.org/r rpy2
     - conda install --yes -c https://conda.anaconda.org/r r-testthat
-    - wget https://cran.r-project.org/src/contrib/Rcpp_0.12.1.tar.gz
-    - R CMD INSTALL Rcpp_0.12.1.tar.gz
+    - wget https://cran.r-project.org/src/contrib/Rcpp_0.12.2.tar.gz
+    - R CMD INSTALL Rcpp_0.12.2.tar.gz
     - wget https://cran.r-project.org/src/contrib/plyr_1.8.3.tar.gz
     - R CMD INSTALL plyr_1.8.3.tar.gz
     - wget https://cran.r-project.org/src/contrib/digest_0.6.8.tar.gz
