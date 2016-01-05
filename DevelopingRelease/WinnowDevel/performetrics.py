@@ -97,6 +97,8 @@ def auc(snpTrueFalse, scoreColumn):
     """
     scoreColumn = np.array(scoreColumn)
     snpTrueFalse = np.array(snpTrueFalse)
+    if len(scoreColumn)!=len(snpTrueFalse):
+        snpTrueFalse = snpTrueFalse[0:len(scoreColumn)]
     x1 = scoreColumn[snpTrueFalse == True]
     n1 = x1.size
     x2 = scoreColumn[snpTrueFalse == False]
@@ -282,6 +284,31 @@ def fpr(snpTrueFalse, threshold, scoreColumn):
         if each is False:
             count += 1.0
     return float(falsePositives / count)
+
+def prevalence(snpTrueFalse, threshold, scoreColumn):
+    """
+    Returns the prevalence value, defined as the total number of positives (whether correctly identified or not)
+    divided by the total in the sample
+    
+        Example:
+
+            >>> snpTF=[True,False,True,True,True,False,False,True,False,False,True,False]
+            >>> threshold=0.05
+            >>> score=[0.003,0.65,0.004,0.006,0.078,0.003,0.0001,0.513,0.421,0.0081,0.043,0.98]
+            >>> prevalence(snpTF,threshold,score)
+            0.5833333333333333
+
+    :param snpTrueFalse: true/false data set
+    :param threshold: significance threshold
+    :param scoreColumn: score data set
+    :return: the float representation of the prevalence value
+    """
+    
+    truePositives = float(tp(snpTrueFalse, threshold, scoreColumn))
+    falsePositives = float(fp(snpTrueFalse, threshold, scoreColumn))
+    trueNegatives = float(tn(snpTrueFalse, threshold, scoreColumn))
+    falseNegatives = float(fn(snpTrueFalse, threshold, scoreColumn))
+    return (truePositives+falseNegatives)/(truePositives+falsePositives+trueNegatives+falseNegatives)
 
 
 def error(snpTrueFalse, threshold, scoreColumn):

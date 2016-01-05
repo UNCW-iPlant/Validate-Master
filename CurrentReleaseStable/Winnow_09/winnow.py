@@ -258,3 +258,7 @@ def main():  # pragma: no cover
     w.load_kt()
     w.write_to_file(w.do_analysis())
     w.save_settings()
+
+	
+if __name__ == "__main__":
+    main()

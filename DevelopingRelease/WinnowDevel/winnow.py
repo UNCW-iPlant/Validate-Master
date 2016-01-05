@@ -4,6 +4,8 @@
 
 
 """ Dependencies """
+import os
+import os.path
 from commandline import initializeGraphics, checkArgs
 from fileimport import getList, loadKT, loadFile, trueFalse, writeCSV, writeSettings
 from checkhidden import checkList
@@ -19,6 +21,10 @@ class Winnow:
         :return: a new Winnow object with snp_true_false and beta_true_false initialized as empty lists
         """
         self.args_dict = args
+        if os.path.isfile(os.path.abspath(self.args_dict['folder'])):
+            os.mkdir(os.getcwd()+'/Winnow_input')
+            os.rename(self.args_dict['folder'],os.getcwd()+'/Winnow_input/'+self.args_dict['folder'])
+            self.args_dict['folder'] = 'Winnow_input'
         self.snp_true_false = list()
         self.beta_true_false = list()
 
@@ -39,9 +45,9 @@ class Winnow:
         :return: sets the instance list variables snp_true_false and beta_true_false with data from the known truth file
         given at runtime, separated by the given delimiter
         """
-        app_output_list = checkList(getList(self.args_dict['folder']))
-        kt_file = loadKT(self.args_dict['truth'], self.args_dict['kt_type_separ'])
+        app_output_list = sorted(checkList(getList(self.args_dict['folder'])))
         acquired_data = loadFile(self.args_dict['folder'], app_output_list[0], self.args_dict['separ'])
+        kt_file = loadKT(self.args_dict['truth'], self.args_dict['kt_type_separ'])
         snp_column = data_to_list(acquired_data, 1, acquired_data.header.index(self.args_dict['snp']))
         kt_snps = data_to_list(kt_file, 1, 0)
         kt_betas = data_to_list(kt_file, 1, 1)
@@ -204,6 +210,7 @@ class Winnow:
                         f.write('SNP ID \tP-Value')
                 self.save_snp_score(snp, score, adjusted)
 
+
     def save_settings(self):
         """
         Saves the parameters: Output file, analysis type, Known truth type, and threshold to a text file
@@ -258,3 +265,7 @@ def main():  # pragma: no cover
     w.load_kt()
     w.write_to_file(w.do_analysis())
     w.save_settings()
+
+
+if __name__ == "__main__":
+    main()
