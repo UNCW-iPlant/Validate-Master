@@ -63,6 +63,12 @@ class PerformetricsTest(unittest.TestCase):
         threshold = 0.05
         self.assertEqual(performetrics.fpr(snp_tf, threshold, score), 0.5)
 
+    def test_prevalence(self):
+        snpTF=[True,False,True,True,True,False,False,True,False,False,True,False]
+        threshold=0.05
+        score=[0.003,0.65,0.004,0.006,0.078,0.003,0.0001,0.513,0.421,0.0081,0.043,0.98]
+        self.assertEqual(performetrics.prevalence(snpTF, threshold, score), 0.5)
+
     def test_error(self):
         snp_tf = [True, False, True, True, True, False, False, True, False, False, True, False]
         score = [0.003, 0.65, 0.004, 0.006, 0.078, 0.003, 0.0001, 0.513, 0.421, 0.0081, 0.043, 0.98]
