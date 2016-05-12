@@ -7,7 +7,6 @@ class Merge:
         self.param_source = args.param
         self.output_name = args.output
         self.line_generator = self.parse_lines()
-        self.write_output()
 
     def parse_lines(self):
         with open(self.bim_source) as bim_file, open(self.param_source) as param_file:
@@ -35,6 +34,7 @@ def parse_arguments():
 
 def main():
     merger = Merge(parse_arguments())
+    merger.write_output()
 
 if __name__ == '__main__':
     main()
