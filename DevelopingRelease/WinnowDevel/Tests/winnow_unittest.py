@@ -112,6 +112,8 @@ def format_float(float_list):
 def get_test_suite():
     """
     Returns a test suite with all tests
-
     """
     return unittest.TestLoader().loadTestsFromTestCase(WinnowTest)
+
+if __name__ == "__main__":
+    unittest.main()

@@ -94,4 +94,10 @@ class GWASTest(unittest.TestCase):
 
 
 def get_test_suite():
+    """
+    Returns a test suite with all tests
+    """
     return unittest.TestLoader().loadTestsFromTestCase(GWASTest)
+
+if __name__ == "__main__":
+    unittest.main()

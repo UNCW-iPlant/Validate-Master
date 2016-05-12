@@ -22,6 +22,9 @@ class AdjustmentsTest(unittest.TestCase):
 
 
 def get_test_suite():
+    """
+    Returns a test suite with all tests
+    """
     return unittest.TestLoader().loadTestsFromTestCase(AdjustmentsTest)
 
 if __name__ == "__main__":

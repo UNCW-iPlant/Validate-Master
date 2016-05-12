@@ -230,6 +230,8 @@ def format_float(x):
 def get_test_suite():
     """
     Returns a test suite with all tests
-
     """
     return unittest.TestLoader().loadTestsFromTestCase(PerformetricsTest)
+
+if __name__ == "__main__":
+    unittest.main()
