@@ -8,6 +8,10 @@ from DevelopingRelease.WinnowDevel.fileimport import loadKT
 
 
 class WinnowTest(unittest.TestCase):
+    """
+    Directs path to example data for testing.
+    Initializes args to test values.
+    """
     folder = os.getcwd()[:os.getcwd().index("Validate-Master")] + "Validate-Master/ExampleData/Winnow/data/OutputPlink"
     ote = os.getcwd()[:os.getcwd().index("Validate-Master")] + "Validate-Master/ExampleData/Winnow/data/Plinkkt.ote"
     destination = os.getcwd()[:os.getcwd().index("Validate-Master")] + "Validate-Master/ExampleData/Winnow/results"
@@ -16,6 +20,10 @@ class WinnowTest(unittest.TestCase):
             'kt_type_separ': 'whitespace', 'pvaladjust': None, 'savep': False, 'covar': None}
 
     def test_load_ote(self):
+        """
+        Test method load_ote (loads truth and effect type known truth file).
+        Checks for equality of returned lists and expected lists of snp and beta values.
+        """
         self.win = winnow.Winnow(self.args)
         self.win.load_ote()
         snp = (False, False, False, True, False, False, False, False, False, True)
@@ -32,6 +40,10 @@ class WinnowTest(unittest.TestCase):
                                         self.win.beta_true_false[715], self.win.beta_true_false[276])))
 
     def test_load_data(self):
+        """
+        Test method load_data (load_data returns a list of score and beta values from a given file)
+        Checks for equality of returned list and expected list of score and beta values.
+        """
         self.win = winnow.Winnow(self.args)
         s, b = self.win.load_data("/PlinkStd1.qassoc")
         score = (0.6028, 0.06006, 0.4884, 0.6276, 0.8426, 0.4332, 0.717, 0.3584, 0.1795, 0.3647)
@@ -42,6 +54,10 @@ class WinnowTest(unittest.TestCase):
                                           b[2107], b[829])))
 
     def test_do_analysis(self):
+        """
+        Test method do_analysis (generator that performs the analysis - currently only GWAS is allowed).
+        Checks for equality of returned list and expected list of analyzed values.
+        """
         self.win = winnow.Winnow(self.args)
         self.win.load_kt()
         gen = self.win.do_analysis()
@@ -52,6 +68,9 @@ class WinnowTest(unittest.TestCase):
         gen.close()
 
     def test_do_gwas(self):
+        """
+        Test method do_gwas (returns the results of the GWAS analysis
+        """
         self.win = winnow.Winnow(self.args)
         self.win.snp_true_false = (True, False, True, True, True, False, False, True, False, False, True, False)
         score_column = (0.003, 0.65, 0.004, 0.006, 0.078, 0.003, 0.0001, 0.513, 0.421, 0.0081, 0.043, 0.98)
@@ -75,10 +94,10 @@ class WinnowTest(unittest.TestCase):
 
 def format_float(float_list):
     """
-    Truncates floats to 5 decimal places
+    Truncates floats to 8 decimal places
 
-    :param float_list:
-    :return: a list of float truncuated to 5 decimal places
+    :param float_list
+    :return a list of float truncated to 8 decimal places
     """
     return_list = list()
     for each in float_list:

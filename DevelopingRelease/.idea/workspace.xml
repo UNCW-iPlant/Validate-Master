@@ -1,0 +1,1219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ceb8e0ba-1f2e-4b44-94b6-f14792a822cf" name="Default" comment="" />
+    <ignored path="DevelopingRelease.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="DevelopingRelease" />
+  </component>
+  <component name="FileEditorManager">
+    <splitter split-orientation="horizontal" split-proportion="0.52047557">
+      <split-first>
+        <leaf>
+          <file leaf-file-name="winnow_unittest.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/WinnowDevel/Tests/winnow_unittest.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.5142349" vertical-offset="918" max-vertical-offset="2023">
+                  <caret line="71" column="69" selection-start-line="71" selection-start-column="69" selection-end-line="71" selection-end-column="69" />
+                  <folding>
+                    <element signature="e#0#15#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="adjustments_unittest.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/WinnowDevel/Tests/adjustments_unittest.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
+                  <caret line="23" column="19" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
+                  <folding>
+                    <element signature="e#0#15#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="gwas_unittest.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/WinnowDevel/Tests/gwas_unittest.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="64" max-vertical-offset="1411">
+                  <caret line="43" column="71" selection-start-line="43" selection-start-column="71" selection-end-line="43" selection-end-column="71" />
+                  <folding>
+                    <element signature="e#0#15#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="winnowdevel_test_suite.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/WinnowDevel/Tests/winnowdevel_test_suite.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="595">
+                  <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#65#80#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="performetrics_unittest.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/WinnowDevel/Tests/performetrics_unittest.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="868" max-vertical-offset="1700">
+                  <caret line="135" column="0" selection-start-line="135" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#2182#2467#0" expanded="false" />
+                    <element signature="e#2501#2804#0" expanded="false" />
+                    <element signature="e#3468#3773#0" expanded="false" />
+                    <element signature="e#3816#4130#0" expanded="false" />
+                    <element signature="e#4165#4469#0" expanded="false" />
+                    <element signature="e#4504#4793#0" expanded="false" />
+                    <element signature="e#4833#5142#0" expanded="false" />
+                    <element signature="e#5180#5489#0" expanded="false" />
+                    <element signature="e#5526#5833#0" expanded="false" />
+                    <element signature="e#5878#6120#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="performetrics.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/WinnowDevel/performetrics.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1139">
+                  <caret line="287" column="53" selection-start-line="287" selection-start-column="53" selection-end-line="287" selection-end-column="53" />
+                  <folding>
+                    <element signature="e#151#720#0" expanded="false" />
+                    <element signature="e#763#1307#0" expanded="false" />
+                    <element signature="e#1366#2961#0" expanded="false" />
+                    <element signature="e#3004#4012#0" expanded="false" />
+                    <element signature="e#4065#5037#0" expanded="false" />
+                    <element signature="e#5090#6046#0" expanded="false" />
+                    <element signature="e#6099#7057#0" expanded="false" />
+                    <element signature="e#7110#8074#0" expanded="false" />
+                    <element signature="e#8128#8933#0" expanded="false" />
+                    <element signature="e#8987#9775#0" expanded="false" />
+                    <element signature="e#9835#10877#0" expanded="false" />
+                    <element signature="e#10933#11997#0" expanded="false" />
+                    <element signature="e#12056#13104#0" expanded="false" />
+                    <element signature="e#13159#14037#0" expanded="false" />
+                    <element signature="e#14092#14939#0" expanded="false" />
+                    <element signature="e#14999#15941#0" expanded="false" />
+                    <element signature="e#15995#16994#0" expanded="false" />
+                    <element signature="e#17051#17795#0" expanded="false" />
+                    <element signature="e#17836#18372#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="gwas.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/WinnowDevel/gwas.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="1659" max-vertical-offset="2125">
+                  <caret line="100" column="21" selection-start-line="100" selection-start-column="21" selection-end-line="100" selection-end-column="21" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="adjustments.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/WinnowDevel/adjustments.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
+                  <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="winnow.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/WinnowDevel/winnow.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.06227758" vertical-offset="475" max-vertical-offset="1955">
+                  <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#1193#1447#0" expanded="false" />
+                    <element signature="e#1481#2354#0" expanded="false" />
+                    <element signature="e#2420#3297#0" expanded="false" />
+                    <element signature="e#3343#4863#0" expanded="false" />
+                    <element signature="e#4900#6275#0" expanded="false" />
+                    <element signature="e#6339#6896#0" expanded="false" />
+                    <element signature="e#8678#10010#0" expanded="false" />
+                    <element signature="e#10050#10246#0" expanded="false" />
+                    <element signature="e#11038#11647#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/WinnowDevel/Tests/adjustments_unittest.py" />
+        <option value="$PROJECT_DIR$/WinnowDevel/winnow.py" />
+        <option value="$PROJECT_DIR$/WinnowDevel/Tests/test.py" />
+        <option value="$PROJECT_DIR$/WinnowDevel/performetrics.py" />
+        <option value="$PROJECT_DIR$/WinnowDevel/Tests/performetrics_unittest.py" />
+        <option value="$PROJECT_DIR$/WinnowDevel/Tests/gwas_unittest.py" />
+        <option value="$PROJECT_DIR$/WinnowDevel/Tests/winnow_unittest.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1552" />
+    <option name="height" value="840" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevelopingRelease" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevelopingRelease" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevelopingRelease" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevelopingRelease" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevelopingRelease" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WinnowDevel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevelopingRelease" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevelopingRelease" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WinnowDevel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Tests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="recentsLimit" value="5" />
+    <property name="options.lastSelected" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="FullScreen" value="false" />
+  </component>
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <console-settings />
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.winnowdevel_test_suite">
+    <configuration default="false" name="winnowdevel_test_suite" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/WinnowDevel/Tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="DevelopingRelease" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/WinnowDevel/Tests/winnowdevel_test_suite.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="winnow" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/WinnowDevel" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="DevelopingRelease" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/WinnowDevel/winnow.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittest WinnowTest.test_load_data" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/WinnowDevel/Tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="DevelopingRelease" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/WinnowDevel/Tests/winnow_unittest.py" />
+      <option name="CLASS_NAME" value="WinnowTest" />
+      <option name="METHOD_NAME" value="test_load_data" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_METHOD" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Doctest prevalence" type="tests" factoryName="Doctests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/WinnowDevel" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="DevelopingRelease" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/WinnowDevel/performetrics.py" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="prevalence" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_FUNCTION" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittest GWASTest.test_gwas_without_beta_covariate" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/WinnowDevel/Tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="DevelopingRelease" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/WinnowDevel/Tests/gwas_unittest.py" />
+      <option name="CLASS_NAME" value="GWASTest" />
+      <option name="METHOD_NAME" value="test_gwas_without_beta_covariate" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_METHOD" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="py.test">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="DevelopingRelease" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="testToRun" value="" />
+      <option name="keywords" value="" />
+      <option name="params" value="" />
+      <option name="USE_PARAM" value="false" />
+      <option name="USE_KEYWORD" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Nosetests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="DevelopingRelease" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="DevelopingRelease" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Unittests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="DevelopingRelease" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Doctests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="DevelopingRelease" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Attests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="DevelopingRelease" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <list size="5">
+      <item index="0" class="java.lang.String" itemvalue="Python.winnowdevel_test_suite" />
+      <item index="1" class="java.lang.String" itemvalue="Python.winnow" />
+      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest WinnowTest.test_load_data" />
+      <item index="3" class="java.lang.String" itemvalue="Python tests.Doctest prevalence" />
+      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest GWASTest.test_gwas_without_beta_covariate" />
+    </list>
+    <recent_temporary>
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Python.winnowdevel_test_suite" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest GWASTest.test_gwas_without_beta_covariate" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Doctest prevalence" />
+        <item index="3" class="java.lang.String" itemvalue="Python.winnow" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest WinnowTest.test_load_data" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1552" height="840" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24966888" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1739726" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="myTodoPanelSettings">
+      <TodoPanelSettings />
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="3" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/WinnowDevel/Tests/winnowdevel_test_suite.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="595">
+          <caret line="19" column="2" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
+          <folding>
+            <element signature="e#65#80#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinnowDevel/gwas.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1616" max-vertical-offset="2125">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinnowDevel/adjustments.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="154" max-vertical-offset="663">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinnowDevel/winnow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="969" max-vertical-offset="1462">
+          <caret line="236" column="0" selection-start-line="236" selection-start-column="0" selection-end-line="236" selection-end-column="0" />
+          <folding>
+            <element signature="e#1193#1447#0" expanded="false" />
+            <element signature="e#1481#2354#0" expanded="false" />
+            <element signature="e#2420#3297#0" expanded="false" />
+            <element signature="e#3343#4863#0" expanded="false" />
+            <element signature="e#4900#6275#0" expanded="false" />
+            <element signature="e#6339#6896#0" expanded="false" />
+            <element signature="e#8678#10010#0" expanded="false" />
+            <element signature="e#10050#10246#0" expanded="false" />
+            <element signature="e#11038#11647#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinnowDevel/Tests/winnow_unittest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="765">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinnowDevel/Tests/adjustments_unittest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="493">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinnowDevel/Tests/gwas_unittest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="919" max-vertical-offset="1428">
+          <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinnowDevel/performetrics.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1700" max-vertical-offset="8534">
+          <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
+          <folding>
+            <element signature="e#151#720#0" expanded="false" />
+            <element signature="e#763#1307#0" expanded="false" />
+            <element signature="e#1366#2961#0" expanded="false" />
+            <element signature="e#3004#4012#0" expanded="false" />
+            <element signature="e#4065#5037#0" expanded="false" />
+            <element signature="e#5090#6046#0" expanded="false" />
+            <element signature="e#6099#7057#0" expanded="false" />
+            <element signature="e#7110#8074#0" expanded="false" />
+            <element signature="e#8128#8933#0" expanded="false" />
+            <element signature="e#8987#9775#0" expanded="false" />
+            <element signature="e#9835#10877#0" expanded="false" />
+            <element signature="e#10933#11997#0" expanded="false" />
+            <element signature="e#12056#13104#0" expanded="false" />
+            <element signature="e#13159#14037#0" expanded="false" />
+            <element signature="e#14092#14939#0" expanded="false" />
+            <element signature="e#14999#15941#0" expanded="false" />
+            <element signature="e#15995#16994#0" expanded="false" />
+            <element signature="e#17051#17795#0" expanded="false" />
+            <element signature="e#17836#18372#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinnowDevel/Tests/winnowdevel_test_suite.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="595">
+          <caret line="19" column="2" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
+          <folding>
+            <element signature="e#65#80#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinnowDevel/gwas.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1616" max-vertical-offset="2125">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinnowDevel/adjustments.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="154" max-vertical-offset="663">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinnowDevel/winnow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4131" max-vertical-offset="4607">
+          <caret line="249" column="20" selection-start-line="249" selection-start-column="20" selection-end-line="249" selection-end-column="20" />
+          <folding>
+            <element signature="e#1193#1447#0" expanded="false" />
+            <element signature="e#1481#2354#0" expanded="false" />
+            <element signature="e#2420#3297#0" expanded="false" />
+            <element signature="e#3343#4863#0" expanded="false" />
+            <element signature="e#4900#6275#0" expanded="false" />
+            <element signature="e#6339#6896#0" expanded="false" />
+            <element signature="e#8678#10010#0" expanded="false" />
+            <element signature="e#10050#10246#0" expanded="false" />
+            <element signature="e#11038#11647#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinnowDevel/Tests/winnow_unittest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="1666">
+          <caret line="6" column="23" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinnowDevel/Tests/performetrics_unittest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="2295">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#15#0" expanded="false" />
+            <element signature="e#242#378#0" expanded="false" />
+            <element signature="e#412#546#0" expanded="false" />
+            <element signature="e#585#893#0" expanded="false" />
+            <element signature="e#927#1195#0" expanded="false" />
+            <element signature="e#1228#1513#0" expanded="false" />
+            <element signature="e#1546#1831#0" expanded="false" />
+            <element signature="e#1864#2149#0" expanded="false" />
+            <element signature="e#2182#2467#0" expanded="false" />
+            <element signature="e#2501#2804#0" expanded="false" />
+            <element signature="e#3167#3432#0" expanded="false" />
+            <element signature="e#3468#3773#0" expanded="false" />
+            <element signature="e#3816#4130#0" expanded="false" />
+            <element signature="e#4165#4469#0" expanded="false" />
+            <element signature="e#4504#4793#0" expanded="false" />
+            <element signature="e#4833#5142#0" expanded="false" />
+            <element signature="e#5180#5489#0" expanded="false" />
+            <element signature="e#5526#5833#0" expanded="false" />
+            <element signature="e#5878#6120#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinnowDevel/Tests/adjustments_unittest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="493">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinnowDevel/Tests/gwas_unittest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="919" max-vertical-offset="1428">
+          <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinnowDevel/performetrics.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8534">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#151#720#0" expanded="false" />
+            <element signature="e#763#1307#0" expanded="false" />
+            <element signature="e#1366#2961#0" expanded="false" />
+            <element signature="e#3004#4012#0" expanded="false" />
+            <element signature="e#4065#5037#0" expanded="false" />
+            <element signature="e#5090#6046#0" expanded="false" />
+            <element signature="e#6099#7057#0" expanded="false" />
+            <element signature="e#7110#8074#0" expanded="false" />
+            <element signature="e#8128#8933#0" expanded="false" />
+            <element signature="e#8987#9775#0" expanded="false" />
+            <element signature="e#9835#10877#0" expanded="false" />
+            <element signature="e#10933#11997#0" expanded="false" />
+            <element signature="e#12056#13104#0" expanded="false" />
+            <element signature="e#13159#14037#0" expanded="false" />
+            <element signature="e#14092#14939#0" expanded="false" />
+            <element signature="e#14999#15941#0" expanded="false" />
+            <element signature="e#15995#16994#0" expanded="false" />
+            <element signature="e#17051#17795#0" expanded="false" />
+            <element signature="e#17836#18372#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinnowDevel/Tests/performetrics_unittest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="2295">
+          <caret line="4" column="5" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#15#0" expanded="false" />
+            <element signature="e#242#378#0" expanded="false" />
+            <element signature="e#412#546#0" expanded="false" />
+            <element signature="e#585#893#0" expanded="false" />
+            <element signature="e#927#1195#0" expanded="false" />
+            <element signature="e#1228#1513#0" expanded="false" />
+            <element signature="e#1546#1831#0" expanded="false" />
+            <element signature="e#1864#2149#0" expanded="false" />
+            <element signature="e#2182#2467#0" expanded="false" />
+            <element signature="e#2501#2804#0" expanded="false" />
+            <element signature="e#3167#3432#0" expanded="false" />
+            <element signature="e#3468#3773#0" expanded="false" />
+            <element signature="e#3816#4130#0" expanded="false" />
+            <element signature="e#4165#4469#0" expanded="false" />
+            <element signature="e#4504#4793#0" expanded="false" />
+            <element signature="e#4833#5142#0" expanded="false" />
+            <element signature="e#5180#5489#0" expanded="false" />
+            <element signature="e#5526#5833#0" expanded="false" />
+            <element signature="e#5878#6120#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinnowDevel/Tests/winnowdevel_test_suite.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="595">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding>
+            <element signature="e#65#80#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinnowDevel/Tests/gwas_unittest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="1428">
+          <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinnowDevel/Tests/adjustments_unittest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="493">
+          <caret line="4" column="5" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinnowDevel/Tests/winnow_unittest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1717">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinnowDevel/performetrics.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8534">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#151#720#0" expanded="false" />
+            <element signature="e#763#1307#0" expanded="false" />
+            <element signature="e#1366#2961#0" expanded="false" />
+            <element signature="e#3004#4012#0" expanded="false" />
+            <element signature="e#4065#5037#0" expanded="false" />
+            <element signature="e#5090#6046#0" expanded="false" />
+            <element signature="e#6099#7057#0" expanded="false" />
+            <element signature="e#7110#8074#0" expanded="false" />
+            <element signature="e#8128#8933#0" expanded="false" />
+            <element signature="e#8987#9775#0" expanded="false" />
+            <element signature="e#9835#10877#0" expanded="false" />
+            <element signature="e#10933#11997#0" expanded="false" />
+            <element signature="e#12056#13104#0" expanded="false" />
+            <element signature="e#13159#14037#0" expanded="false" />
+            <element signature="e#14092#14939#0" expanded="false" />
+            <element signature="e#14999#15941#0" expanded="false" />
+            <element signature="e#15995#16994#0" expanded="false" />
+            <element signature="e#17051#17795#0" expanded="false" />
+            <element signature="e#17836#18372#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinnowDevel/Tests/performetrics_unittest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="2295">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#15#0" expanded="false" />
+            <element signature="e#242#378#0" expanded="false" />
+            <element signature="e#412#546#0" expanded="false" />
+            <element signature="e#585#893#0" expanded="false" />
+            <element signature="e#927#1195#0" expanded="false" />
+            <element signature="e#1228#1513#0" expanded="false" />
+            <element signature="e#1546#1831#0" expanded="false" />
+            <element signature="e#1864#2149#0" expanded="false" />
+            <element signature="e#2182#2467#0" expanded="false" />
+            <element signature="e#2501#2804#0" expanded="false" />
+            <element signature="e#3167#3432#0" expanded="false" />
+            <element signature="e#3468#3773#0" expanded="false" />
+            <element signature="e#3816#4130#0" expanded="false" />
+            <element signature="e#4165#4469#0" expanded="false" />
+            <element signature="e#4504#4793#0" expanded="false" />
+            <element signature="e#4833#5142#0" expanded="false" />
+            <element signature="e#5180#5489#0" expanded="false" />
+            <element signature="e#5526#5833#0" expanded="false" />
+            <element signature="e#5878#6120#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinnowDevel/Tests/winnowdevel_test_suite.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="527">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#65#80#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinnowDevel/Tests/winnow_unittest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="1666">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="4" selection-end-column="69" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinnowDevel/performetrics.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8534">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#151#720#0" expanded="false" />
+            <element signature="e#763#1307#0" expanded="false" />
+            <element signature="e#1366#2961#0" expanded="false" />
+            <element signature="e#3004#4012#0" expanded="false" />
+            <element signature="e#4065#5037#0" expanded="false" />
+            <element signature="e#5090#6046#0" expanded="false" />
+            <element signature="e#6099#7057#0" expanded="false" />
+            <element signature="e#7110#8074#0" expanded="false" />
+            <element signature="e#8128#8933#0" expanded="false" />
+            <element signature="e#8987#9775#0" expanded="false" />
+            <element signature="e#9835#10877#0" expanded="false" />
+            <element signature="e#10933#11997#0" expanded="false" />
+            <element signature="e#12056#13104#0" expanded="false" />
+            <element signature="e#13159#14037#0" expanded="false" />
+            <element signature="e#14092#14939#0" expanded="false" />
+            <element signature="e#14999#15941#0" expanded="false" />
+            <element signature="e#15995#16994#0" expanded="false" />
+            <element signature="e#17051#17795#0" expanded="false" />
+            <element signature="e#17836#18372#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinnowDevel/Tests/performetrics_unittest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2295">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#15#0" expanded="false" />
+            <element signature="e#242#378#0" expanded="false" />
+            <element signature="e#412#546#0" expanded="false" />
+            <element signature="e#585#893#0" expanded="false" />
+            <element signature="e#927#1195#0" expanded="false" />
+            <element signature="e#1228#1513#0" expanded="false" />
+            <element signature="e#1546#1831#0" expanded="false" />
+            <element signature="e#1864#2149#0" expanded="false" />
+            <element signature="e#2182#2467#0" expanded="false" />
+            <element signature="e#2501#2804#0" expanded="false" />
+            <element signature="e#3167#3432#0" expanded="false" />
+            <element signature="e#3468#3773#0" expanded="false" />
+            <element signature="e#3816#4130#0" expanded="false" />
+            <element signature="e#4165#4469#0" expanded="false" />
+            <element signature="e#4504#4793#0" expanded="false" />
+            <element signature="e#4833#5142#0" expanded="false" />
+            <element signature="e#5180#5489#0" expanded="false" />
+            <element signature="e#5526#5833#0" expanded="false" />
+            <element signature="e#5878#6120#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinnowDevel/Tests/winnowdevel_test_suite.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="527">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#65#80#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinnowDevel/performetrics.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8534">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#151#720#0" expanded="false" />
+            <element signature="e#763#1307#0" expanded="false" />
+            <element signature="e#1366#2961#0" expanded="false" />
+            <element signature="e#3004#4012#0" expanded="false" />
+            <element signature="e#4065#5037#0" expanded="false" />
+            <element signature="e#5090#6046#0" expanded="false" />
+            <element signature="e#6099#7057#0" expanded="false" />
+            <element signature="e#7110#8074#0" expanded="false" />
+            <element signature="e#8128#8933#0" expanded="false" />
+            <element signature="e#8987#9775#0" expanded="false" />
+            <element signature="e#9835#10877#0" expanded="false" />
+            <element signature="e#10933#11997#0" expanded="false" />
+            <element signature="e#12056#13104#0" expanded="false" />
+            <element signature="e#13159#14037#0" expanded="false" />
+            <element signature="e#14092#14939#0" expanded="false" />
+            <element signature="e#14999#15941#0" expanded="false" />
+            <element signature="e#15995#16994#0" expanded="false" />
+            <element signature="e#17051#17795#0" expanded="false" />
+            <element signature="e#17836#18372#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinnowDevel/Tests/performetrics_unittest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2295">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#15#0" expanded="false" />
+            <element signature="e#242#378#0" expanded="false" />
+            <element signature="e#412#546#0" expanded="false" />
+            <element signature="e#585#893#0" expanded="false" />
+            <element signature="e#927#1195#0" expanded="false" />
+            <element signature="e#1228#1513#0" expanded="false" />
+            <element signature="e#1546#1831#0" expanded="false" />
+            <element signature="e#1864#2149#0" expanded="false" />
+            <element signature="e#2182#2467#0" expanded="false" />
+            <element signature="e#2501#2804#0" expanded="false" />
+            <element signature="e#3167#3432#0" expanded="false" />
+            <element signature="e#3468#3773#0" expanded="false" />
+            <element signature="e#3816#4130#0" expanded="false" />
+            <element signature="e#4165#4469#0" expanded="false" />
+            <element signature="e#4504#4793#0" expanded="false" />
+            <element signature="e#4833#5142#0" expanded="false" />
+            <element signature="e#5180#5489#0" expanded="false" />
+            <element signature="e#5526#5833#0" expanded="false" />
+            <element signature="e#5878#6120#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinnowDevel/Launcher_file_merger.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="629">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../Validate-Master/CurrentReleaseStable/Winnow_09/winnow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.289085" vertical-offset="4166" max-vertical-offset="4505">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinnowDevel/adjustments.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinnowDevel/performetrics.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1139">
+          <caret line="287" column="53" selection-start-line="287" selection-start-column="53" selection-end-line="287" selection-end-column="53" />
+          <folding>
+            <element signature="e#151#720#0" expanded="false" />
+            <element signature="e#763#1307#0" expanded="false" />
+            <element signature="e#1366#2961#0" expanded="false" />
+            <element signature="e#3004#4012#0" expanded="false" />
+            <element signature="e#4065#5037#0" expanded="false" />
+            <element signature="e#5090#6046#0" expanded="false" />
+            <element signature="e#6099#7057#0" expanded="false" />
+            <element signature="e#7110#8074#0" expanded="false" />
+            <element signature="e#8128#8933#0" expanded="false" />
+            <element signature="e#8987#9775#0" expanded="false" />
+            <element signature="e#9835#10877#0" expanded="false" />
+            <element signature="e#10933#11997#0" expanded="false" />
+            <element signature="e#12056#13104#0" expanded="false" />
+            <element signature="e#13159#14037#0" expanded="false" />
+            <element signature="e#14092#14939#0" expanded="false" />
+            <element signature="e#14999#15941#0" expanded="false" />
+            <element signature="e#15995#16994#0" expanded="false" />
+            <element signature="e#17051#17795#0" expanded="false" />
+            <element signature="e#17836#18372#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinnowDevel/gwas.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1659" max-vertical-offset="2125">
+          <caret line="100" column="21" selection-start-line="100" selection-start-column="21" selection-end-line="100" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinnowDevel/Tests/performetrics_unittest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="868" max-vertical-offset="1700">
+          <caret line="135" column="0" selection-start-line="135" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
+          <folding>
+            <element signature="e#2182#2467#0" expanded="false" />
+            <element signature="e#2501#2804#0" expanded="false" />
+            <element signature="e#3468#3773#0" expanded="false" />
+            <element signature="e#3816#4130#0" expanded="false" />
+            <element signature="e#4165#4469#0" expanded="false" />
+            <element signature="e#4504#4793#0" expanded="false" />
+            <element signature="e#4833#5142#0" expanded="false" />
+            <element signature="e#5180#5489#0" expanded="false" />
+            <element signature="e#5526#5833#0" expanded="false" />
+            <element signature="e#5878#6120#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinnowDevel/Tests/adjustments_unittest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
+          <caret line="23" column="19" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinnowDevel/Tests/winnowdevel_test_suite.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="595">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding>
+            <element signature="e#65#80#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinnowDevel/winnow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.06227758" vertical-offset="475" max-vertical-offset="1955">
+          <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
+          <folding>
+            <element signature="e#1193#1447#0" expanded="false" />
+            <element signature="e#1481#2354#0" expanded="false" />
+            <element signature="e#2420#3297#0" expanded="false" />
+            <element signature="e#3343#4863#0" expanded="false" />
+            <element signature="e#4900#6275#0" expanded="false" />
+            <element signature="e#6339#6896#0" expanded="false" />
+            <element signature="e#8678#10010#0" expanded="false" />
+            <element signature="e#10050#10246#0" expanded="false" />
+            <element signature="e#11038#11647#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinnowDevel/Tests/gwas_unittest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="64" max-vertical-offset="1411">
+          <caret line="43" column="71" selection-start-line="43" selection-start-column="71" selection-end-line="43" selection-end-column="71" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinnowDevel/Tests/winnow_unittest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5142349" vertical-offset="918" max-vertical-offset="2023">
+          <caret line="71" column="69" selection-start-line="71" selection-start-column="69" selection-end-line="71" selection-end-column="69" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
