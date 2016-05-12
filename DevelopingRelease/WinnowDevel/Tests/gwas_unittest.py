@@ -7,6 +7,10 @@ from DevelopingRelease.WinnowDevel import winnow as Winnow
 
 
 class GWASTest(unittest.TestCase):
+    """
+    Directs path to example data for testing.
+    Initializes args to test values.
+    """
     folder = os.getcwd()[:os.getcwd().index("Validate-Master")] + "Validate-Master/ExampleData/Winnow/data/OutputPlink"
     ote = os.getcwd()[:os.getcwd().index("Validate-Master")] + "Validate-Master/ExampleData/Winnow/data/Plinkkt.ote"
     destination = os.getcwd()[:os.getcwd().index("Validate-Master")] + "Validate-Master/ExampleData/Winnow/results"
@@ -24,6 +28,10 @@ class GWASTest(unittest.TestCase):
                           'covar': "Cov01Weight", 'beta': None}
 
     def test_gwas_with_beta(self):
+        """
+        Tests method gwasWithBeta (performs GWAS analysis with beta/effect size)
+        Checks for equality within 7 decimal places of returned list with expected list of functions and results
+        """
         self.args_without_covar['beta'] = 'BETA'
         self.win = Winnow.Winnow(self.args_without_covar)
         s, b = self.win.load_data("/PlinkStd1.qassoc")
@@ -36,6 +44,10 @@ class GWASTest(unittest.TestCase):
             self.assertAlmostEquals(desired[x], result[x])
 
     def test_gwas_with_beta_covariate(self):
+        """
+        Tests method gwasBetaCovar (Performs GWAS analysis with beta/effect size and covariates)
+        Checks for equality within 7 decimal places of returned list with expected list of functions and results
+        """
         self.args_with_covar['beta'] = 'SNPWeight'
         self.win = Winnow.Winnow(self.args_with_covar)
         s, b, c = self.win.load_data('/Testwithcovar.csv')
@@ -50,6 +62,10 @@ class GWASTest(unittest.TestCase):
             self.assertAlmostEquals(desired[x], result[x])
 
     def test_gwas_without_beta(self):
+        """
+        Tests method gwasWithoutBeta (Performs GWAS analysis without beta/effect size)
+        Checks for equality within 7 decimal places of returned list with expected list of functions and results
+        """
         self.args_without_covar['beta'] = None
         self.win = Winnow.Winnow(self.args_without_covar)
         s = self.win.load_data("/PlinkStd1.qassoc")
@@ -61,6 +77,10 @@ class GWASTest(unittest.TestCase):
             self.assertAlmostEquals(desired[x], result[x])
 
     def test_gwas_without_beta_covariate(self):
+        """
+        Tests method gwasNoBetaCovar (Performs GWAS analysis without beta/effect size)
+        Checks for equality within 7 decimal places of returned list with expected list of functions and results
+        """
         self.args_with_covar['beta'] = None
         self.win = Winnow.Winnow(self.args_with_covar)
         s, c = self.win.load_data("/Testwithcovar.csv")
