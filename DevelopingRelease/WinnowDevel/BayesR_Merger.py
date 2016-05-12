@@ -7,7 +7,6 @@ class Merge:
         self.param_source = args.param
         self.output_name = args.output
         self.line_generator = self.parse_lines()
-        self.write_output()
 
     def parse_lines(self):
         with open(self.bim_source) as bim_file, open(self.param_source) as param_file:
@@ -25,16 +24,17 @@ class Merge:
 
 def parse_arguments():
     parser = argparse.ArgumentParser()
-    parser.add_argument('-b', '--bim', help='BIM file used in BayesR')
-    parser.add_argument('-p', '--param', help='.param output file from BayesR')
-    parser.add_argument('-o', '--output', help='Output file prefix')
+    parser.add_argument('-b', '--bim', type=str, required=True, help='BIM file used in BayesR')
+    parser.add_argument('-p', '--param', type=str, required=True,  help='.param output file from BayesR')
+    parser.add_argument('-o', '--output', type=str, required=False, default='merged_output.txt',
+                        help='Output file prefix')
     args = parser.parse_args()
     return args
 
 
 def main():
     merger = Merge(parse_arguments())
-
+    merger.write_output()
 
 if __name__ == '__main__':
     main()
