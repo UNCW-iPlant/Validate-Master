@@ -34,7 +34,6 @@ def parse_arguments():
 
 def main():
     merger = Merge(parse_arguments())
-    test = 0
 
 if __name__ == '__main__':
     main()
