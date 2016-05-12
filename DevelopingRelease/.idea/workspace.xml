@@ -26,11 +26,11 @@
     <splitter split-orientation="horizontal" split-proportion="0.52047557">
       <split-first>
         <leaf>
-          <file leaf-file-name="winnow_unittest.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="winnow_unittest.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/WinnowDevel/Tests/winnow_unittest.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.5142349" vertical-offset="918" max-vertical-offset="2023">
-                  <caret line="71" column="69" selection-start-line="71" selection-start-column="69" selection-end-line="71" selection-end-column="69" />
+                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2091">
+                  <caret line="83" column="103" selection-start-line="83" selection-start-column="103" selection-end-line="83" selection-end-column="103" />
                   <folding>
                     <element signature="e#0#15#0" expanded="true" />
                   </folding>
@@ -38,11 +38,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="adjustments_unittest.py" pinned="false" current-in-tab="false">
+          <file leaf-file-name="adjustments_unittest.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/WinnowDevel/Tests/adjustments_unittest.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
-                  <caret line="23" column="19" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
+                <state vertical-scroll-proportion="0.27546296" vertical-offset="0" max-vertical-offset="493">
+                  <caret line="7" column="41" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
                   <folding>
                     <element signature="e#0#15#0" expanded="true" />
                   </folding>
@@ -53,8 +53,8 @@
           <file leaf-file-name="gwas_unittest.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/WinnowDevel/Tests/gwas_unittest.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="64" max-vertical-offset="1411">
-                  <caret line="43" column="71" selection-start-line="43" selection-start-column="71" selection-end-line="43" selection-end-column="71" />
+                <state vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="1411">
+                  <caret line="9" column="58" selection-start-line="9" selection-start-column="58" selection-end-line="9" selection-end-column="58" />
                   <folding>
                     <element signature="e#0#15#0" expanded="true" />
                   </folding>
@@ -128,18 +128,8 @@
           <file leaf-file-name="gwas.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/WinnowDevel/gwas.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="1659" max-vertical-offset="2125">
-                  <caret line="100" column="21" selection-start-line="100" selection-start-column="21" selection-end-line="100" selection-end-column="21" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="adjustments.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/WinnowDevel/adjustments.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
-                  <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2125">
+                  <caret line="112" column="62" selection-start-line="112" selection-start-column="62" selection-end-line="112" selection-end-column="62" />
                   <folding />
                 </state>
               </provider>
@@ -149,11 +139,11 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="winnow.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="winnow.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/WinnowDevel/winnow.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.06227758" vertical-offset="475" max-vertical-offset="1955">
-                  <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
+                <state vertical-scroll-proportion="0.0" vertical-offset="471" max-vertical-offset="1904">
+                  <caret line="177" column="46" selection-start-line="177" selection-start-column="46" selection-end-line="177" selection-end-column="46" />
                   <folding>
                     <element signature="e#1193#1447#0" expanded="false" />
                     <element signature="e#1481#2354#0" expanded="false" />
@@ -161,10 +151,20 @@
                     <element signature="e#3343#4863#0" expanded="false" />
                     <element signature="e#4900#6275#0" expanded="false" />
                     <element signature="e#6339#6896#0" expanded="false" />
+                    <element signature="e#6970#8128#0" expanded="false" />
                     <element signature="e#8678#10010#0" expanded="false" />
                     <element signature="e#10050#10246#0" expanded="false" />
-                    <element signature="e#11038#11647#0" expanded="false" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="adjustments.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/WinnowDevel/adjustments.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="1.2986112" vertical-offset="0" max-vertical-offset="663">
+                  <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -543,10 +543,10 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24966888" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24900925" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1739726" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3520548" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -619,9 +619,9 @@
             <element signature="e#3343#4863#0" expanded="false" />
             <element signature="e#4900#6275#0" expanded="false" />
             <element signature="e#6339#6896#0" expanded="false" />
+            <element signature="e#6970#8128#0" expanded="false" />
             <element signature="e#8678#10010#0" expanded="false" />
             <element signature="e#10050#10246#0" expanded="false" />
-            <element signature="e#11038#11647#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -721,9 +721,9 @@
             <element signature="e#3343#4863#0" expanded="false" />
             <element signature="e#4900#6275#0" expanded="false" />
             <element signature="e#6339#6896#0" expanded="false" />
+            <element signature="e#6970#8128#0" expanded="false" />
             <element signature="e#8678#10010#0" expanded="false" />
             <element signature="e#10050#10246#0" expanded="false" />
-            <element signature="e#11038#11647#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1094,14 +1094,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WinnowDevel/adjustments.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
-          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WinnowDevel/performetrics.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1139">
@@ -1130,14 +1122,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WinnowDevel/gwas.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1659" max-vertical-offset="2125">
-          <caret line="100" column="21" selection-start-line="100" selection-start-column="21" selection-end-line="100" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WinnowDevel/Tests/performetrics_unittest.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="868" max-vertical-offset="1700">
@@ -1157,16 +1141,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WinnowDevel/Tests/adjustments_unittest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
-          <caret line="23" column="19" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WinnowDevel/Tests/winnowdevel_test_suite.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="595">
@@ -1177,10 +1151,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/WinnowDevel/Tests/gwas_unittest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="1411">
+          <caret line="9" column="58" selection-start-line="9" selection-start-column="58" selection-end-line="9" selection-end-column="58" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/WinnowDevel/winnow.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.06227758" vertical-offset="475" max-vertical-offset="1955">
-          <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="471" max-vertical-offset="1904">
+          <caret line="177" column="46" selection-start-line="177" selection-start-column="46" selection-end-line="177" selection-end-column="46" />
           <folding>
             <element signature="e#1193#1447#0" expanded="false" />
             <element signature="e#1481#2354#0" expanded="false" />
@@ -1188,27 +1172,43 @@
             <element signature="e#3343#4863#0" expanded="false" />
             <element signature="e#4900#6275#0" expanded="false" />
             <element signature="e#6339#6896#0" expanded="false" />
+            <element signature="e#6970#8128#0" expanded="false" />
             <element signature="e#8678#10010#0" expanded="false" />
             <element signature="e#10050#10246#0" expanded="false" />
-            <element signature="e#11038#11647#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WinnowDevel/Tests/gwas_unittest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="64" max-vertical-offset="1411">
-          <caret line="43" column="71" selection-start-line="43" selection-start-column="71" selection-end-line="43" selection-end-column="71" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WinnowDevel/Tests/winnow_unittest.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5142349" vertical-offset="918" max-vertical-offset="2023">
-          <caret line="71" column="69" selection-start-line="71" selection-start-column="69" selection-end-line="71" selection-end-column="69" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2091">
+          <caret line="83" column="103" selection-start-line="83" selection-start-column="103" selection-end-line="83" selection-end-column="103" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinnowDevel/adjustments.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.2986112" vertical-offset="0" max-vertical-offset="663">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinnowDevel/gwas.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2125">
+          <caret line="112" column="62" selection-start-line="112" selection-start-column="62" selection-end-line="112" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinnowDevel/Tests/adjustments_unittest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27546296" vertical-offset="0" max-vertical-offset="493">
+          <caret line="7" column="41" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>

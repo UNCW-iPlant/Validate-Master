@@ -67,9 +67,11 @@ class WinnowTest(unittest.TestCase):
                           0.01081917, 0.12952087, 0.87047913, 0.0, 0.88, 0.0, 1.0, -0.12])
         gen.close()
 
+
     def test_do_gwas(self):
         """
-        Test method do_gwas (returns the results of the GWAS analysis
+        Test method do_gwas (returns the results of the GWAS analysis given scores, betas, and covariates)
+        Checks for equality of returned list and expected list of GWAS analysis values
         """
         self.win = winnow.Winnow(self.args)
         self.win.snp_true_false = (True, False, True, True, True, False, False, True, False, False, True, False)
@@ -81,9 +83,11 @@ class WinnowTest(unittest.TestCase):
                          [47.08333333, 5.91666667, 0.16903085, 0.56944444, 4.0, 3.0, 3.0, 2.0, 0.66666667, 0.5, 0.5,
                           0.41666667, 0.58333333, 0.66666667, 0.5, 0.57142857, 0.42857143, 0.16666667])
 
-
-
     def test_data_to_list(self):
+        """
+        Tests method data_to_list (returns a list of data parsed using x and y as indices of data to extract)
+        Checks for equality of returned list with expected list of data names.
+        """
         kt_file = loadKT(self.args['truth'], self.args['kt_type_separ'])
         self.assertEqual(winnow.data_to_list(kt_file, 1, 0),
                          ['gpm705a', 'tub1', 'gpm113b', 'gpm325a', 'dmt103b', 'gpm699d', 'gpm27', 'gpm319', 'bnl5.62a',
