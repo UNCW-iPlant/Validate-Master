@@ -1,6 +1,7 @@
 import unittest
 import os
 import sys
+
 sys.path.append(os.getcwd()[:os.getcwd().index('DevelopingRelease')])
 from DevelopingRelease.WinnowDevel import performetrics
 
@@ -14,7 +15,8 @@ class PerformetricsTest(unittest.TestCase):
         """
         beta_col = [1, 2, 3, 4, 5, 6]
         beta_tf = [1, 0, 1, 1, 0, 0]
-        self.assertEqual(performetrics.rmse(beta_col, beta_tf), 13.0)
+        expected = 13.0
+        self.assertEqual(performetrics.rmse(beta_col, beta_tf), expected)
 
     def test_mae(self):
         """
@@ -23,7 +25,8 @@ class PerformetricsTest(unittest.TestCase):
         """
         beta_col = [1, 2, 3, 4, 5, 6]
         beta_tf = [1, 0, 1, 1, 0, 0]
-        self.assertEqual(performetrics.mae(beta_col, beta_tf), 3.0)
+        expected = 3.0
+        self.assertEqual(performetrics.mae(beta_col, beta_tf), expected)
 
     def test_mattcorr(self):
         """
@@ -33,7 +36,8 @@ class PerformetricsTest(unittest.TestCase):
         snp_tf = [True, False, True, True, True, False, False, True, False, False, True, False]
         threshold = 0.05
         score = [0.003, 0.65, 0.004, 0.006, 0.078, 0.003, 0.0001, 0.513, 0.421, 0.0081, 0.043, 0.98]
-        self.assertEqual(performetrics.mattcorr(snp_tf, threshold, score), 0.1690308509457033)
+        expected = 0.1690308509457033
+        self.assertEqual(performetrics.mattcorr(snp_tf, threshold, score), expected)
 
     def test_auc(self):
         """
@@ -42,7 +46,8 @@ class PerformetricsTest(unittest.TestCase):
         """
         snp_tf = [True, False, True, True, True, False, False, True, False, False, True, False]
         score = [0.003, 0.65, 0.004, 0.006, 0.078, 0.003, 0.0001, 0.513, 0.421, 0.0081, 0.043, 0.98]
-        self.assertEqual(performetrics.auc(snp_tf, score), 0.56944444444444442)
+        expected = 0.56944444444444442
+        self.assertEqual(performetrics.auc(snp_tf, score), expected)
 
     def test_tp(self):
         """
@@ -50,9 +55,10 @@ class PerformetricsTest(unittest.TestCase):
         Checks for equality of returned number and expected number of true positives
         """
         snp_tf = [True, False, True, True, True, False, False, True, False, False, True, False]
-        score = [0.003, 0.65, 0.004, 0.006, 0.078, 0.003, 0.0001, 0.513, 0.421, 0.0081, 0.043, 0.98]
         threshold = 0.05
-        self.assertEqual(performetrics.tp(snp_tf, threshold, score), 4)
+        score = [0.003, 0.65, 0.004, 0.006, 0.078, 0.003, 0.0001, 0.513, 0.421, 0.0081, 0.043, 0.98]
+        expected = 4
+        self.assertEqual(performetrics.tp(snp_tf, threshold, score), expected)
 
     def test_fp(self):
         """
@@ -60,9 +66,10 @@ class PerformetricsTest(unittest.TestCase):
         Checks for equality of returned number and expected number of false positives
         """
         snp_tf = [True, False, True, True, True, False, False, True, False, False, True, False]
-        score = [0.003, 0.65, 0.004, 0.006, 0.078, 0.003, 0.0001, 0.513, 0.421, 0.0081, 0.043, 0.98]
         threshold = 0.05
-        self.assertEqual(performetrics.fp(snp_tf, threshold, score), 3)
+        score = [0.003, 0.65, 0.004, 0.006, 0.078, 0.003, 0.0001, 0.513, 0.421, 0.0081, 0.043, 0.98]
+        expected = 3
+        self.assertEqual(performetrics.fp(snp_tf, threshold, score), expected)
 
     def test_tn(self):
         """
@@ -70,9 +77,10 @@ class PerformetricsTest(unittest.TestCase):
         Checks for equality of returned number and expected number of true negatives
         """
         snp_tf = [True, False, True, True, True, False, False, True, False, False, True, False]
-        score = [0.003, 0.65, 0.004, 0.006, 0.078, 0.003, 0.0001, 0.513, 0.421, 0.0081, 0.043, 0.98]
         threshold = 0.05
-        self.assertEqual(performetrics.tn(snp_tf, threshold, score), 3)
+        score = [0.003, 0.65, 0.004, 0.006, 0.078, 0.003, 0.0001, 0.513, 0.421, 0.0081, 0.043, 0.98]
+        expected = 3
+        self.assertEqual(performetrics.tn(snp_tf, threshold, score), expected)
 
     def test_fn(self):
         """
@@ -80,9 +88,10 @@ class PerformetricsTest(unittest.TestCase):
         Checks for equality of returned number and expected number of false negatives
         """
         snp_tf = [True, False, True, True, True, False, False, True, False, False, True, False]
-        score = [0.003, 0.65, 0.004, 0.006, 0.078, 0.003, 0.0001, 0.513, 0.421, 0.0081, 0.043, 0.98]
         threshold = 0.05
-        self.assertEqual(performetrics.fn(snp_tf, threshold, score), 2)
+        score = [0.003, 0.65, 0.004, 0.006, 0.078, 0.003, 0.0001, 0.513, 0.421, 0.0081, 0.043, 0.98]
+        expected = 2
+        self.assertEqual(performetrics.fn(snp_tf, threshold, score), expected)
 
     def test_tpr(self):
         """
@@ -90,9 +99,10 @@ class PerformetricsTest(unittest.TestCase):
         Checks for equality of returned value and expected proportion value
         """
         snp_tf = [True, False, True, True, True, False, False, True, False, False, True, False]
-        score = [0.003, 0.65, 0.004, 0.006, 0.078, 0.003, 0.0001, 0.513, 0.421, 0.0081, 0.043, 0.98]
         threshold = 0.05
-        self.assertEqual(performetrics.tpr(snp_tf, threshold, score), 0.6666666666666666)
+        score = [0.003, 0.65, 0.004, 0.006, 0.078, 0.003, 0.0001, 0.513, 0.421, 0.0081, 0.043, 0.98]
+        expected = 0.6666666666666666
+        self.assertEqual(performetrics.tpr(snp_tf, threshold, score), expected)
 
     def test_fpr(self):
         """
@@ -100,19 +110,21 @@ class PerformetricsTest(unittest.TestCase):
         Checks for equality of returned value with expected proportion value
         """
         snp_tf = [True, False, True, True, True, False, False, True, False, False, True, False]
-        score = [0.003, 0.65, 0.004, 0.006, 0.078, 0.003, 0.0001, 0.513, 0.421, 0.0081, 0.043, 0.98]
         threshold = 0.05
-        self.assertEqual(performetrics.fpr(snp_tf, threshold, score), 0.5)
+        score = [0.003, 0.65, 0.004, 0.006, 0.078, 0.003, 0.0001, 0.513, 0.421, 0.0081, 0.043, 0.98]
+        expected = 0.5
+        self.assertEqual(performetrics.fpr(snp_tf, threshold, score), expected)
 
     def test_prevalence(self):
         """
         Tests method prevalence (Returns the prevalence value - total number of positives divided by sample size)
         Checks for equality of returned value and expected prevalence value
         """
-        snpTF=[True,False,True,True,True,False,False,True,False,False,True,False]
-        threshold=0.05
-        score=[0.003,0.65,0.004,0.006,0.078,0.003,0.0001,0.513,0.421,0.0081,0.043,0.98]
-        self.assertEqual(performetrics.prevalence(snpTF, threshold, score), 0.5)
+        snpTF = [True,False,True,True,True,False,False,True,False,False,True,False]
+        threshold = 0.05
+        score = [0.003,0.65,0.004,0.006,0.078,0.003,0.0001,0.513,0.421,0.0081,0.043,0.98]
+        expected = 0.5
+        self.assertEqual(performetrics.prevalence(snpTF, threshold, score), expected)
 
     def test_error(self):
         """
@@ -120,9 +132,10 @@ class PerformetricsTest(unittest.TestCase):
         Checks for equality of returned value and expected error value
         """
         snp_tf = [True, False, True, True, True, False, False, True, False, False, True, False]
-        score = [0.003, 0.65, 0.004, 0.006, 0.078, 0.003, 0.0001, 0.513, 0.421, 0.0081, 0.043, 0.98]
         threshold = 0.05
-        self.assertEqual(performetrics.error(snp_tf, threshold, score), 0.4166666666666667)
+        score = [0.003, 0.65, 0.004, 0.006, 0.078, 0.003, 0.0001, 0.513, 0.421, 0.0081, 0.043, 0.98]
+        expected = 0.4166666666666667
+        self.assertEqual(performetrics.error(snp_tf, threshold, score), expected)
     
     def test_accuracy(self):
         """
@@ -130,9 +143,10 @@ class PerformetricsTest(unittest.TestCase):
         Checks for equality of returned value and expected accuracy value
         """
         snp_tf = [True, False, True, True, True, False, False, True, False, False, True, False]
-        score = [0.003, 0.65, 0.004, 0.006, 0.078, 0.003, 0.0001, 0.513, 0.421, 0.0081, 0.043, 0.98]
         threshold = 0.05
-        self.assertEqual(format_float(performetrics.accuracy(snp_tf, threshold, score)), 0.58333333)
+        score = [0.003, 0.65, 0.004, 0.006, 0.078, 0.003, 0.0001, 0.513, 0.421, 0.0081, 0.043, 0.98]
+        expected = 0.58333333
+        self.assertEqual(format_float(performetrics.accuracy(snp_tf, threshold, score)), expected)
 
     def test_sens(self):
         """
@@ -141,9 +155,10 @@ class PerformetricsTest(unittest.TestCase):
         Checks for equality of returned value and expected sensitivity value
         """
         snp_tf = [True, False, True, True, True, False, False, True, False, False, True, False]
-        score = [0.003, 0.65, 0.004, 0.006, 0.078, 0.003, 0.0001, 0.513, 0.421, 0.0081, 0.043, 0.98]
         threshold = 0.05
-        self.assertEqual(performetrics.sens(snp_tf, threshold, score), 0.6666666666666666)
+        score = [0.003, 0.65, 0.004, 0.006, 0.078, 0.003, 0.0001, 0.513, 0.421, 0.0081, 0.043, 0.98]
+        expected = 0.6666666666666666
+        self.assertEqual(performetrics.sens(snp_tf, threshold, score), expected)
 
     def test_spec(self):
         """
@@ -152,9 +167,10 @@ class PerformetricsTest(unittest.TestCase):
         Checks for equality of returned value and expected specificity value
         """
         snp_tf = [True, False, True, True, True, False, False, True, False, False, True, False]
-        score = [0.003, 0.65, 0.004, 0.006, 0.078, 0.003, 0.0001, 0.513, 0.421, 0.0081, 0.043, 0.98]
         threshold = 0.05
-        self.assertEqual(performetrics.spec(snp_tf, threshold, score), 0.5)
+        score = [0.003, 0.65, 0.004, 0.006, 0.078, 0.003, 0.0001, 0.513, 0.421, 0.0081, 0.043, 0.98]
+        expected = 0.5
+        self.assertEqual(performetrics.spec(snp_tf, threshold, score), expected)
 
     def test_precision(self):
         """
@@ -163,9 +179,10 @@ class PerformetricsTest(unittest.TestCase):
         Checks for equality of returned value and expected precision value
         """
         snp_tf = [True, False, True, True, True, False, False, True, False, False, True, False]
-        score = [0.003, 0.65, 0.004, 0.006, 0.078, 0.003, 0.0001, 0.513, 0.421, 0.0081, 0.043, 0.98]
         threshold = 0.05
-        self.assertEqual(performetrics.precision(snp_tf, threshold, score), 0.5714285714285714)
+        score = [0.003, 0.65, 0.004, 0.006, 0.078, 0.003, 0.0001, 0.513, 0.421, 0.0081, 0.043, 0.98]
+        expected = 0.5714285714285714
+        self.assertEqual(performetrics.precision(snp_tf, threshold, score), expected)
     
     def test_fdr(self):
         """
@@ -173,9 +190,10 @@ class PerformetricsTest(unittest.TestCase):
         Checks for equality of returned value and expected fdr value
         """
         snp_tf = [True, False, True, True, True, False, False, True, False, False, True, False]
-        score = [0.003, 0.65, 0.004, 0.006, 0.078, 0.003, 0.0001, 0.513, 0.421, 0.0081, 0.043, 0.98]
         threshold = 0.05
-        self.assertEqual(format_float(performetrics.fdr(snp_tf, threshold, score)), 0.42857143)
+        score = [0.003, 0.65, 0.004, 0.006, 0.078, 0.003, 0.0001, 0.513, 0.421, 0.0081, 0.043, 0.98]
+        expected = 0.42857143
+        self.assertEqual(format_float(performetrics.fdr(snp_tf, threshold, score)), expected)
 
     def test_youden(self):
         """
@@ -183,9 +201,10 @@ class PerformetricsTest(unittest.TestCase):
         Checks for equality of returned value and expected Youden statistic value
         """
         snp_tf = [True, False, True, True, True, False, False, True, False, False, True, False]
-        score = [0.003, 0.65, 0.004, 0.006, 0.078, 0.003, 0.0001, 0.513, 0.421, 0.0081, 0.043, 0.98]
         threshold = 0.05
-        self.assertEqual(performetrics.youden(snp_tf, threshold, score), 0.16666666666666652)
+        score = [0.003, 0.65, 0.004, 0.006, 0.078, 0.003, 0.0001, 0.513, 0.421, 0.0081, 0.043, 0.98]
+        expected = 0.16666666666666652
+        self.assertEqual(performetrics.youden(snp_tf, threshold, score), expected)
 
     def test_avgcovarweight(self):
         """
@@ -194,7 +213,8 @@ class PerformetricsTest(unittest.TestCase):
         """
         covar = [0.08410, 0.00161, 0.25200, 0.00161, 0.24000, 0.25000, 0.00161, 0.25000, 0.00161, 0.25200, 0.25000,
                  0.00161, -0.02440, 0.05360]
-        self.assertAlmostEquals(performetrics.avgcovarweight(covar), 0.11538214285714285)
+        expected = 0.11538214285714285
+        self.assertAlmostEquals(performetrics.avgcovarweight(covar), expected)
 
 
 def format_float(x):
