@@ -25,9 +25,10 @@ class Merge:
 
 def parse_arguments():
     parser = argparse.ArgumentParser()
-    parser.add_argument('-b', '--bim', help='BIM file used in BayesR')
-    parser.add_argument('-p', '--param', help='.param output file from BayesR')
-    parser.add_argument('-o', '--output', help='Output file prefix')
+    parser.add_argument('-b', '--bim', type=str, required=True, help='BIM file used in BayesR')
+    parser.add_argument('-p', '--param', type=str, required=True,  help='.param output file from BayesR')
+    parser.add_argument('-o', '--output', type=str, required=False, default='merged_output.txt',
+                        help='Output file prefix')
     args = parser.parse_args()
     return args
 
