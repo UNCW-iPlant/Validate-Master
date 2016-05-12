@@ -8,6 +8,10 @@ from DevelopingRelease.WinnowDevel.fileimport import loadKT
 
 
 class WinnowTest(unittest.TestCase):
+    """
+    Directs path to example data for testing.
+    Initializes args to test values.
+    """
     folder = os.getcwd()[:os.getcwd().index("Validate-Master")] + "Validate-Master/ExampleData/Winnow/data/OutputPlink"
     ote = os.getcwd()[:os.getcwd().index("Validate-Master")] + "Validate-Master/ExampleData/Winnow/data/Plinkkt.ote"
     destination = os.getcwd()[:os.getcwd().index("Validate-Master")] + "Validate-Master/ExampleData/Winnow/results"
@@ -16,6 +20,10 @@ class WinnowTest(unittest.TestCase):
             'kt_type_separ': 'whitespace', 'pvaladjust': None, 'savep': False, 'covar': None}
 
     def test_load_ote(self):
+        """
+        Test method load_ote (loads truth and effect type known truth file).
+        Checks for equality of returned lists and expected lists of snp and beta values.
+        """
         self.win = winnow.Winnow(self.args)
         self.win.load_ote()
         snp = (False, False, False, True, False, False, False, False, False, True)
@@ -32,6 +40,10 @@ class WinnowTest(unittest.TestCase):
                                         self.win.beta_true_false[715], self.win.beta_true_false[276])))
 
     def test_load_data(self):
+        """
+        Test method load_data (load_data returns a list of score and beta values from a given file)
+        Checks for equality of returned list and expected list of score and beta values.
+        """
         self.win = winnow.Winnow(self.args)
         s, b = self.win.load_data("/PlinkStd1.qassoc")
         score = (0.6028, 0.06006, 0.4884, 0.6276, 0.8426, 0.4332, 0.717, 0.3584, 0.1795, 0.3647)
@@ -42,16 +54,25 @@ class WinnowTest(unittest.TestCase):
                                           b[2107], b[829])))
 
     def test_do_analysis(self):
+        """
+        Test method do_analysis (generator that performs the analysis - currently only GWAS is allowed).
+        Checks for equality of returned list and expected list of analyzed values.
+        """
         self.win = winnow.Winnow(self.args)
         self.win.load_kt()
         gen = self.win.do_analysis()
         a = gen.next()[1]
         self.assertEqual(format_float(a),
-                         [0.05896121, 0.18211783, -0.03838186, 0.43427679, 0, 384,
-                          2816, 35, 0.0, 0.12, 0.12952087, 0.87047913, 0.0, 0.88, 0.0, 1.0, -0.12])
+                         [0.05896121, 0.18211783, -0.03838186, 0.43427679, 0.0, 384.0, 2816.0, 35.0, 0.0, 0.12,
+                          0.01081917, 0.12952087, 0.87047913, 0.0, 0.88, 0.0, 1.0, -0.12])
         gen.close()
 
+
     def test_do_gwas(self):
+        """
+        Test method do_gwas (returns the results of the GWAS analysis given scores, betas, and covariates)
+        Checks for equality of returned list and expected list of GWAS analysis values
+        """
         self.win = winnow.Winnow(self.args)
         self.win.snp_true_false = (True, False, True, True, True, False, False, True, False, False, True, False)
         score_column = (0.003, 0.65, 0.004, 0.006, 0.078, 0.003, 0.0001, 0.513, 0.421, 0.0081, 0.043, 0.98)
@@ -59,10 +80,14 @@ class WinnowTest(unittest.TestCase):
         beta_column = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12)
         a = format_float(self.win.do_gwas(score_column, beta_column, None)[1])
         self.assertEqual(a,
-                         [47.08333333, 5.91666667, 0.16903085, 0.56944444, 4.0, 3.0, 3.0, 2.0, 0.66666667, 0.5,
+                         [47.08333333, 5.91666667, 0.16903085, 0.56944444, 4.0, 3.0, 3.0, 2.0, 0.66666667, 0.5, 0.5,
                           0.41666667, 0.58333333, 0.66666667, 0.5, 0.57142857, 0.42857143, 0.16666667])
 
     def test_data_to_list(self):
+        """
+        Tests method data_to_list (returns a list of data parsed using x and y as indices of data to extract)
+        Checks for equality of returned list with expected list of data names.
+        """
         kt_file = loadKT(self.args['truth'], self.args['kt_type_separ'])
         self.assertEqual(winnow.data_to_list(kt_file, 1, 0),
                          ['gpm705a', 'tub1', 'gpm113b', 'gpm325a', 'dmt103b', 'gpm699d', 'gpm27', 'gpm319', 'bnl5.62a',
@@ -73,10 +98,10 @@ class WinnowTest(unittest.TestCase):
 
 def format_float(float_list):
     """
-    Truncates floats to 5 decimal places
+    Truncates floats to 8 decimal places
 
-    :param float_list:
-    :return: a list of float truncuated to 5 decimal places
+    :param float_list
+    :return a list of float truncated to 8 decimal places
     """
     return_list = list()
     for each in float_list:

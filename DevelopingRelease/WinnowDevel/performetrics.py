@@ -296,7 +296,7 @@ def prevalence(snpTrueFalse, threshold, scoreColumn):
             >>> threshold=0.05
             >>> score=[0.003,0.65,0.004,0.006,0.078,0.003,0.0001,0.513,0.421,0.0081,0.043,0.98]
             >>> prevalence(snpTF,threshold,score)
-            0.5833333333333333
+            0.5
 
     :param snpTrueFalse: true/false data set
     :param threshold: significance threshold
