@@ -3,4 +3,3 @@ pandas == 0.18.1
 statsmodels == 0.6.1
 rpy2 == 2.7.9
 scipy == 0.17.1
-simuPOP == 1.1.7.1
