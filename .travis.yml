@@ -65,11 +65,12 @@ script:
     - cd DevelopingRelease/WinnowDevel/
     - path=$PWD
     - cd Tests
-    - coverage run --source $path/adjustments.py,$path/checkhidden.py,$path/data.py,$path/fileimport.py,$path/gwas.py,$path/performetrics.py,$path/winnow.py winnowdevel_test_suite.py
+    - ls
+    - coverage run --source=$path/adjustments.py,$path/checkhidden.py,$path/data.py,$path/fileimport.py,$path/gwas.py,$path/performetrics.py,$path/winnow.py winnowdevel_test_suite.py
     - cd ../../DemonstrateDevel/
     - demopath=$PWD
     - cd Tests
-    - coverage run --source $demopath/demonstrate.py demonstratedevel_test_suite.py
+    - coverage run --source=$demopath/demonstrate.py demonstratedevel_test_suite.py
     - cd ../..
     - mv DemonstrateDevel/Tests/.coverage .coverage.demonstrate
     - mv WinnowDevel/Tests/.coverage .coverage.winnow
