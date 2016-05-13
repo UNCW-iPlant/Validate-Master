@@ -11,12 +11,12 @@ import gwas_unittest
 
 def main():
     """
-    Creates a test suite, currently only adds winnow and performetrics unittests to the suite, and runs this test suite
+    Creates a test suite and runs this test suite
 
     """
     test_suite = unittest.TestSuite()
 
-    # Test suite's to add
+    # Test suites to add
     test_suite.addTests(winnow_unittest.get_test_suite())
     test_suite.addTests(performetrics_unittest.get_test_suite())
     test_suite.addTests(adjustments_unittest.get_test_suite())

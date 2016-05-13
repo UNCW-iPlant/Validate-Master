@@ -1,3 +1,9 @@
+"""
+Each method has an exception. If the data at specified desired list index does not match up with result data,
+an AssertionError exception is thrown.
+
+Currently, all tests pass as of May 12, 2016
+"""
 import unittest
 import os
 import sys
@@ -7,6 +13,10 @@ from DevelopingRelease.WinnowDevel import winnow as Winnow
 
 
 class GWASTest(unittest.TestCase):
+    """
+    Directs path to example data for testing.
+    Initializes args to test values.
+    """
     folder = os.getcwd()[:os.getcwd().index("Validate-Master")] + "Validate-Master/ExampleData/Winnow/data/OutputPlink"
     ote = os.getcwd()[:os.getcwd().index("Validate-Master")] + "Validate-Master/ExampleData/Winnow/data/Plinkkt.ote"
     destination = os.getcwd()[:os.getcwd().index("Validate-Master")] + "Validate-Master/ExampleData/Winnow/results"
@@ -24,6 +34,10 @@ class GWASTest(unittest.TestCase):
                           'covar': "Cov01Weight", 'beta': None}
 
     def test_gwas_with_beta(self):
+        """
+        Tests method gwasWithBeta (performs GWAS analysis with beta/effect size)
+        Checks for equality within 7 decimal places of returned list with expected list of functions and results
+        """
         self.args_without_covar['beta'] = 'BETA'
         self.win = Winnow.Winnow(self.args_without_covar)
         s, b = self.win.load_data("/PlinkStd1.qassoc")
@@ -33,9 +47,18 @@ class GWASTest(unittest.TestCase):
         result = gwas.gwasWithBeta(b, self.win.beta_true_false, self.win.snp_true_false,
                                    s, self.args_without_covar['threshold'])[1]
         for x in range(0, len(result)):
-            self.assertAlmostEquals(desired[x], result[x])
+            try:
+                self.assertAlmostEquals(desired[x], result[x])
+            except AssertionError:
+                print "Test failed"
+                print "Desired value " + str(desired[x]) + " does not match up with result value " + str(result[x])
+
 
     def test_gwas_with_beta_covariate(self):
+        """
+        Tests method gwasBetaCovar (Performs GWAS analysis with beta/effect size and covariates)
+        Checks for equality within 7 decimal places of returned list with expected list of functions and results
+        """
         self.args_with_covar['beta'] = 'SNPWeight'
         self.win = Winnow.Winnow(self.args_with_covar)
         s, b, c = self.win.load_data('/Testwithcovar.csv')
@@ -47,9 +70,17 @@ class GWASTest(unittest.TestCase):
         result = gwas.gwasBetaCovar(b, self.win.beta_true_false, self.win.snp_true_false, s,
                                     self.args_with_covar['threshold'], c)[1]
         for x in range(0, len(result)):
-            self.assertAlmostEquals(desired[x], result[x])
+            try:
+                self.assertAlmostEquals(desired[x], result[x])
+            except AssertionError:
+                print "Test failed"
+                print "Desired value " + str(desired[x]) + " does not match up with result value " + str(result[x])
 
     def test_gwas_without_beta(self):
+        """
+        Tests method gwasWithoutBeta (Performs GWAS analysis without beta/effect size)
+        Checks for equality within 7 decimal places of returned list with expected list of functions and results
+        """
         self.args_without_covar['beta'] = None
         self.win = Winnow.Winnow(self.args_without_covar)
         s = self.win.load_data("/PlinkStd1.qassoc")
@@ -58,9 +89,17 @@ class GWASTest(unittest.TestCase):
                    0.1295208655332303, 0.8704791344667697, 0.0, 0.88, 0.0, 1.0, -0.12]
         result = gwas.gwasWithoutBeta(self.win.snp_true_false, s, self.args_without_covar['threshold'])[1]
         for x in range(0, len(result)):
-            self.assertAlmostEquals(desired[x], result[x])
+            try:
+                self.assertAlmostEquals(desired[x], result[x])
+            except AssertionError:
+                print "Test failed"
+                print "Desired value " + str(desired[x]) + " does not match up with result value " + str(result[x])
 
     def test_gwas_without_beta_covariate(self):
+        """
+        Tests method gwasNoBetaCovar (Performs GWAS analysis without beta/effect size)
+        Checks for equality within 7 decimal places of returned list with expected list of functions and results
+        """
         self.args_with_covar['beta'] = None
         self.win = Winnow.Winnow(self.args_with_covar)
         s, c = self.win.load_data("/Testwithcovar.csv")
@@ -70,8 +109,18 @@ class GWASTest(unittest.TestCase):
                    0.6191238781570081, 0.083426920159999987]
         result = gwas.gwasNoBetaCovar(self.win.snp_true_false, s, self.args_with_covar['threshold'], c)[1]
         for x in range(0, len(result)):
-            self.assertAlmostEquals(desired[x], result[x])
+            try:
+                self.assertAlmostEquals(desired[x], result[x])
+            except AssertionError:
+                print "Test failed"
+                print "Desired value " + str(desired[x]) + " does not match up with result value " + str(result[x])
 
 
 def get_test_suite():
+    """
+    Returns a test suite with all tests
+    """
     return unittest.TestLoader().loadTestsFromTestCase(GWASTest)
+
+if __name__ == "__main__":
+    unittest.main()

@@ -6,6 +6,10 @@ from DevelopingRelease.WinnowDevel import adjustments
 
 
 class AdjustmentsTest(unittest.TestCase):
+    """
+    Tests method fdr_bh (adjusts p-values using Benjamini-Hochberg FDR method)
+    Checks for equality within 7 decimal places of returned list and expected list of values
+    """
     def test_fdr_bh(self):
         test1 = [0.012, 0.033, 0.212, 0.9, 0.98, 0.001, 0.999, 0.0003, 0.00001]
         results1 = [0.027, 0.05940000000000001, 0.318, 0.999, 0.999, 0.0030000000000000005, 0.999,
@@ -18,6 +22,9 @@ class AdjustmentsTest(unittest.TestCase):
 
 
 def get_test_suite():
+    """
+    Returns a test suite with all tests
+    """
     return unittest.TestLoader().loadTestsFromTestCase(AdjustmentsTest)
 
 if __name__ == "__main__":

@@ -285,6 +285,7 @@ def fpr(snpTrueFalse, threshold, scoreColumn):
             count += 1.0
     return float(falsePositives / count)
 
+
 def prevalence(snpTrueFalse, threshold, scoreColumn):
     """
     Returns the prevalence value, defined as the total number of positives (whether correctly identified or not)
@@ -461,7 +462,7 @@ def fdr(snpTrueFalse, threshold, scoreColumn):
 
 def youden(snpTrueFalse, threshold, scoreColumn):
     """
-    Returns the Youden statistic for the data
+    Returns the Youden statistic for the data: Sensitivity + Specificity - 1
 
         Example:
 
