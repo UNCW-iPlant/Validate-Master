@@ -1,5 +1,9 @@
 language: python
 
+cache:
+    - pip
+    - packages
+
 python:
     - "2.7"
 
@@ -59,17 +63,18 @@ install:
     - wget https://cran.r-project.org/src/contrib/sciplot_1.1-0.tar.gz
     - R CMD INSTALL sciplot_1.1-0.tar.gz
     - pip install coveralls
-    - pip install -r requirements.txt
+    - pip install --user -r requirements.txt
 
 script:
     - cd DevelopingRelease/WinnowDevel/
     - path=$PWD
     - cd Tests
-    - coverage run --source $path/adjustments.py,$path/checkhidden.py,$path/data.py,$path/fileimport.py,$path/gwas.py,$path/performetrics.py,$path/winnow.py winnowdevel_test_suite.py
+    - ls
+    - coverage run --source=$path/adjustments.py,$path/checkhidden.py,$path/data.py,$path/fileimport.py,$path/gwas.py,$path/performetrics.py,$path/winnow.py winnowdevel_test_suite.py
     - cd ../../DemonstrateDevel/
     - demopath=$PWD
     - cd Tests
-    - coverage run --source $demopath/demonstrate.py demonstratedevel_test_suite.py
+    - coverage run --source=$demopath/demonstrate.py demonstratedevel_test_suite.py
     - cd ../..
     - mv DemonstrateDevel/Tests/.coverage .coverage.demonstrate
     - mv WinnowDevel/Tests/.coverage .coverage.winnow
