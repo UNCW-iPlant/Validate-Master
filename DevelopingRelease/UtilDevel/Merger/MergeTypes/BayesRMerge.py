@@ -3,7 +3,8 @@ from MergeType import MergeType
 
 class BayesRMerge(MergeType):
     def __init__(self, output_prefix, bim_path, param_path):
-        MergeType.__init__(self, output_prefix + '.bim')
+        output_path = output_prefix if output_prefix.endswith('.bim') else output_prefix + '.bim'
+        MergeType.__init__(self, output_path)
         self.bim_path = bim_path
         self.param_path = param_path
 
