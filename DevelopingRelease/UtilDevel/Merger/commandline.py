@@ -4,7 +4,8 @@ import argparse
 class CommandLine:
     def __init__(self):
         self.init_graphics()
-        self.args = self.check_args()
+        self.arguments = self.check_args()
+        self.print_args()
 
     @staticmethod
     def init_graphics():
@@ -33,6 +34,11 @@ class CommandLine:
         print '\nExample Usage: '
         print 'python merger --output mergedOut bayesr --bim sim.bim --param sim.param'
 
+    def print_args(self):
+        args_dict = vars(self.arguments)
+        for k in args_dict:
+            print k.capitalize() + ':', args_dict[k]
+
     def check_args(self):
         parser = argparse.ArgumentParser(description='File merger for Validate apps')
         parser.add_argument('-v', '--verbose', help='Trigger verbose mode', action='store_true', default=False)
@@ -45,7 +51,7 @@ class CommandLine:
 
     @property
     def args(self):
-        return self.args
+        return self.arguments
 
     def add_options(self, sub):
         self.add_alpha_sim_options(sub)

@@ -5,7 +5,8 @@ from os import path, chdir, listdir
 
 class LauncherMerge(MergeType):
     def __init__(self, output_prefix, folder_path):
-        MergeType.__init__(self, output_prefix + '.txt')
+        output_path = output_prefix if output_prefix.endswith('.txt') else output_prefix + '.txt'
+        MergeType.__init__(self, output_path)
         self.folder_path = folder_path
 
     def read_generator(self):
