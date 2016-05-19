@@ -4,21 +4,18 @@ import argparse
 class CommandLine:
     def __init__(self):
         self.init_graphics()
-        self.check_args()
-        # Initialize Graphics
-        # check args
-
-        pass
+        self.args = self.check_args()
 
     @staticmethod
     def init_graphics():
         print "###################################################################"
         print "###                                                            ####"
-        print "###                   File Merger for Winnow                   ####"
+        print "###                 File Merger for Validate                   ####"
         print "###                                                            ####"
         print "###################################################################"
 
-    def usage(self):
+    @staticmethod
+    def usage():
         options = ['launcher', 'bayesr', 'alphasim']
         print ''
         print 'Command-line usage help menu'
@@ -46,6 +43,10 @@ class CommandLine:
         args = parser.parse_args()
         return args
 
+    @property
+    def args(self):
+        return self.args
+
     def add_options(self, sub):
         self.add_alpha_sim_options(sub)
         self.add_bayes_r_options(sub)
@@ -59,7 +60,7 @@ class CommandLine:
     @staticmethod
     def add_bayes_r_options(sub):
         bayes_r_parser = sub.add_parser('bayesr')
-        bayes_r_parser.add_argument('-b', '--bim', help='BIM file used in BayesR', required=True)
+        bayes_r_parser.add_argument('-b', '--bim', help='BIM file used in BayesR (.bim)', required=True)
         bayes_r_parser.add_argument('-p', '--param', help='BayesR param output file (.param)', required=True)
 
     @staticmethod
