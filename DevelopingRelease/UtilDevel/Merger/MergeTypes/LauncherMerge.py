@@ -17,4 +17,4 @@ class LauncherMerge(MergeType):
         for name in file_list:
             data = pd.read_table(name, sep='\t', header=0)
             values = map(str, data.values.tolist()[0])
-            yield '\t'.join(values)+'\n'
+            yield '\t'.join(values) + '\n'
