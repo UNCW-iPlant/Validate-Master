@@ -5,6 +5,7 @@ class CommandLine:
     def __init__(self):
         self.init_graphics()
         self.args = self.check_args()
+        self.print_args()
 
     @staticmethod
     def init_graphics():
@@ -32,6 +33,11 @@ class CommandLine:
         print '\t--snp or -s to specify the SNP information output file from AlphaSim'
         print '\nExample Usage: '
         print 'python merger --output mergedOut bayesr --bim sim.bim --param sim.param'
+
+    def print_args(self):
+        args_dict = vars(self.args)
+        for k in args_dict:
+            print k.capitalize() + ':', args_dict[k]
 
     def check_args(self):
         parser = argparse.ArgumentParser(description='File merger for Validate apps')
