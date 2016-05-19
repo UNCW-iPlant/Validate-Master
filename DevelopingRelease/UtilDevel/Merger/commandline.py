@@ -4,7 +4,7 @@ import argparse
 class CommandLine:
     def __init__(self):
         self.init_graphics()
-        self.args = self.check_args()
+        self.arguments = self.check_args()
         self.print_args()
 
     @staticmethod
