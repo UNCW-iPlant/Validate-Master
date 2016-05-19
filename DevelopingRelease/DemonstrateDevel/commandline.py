@@ -102,7 +102,7 @@ def add_demo2_command_options(subparsers):
     """
     demo2_parser = subparsers.add_parser('demonstrate2', help="Generate the Demonstrate2 graphics")
     demo2_parser.add_argument("-q", "--xpos", action="store_true", default=False,
-                        help="To exclude the TP by FP plot")
+                         help="To exclude the TP by FP plot")
     demo2_parser.add_argument("-i", "--postitle", type=str, default="True Positives by False Positives",
                         help="TP by FP plot title")
     demo2_parser.add_argument("-e", "--xerror", action="store_true", default=False,
