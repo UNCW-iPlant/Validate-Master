@@ -35,7 +35,7 @@ class CommandLine:
         print 'python merger --output mergedOut bayesr --bim sim.bim --param sim.param'
 
     def print_args(self):
-        args_dict = vars(self.args)
+        args_dict = vars(self.arguments)
         for k in args_dict:
             print k.capitalize() + ':', args_dict[k]
 
@@ -51,7 +51,7 @@ class CommandLine:
 
     @property
     def args(self):
-        return self.args
+        return self.arguments
 
     def add_options(self, sub):
         self.add_alpha_sim_options(sub)
