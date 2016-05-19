@@ -3,7 +3,7 @@ from MergeType import MergeType
 
 class AlphaSimMerge(MergeType):
     def __init__(self, output_prefix, snp_path):
-        MergeType.__init__(self, output_prefix)
+        MergeType.__init__(self, output_prefix + '.map')
         self.snp_path = snp_path
 
     def read_generator(self):

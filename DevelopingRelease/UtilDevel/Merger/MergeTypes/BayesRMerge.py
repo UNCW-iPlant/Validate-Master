@@ -14,5 +14,5 @@ class BayesRMerge(MergeType):
             header = 'SNP\t' + header
             yield header + '\n'
             for bim_line, param_line in zip(bim_file, param_file):
-                split_param_line =  param_line.split()
+                split_param_line = param_line.split()
                 yield str(bim_line.split()[1]) + '\t' + '\t'.join([str(p) for p in split_param_line])+'\n'
