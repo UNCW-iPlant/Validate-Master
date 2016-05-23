@@ -1,19 +1,15 @@
 language: python
 
-
 cache:
     - pip
     - packages
 
-
 python:
     - "2.7"
-
 
 branches:
     only:
         - Developing-Release
-
 
 before_install:
     - wget https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh;
@@ -25,7 +21,6 @@ before_install:
     - conda info -a
     - conda create -q -n r anaconda
     - source activate r
-
 
 install:
     - conda install --yes python=$TRAVIS_PYTHON_VERSION numpy scipy
@@ -69,7 +64,6 @@ install:
     - pip install coveralls
     - pip install --user -r requirements.txt
 
-
 script:
     - cd DevelopingRelease/WinnowDevel/
     - path=$PWD
@@ -84,7 +78,6 @@ script:
     - mv DemonstrateDevel/Tests/.coverage .coverage.demonstrate
     - mv WinnowDevel/Tests/.coverage .coverage.winnow
     - coverage combine
-
 
 after_script:
     - coveralls
