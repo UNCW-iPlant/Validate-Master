@@ -1,15 +1,19 @@
 language: python
 
+
 cache:
     - pip
     - packages
 
+
 python:
     - "2.7"
+
 
 branches:
     only:
         - Developing-Release
+
 
 before_install:
     - wget https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh;
@@ -64,6 +68,7 @@ install:
     - R CMD INSTALL sciplot_1.1-0.tar.gz
     - pip install coveralls
     - pip install --user -r requirements.txt
+
 
 script:
     - cd DevelopingRelease/WinnowDevel/
