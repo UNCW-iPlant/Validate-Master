@@ -34,9 +34,8 @@ class ListRankerTest(unittest.TestCase):
         self.assertTrue(os.path.getsize(self.maindir + "/" + self.secondarg) > 0)
         self.assertTrue(os.path.getsize(self.maindir + "/" + self.thirdarg) > 0)
 
-    def load_r(self):
-        print 'LISTRANKER PATH:', os.getcwd()[:os.getcwd().index('DevelopingRelease/')] + \
-                                  'DevelopingRelease/UtilDevel/ListRanker.R'
+    @staticmethod
+    def load_r():
         with open(os.getcwd()[:os.getcwd().index('DevelopingRelease/')] +
                   'DevelopingRelease/UtilDevel/ListRanker.R') as f:
             lr = f.read()
