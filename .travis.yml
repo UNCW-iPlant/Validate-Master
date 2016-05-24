@@ -22,7 +22,6 @@ before_install:
     - conda create -q -n r anaconda
     - source activate r
 
-
 install:
     - conda install --yes python=$TRAVIS_PYTHON_VERSION numpy scipy
     - conda install --yes -c r r
@@ -69,7 +68,6 @@ script:
     - cd DevelopingRelease/WinnowDevel/
     - path=$PWD
     - cd Tests
-    - ls
     - coverage run --source=$path/adjustments.py,$path/checkhidden.py,$path/data.py,$path/fileimport.py,$path/gwas.py,$path/performetrics.py,$path/winnow.py winnowdevel_test_suite.py
     - cd ../../DemonstrateDevel/
     - demopath=$PWD
