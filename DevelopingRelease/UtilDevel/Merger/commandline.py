@@ -31,6 +31,12 @@ class CommandLine:
         print '\t--param or -p to specify the .param output file from BayesR'
         print 'AlphaSim Arguments'
         print '\t--snp or -s to specify the SNP information output file from AlphaSim'
+        print '\t--pedigree or -p to specify the PedigreeTbvTdvTpv.txt file from AlphaSim'
+        print '\t--col or -c to specify the phenotype column from the PedigreeTbvTdvTpv.txt file (optional; ' \
+              'defaulted to 9; the TPVNormRest1 column)'
+        print '\t--gender or -g to specify the gender.txt file from AlphaSim'
+        print '\t--geno or -n to specify the Genotype.txt file from AlphaSim'
+        print '\t--sol or -k to specify the SnpSolutions.txt file from AlphaSim (optional)'
         print '\nExample Usage: '
         print 'python merger --output mergedOut bayesr --bim sim.bim --param sim.param'
 
@@ -61,15 +67,30 @@ class CommandLine:
     @staticmethod
     def add_launcher_options(sub):
         launcher_parser = sub.add_parser('launcher')
-        launcher_parser.add_argument('-f', '--folder', help='The folder containing all GWAS outputs', required=True)
+        launcher_parser.add_argument('-f', '--folder', help='The folder containing all GWAS outputs', required=True,
+                                     type=str)
 
     @staticmethod
     def add_bayes_r_options(sub):
         bayes_r_parser = sub.add_parser('bayesr')
-        bayes_r_parser.add_argument('-b', '--bim', help='BIM file used in BayesR (.bim)', required=True)
-        bayes_r_parser.add_argument('-p', '--param', help='BayesR param output file (.param)', required=True)
+        bayes_r_parser.add_argument('-b', '--bim', help='BIM file used in BayesR (.bim)', required=True,
+                                    type=str)
+        bayes_r_parser.add_argument('-p', '--param', help='BayesR param output file (.param)', required=True,
+                                    type=str)
 
     @staticmethod
     def add_alpha_sim_options(sub):
         alpha_sim_parser = sub.add_parser('alphasim')
-        alpha_sim_parser.add_argument('-s', '--snp', help='SNP information file from AlphaSim', required=True)
+        alpha_sim_parser.add_argument('-s', '--snp', help='SNP information file from AlphaSim', required=True,
+                                      type=str)
+        alpha_sim_parser.add_argument('-p', '--pedigree', help='PedigreeTbvTdvTpv file from AlphaSim', required=True,
+                                      type=str)
+        alpha_sim_parser.add_argument('-g', '--gender', help='Gender file from AlphaSim', required=True,
+                                      type=str)
+        alpha_sim_parser.add_argument('-n', '--geno', help='Genotype file from AlphaSim', required=True,
+                                      type=str)
+        alpha_sim_parser.add_argument('-k', '--sol', help='SNPSolution file from AlphaSim', required=False,
+                                      type=str)
+        alpha_sim_parser.add_argument('-c', '--col', help='Phenotype value column from AlphaSim', required=False,
+                                      type=int)
+
