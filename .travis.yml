@@ -1,8 +1,9 @@
 language: python
 
 cache:
-    - pip
-    - packages
+    directories:
+    - $HOME/miniconda
+    - $HOME/.cache/pip
 
 python:
     - "2.7"
@@ -13,7 +14,7 @@ branches:
 
 before_install:
     - wget https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh;
-    - bash miniconda.sh -b -p $HOME/miniconda
+    - bash miniconda.sh -b -f -p $HOME/miniconda
     - export PATH="$HOME/miniconda/bin:$PATH"
     - hash -r
     - conda config --set always_yes yes --set changeps1 no
@@ -21,12 +22,12 @@ before_install:
     - conda info -a
     - conda create -q -n r anaconda
     - source activate r
-
-install:
     - conda install --yes python=$TRAVIS_PYTHON_VERSION numpy scipy
     - conda install --yes -c r r
     - conda install --yes -c https://conda.anaconda.org/r rpy2
     - conda install --yes -c https://conda.anaconda.org/r r-testthat
+
+install:
     - wget https://cran.r-project.org/src/contrib/Rcpp_0.12.5.tar.gz
     - R CMD INSTALL Rcpp_0.12.5.tar.gz
     - wget https://cran.r-project.org/src/contrib/plyr_1.8.3.tar.gz
@@ -73,9 +74,13 @@ script:
     - demopath=$PWD
     - cd Tests
     - coverage run --source=$demopath/demonstrate.py demonstratedevel_test_suite.py
+    - cd ../../UtilDevel/Merger
+    - mergerpath=$PWD
+    - coverage run --source=$mergerpath/MergeType.py,$mergerpath/MergeTypes/AlphaSimMerge.py,$mergerpath/MergeTypes/BayesRMerge.py,$mergerpath/MergeTypes/LauncherMerge.py Tests/merge_test_suite.py
     - cd ../..
     - mv DemonstrateDevel/Tests/.coverage .coverage.demonstrate
     - mv WinnowDevel/Tests/.coverage .coverage.winnow
+    - mv UtilDevel/Merger/.coverage .coverage.merger
     - coverage combine
 
 after_script:
