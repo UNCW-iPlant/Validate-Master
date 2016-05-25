@@ -80,7 +80,7 @@ script:
     - cd ../..
     - mv DemonstrateDevel/Tests/.coverage .coverage.demonstrate
     - mv WinnowDevel/Tests/.coverage .coverage.winnow
-    - mv UtilDevel/Merger/Tests/.coverage .coverage.merger
+    - mv UtilDevel/Merger/.coverage .coverage.merger
     - coverage combine
 
 after_script:
