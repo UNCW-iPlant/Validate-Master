@@ -1,6 +1,6 @@
 from MergeTypes.BayesRMerge import BayesRMerge
+from MergeTypes.LauncherMerge import LauncherMerge
 from MergeTypes.AlphaSimMerge import AlphaSimMerge
-from MergeTypes import LauncherMerge
 from commandline import CommandLine
 
 
@@ -11,8 +11,8 @@ class Merge:
             if args.mode == 'bayesr':
                 self.merger = BayesRMerge(self.output_path, args.bim, args.param)
             elif args.mode == 'alphasim':
-                self.snp_path = args.snp
-                self.merger = AlphaSimMerge(self.output_path, args.snp)
+                self.merger = AlphaSimMerge(self.output_path, args.snp, args.pedigree, args.gender, args.geno, args.sol,
+                                            args.col if args.col is not None else 9)
             elif args.mode == 'launcher':
                 self.merger = LauncherMerge(self.output_path, args.folder)
             self.merger.write()

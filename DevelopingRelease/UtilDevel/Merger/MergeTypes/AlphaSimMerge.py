@@ -2,8 +2,8 @@ from MergeType import MergeType
 
 
 class AlphaSimMerge(MergeType):
-    def __init__(self, output_prefix, snp_path, pedigree_path, gender_path, genotype_path, snp_solution_path=None,
-                 pedigree_tpv_col=9):
+    def __init__(self, output_prefix, snp_path, pedigree_path, gender_path, genotype_path, snp_solution_path,
+                 pedigree_tpv_col):
         output_path = output_prefix
         MergeType.__init__(self, output_path)
         self.output_prefix = output_prefix
@@ -85,11 +85,3 @@ class AlphaSimMerge(MergeType):
                 id = split_line[0]
                 geno = split_line[1].replace('1', 'A').replace('2', 'B')
                 yield id, geno
-
-    def kt_generator(self):
-        raise NotImplementedError('KT not implemented yet')
-
-asm = AlphaSimMerge('/Users/SamBuck/Desktop/outputASM.txt', '/Users/SamBuck/Documents/Work/Chip1SnpInformation.txt',
-                    '/Users/SamBuck/Documents/Work/PedigreeTbvTdvTpv.txt', '/Users/SamBuck/Documents/Work/Gender.txt',
-                    '/Users/SamBuck/Documents/Work/Chip1Genotype.txt', '/Users/SamBuck/Documents/Work/SnpSolutions.txt')
-asm.write()
