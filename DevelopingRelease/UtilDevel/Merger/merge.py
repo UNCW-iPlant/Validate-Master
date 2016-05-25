@@ -6,6 +6,11 @@ from commandline import CommandLine
 
 class Merge:
     def __init__(self, args):
+        """
+        Creates a new instance of a MergeType object using the command line arguments and begins the merging process.
+
+        :param args: arguments from the command line parser
+        """
         self.output_path = args.output
         if args.mode in ['bayesr', 'alphasim', 'launcher']:
             if args.mode == 'bayesr':
@@ -21,5 +26,8 @@ class Merge:
 
 
 if __name__ == '__main__':
+    """
+    Creates a CommandLine object to parse arguments. Initializes the Merge object.
+    """
     command_line = CommandLine()
     merger = Merge(command_line.args)
