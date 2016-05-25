@@ -1,8 +1,10 @@
 language: python
 
 cache:
-    - pip
-    - packages
+    pip: true
+    packages: true
+    directories:
+    -$HOME/miniconda
 
 python:
     - "2.7"
@@ -11,7 +13,7 @@ branches:
     only:
         - Developing-Release
 
-before_install:
+install:
     - wget https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh;
     - bash miniconda.sh -b -p $HOME/miniconda
     - export PATH="$HOME/miniconda/bin:$PATH"
@@ -21,8 +23,6 @@ before_install:
     - conda info -a
     - conda create -q -n r anaconda
     - source activate r
-
-install:
     - conda install --yes python=$TRAVIS_PYTHON_VERSION numpy scipy
     - conda install --yes -c r r
     - conda install --yes -c https://conda.anaconda.org/r rpy2
