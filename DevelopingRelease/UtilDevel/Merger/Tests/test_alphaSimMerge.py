@@ -1,4 +1,7 @@
 from unittest import TestCase, TestLoader
+import os
+import sys
+sys.path.append(os.getcwd()[:os.getcwd().index('DevelopingRelease')])
 from DevelopingRelease.UtilDevel.Merger.MergeTypes.AlphaSimMerge import AlphaSimMerge
 
 
